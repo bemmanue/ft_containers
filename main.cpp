@@ -4,7 +4,6 @@
 
 int main()
 {
-	std::vector<int> q;
 	std::vector<int> e(5);
 	e[0] = 1;
 	e[1] = 5;
@@ -19,12 +18,9 @@ int main()
 	a[3] = 3;
 	a[4] = 4;
 
-//	std::cout << e.at(5) << std::endl;
-//	try {
-		std::cout << e.back() << std::endl;
-		std::cout << e.back() << std::endl;
-//	}
-//	catch (std::exception& e) {
-//		std::cout << e.what() << std::endl;
-//	}
+	std::vector<int>::iterator h;
+	h = e.begin();
+
+	std::cout << e.back() << std::endl;
+	std::cout << a.at(3) << std::endl;
 }
