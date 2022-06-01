@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include "vector.hpp"
+#include "vector/vector.hpp"
 
 int main()
 {
@@ -19,7 +19,10 @@ int main()
 	a[4] = 4;
 
 	std::vector<int>::iterator h;
+	std::vector<int>::iterator w;
 	h = e.begin();
+	w = e.end();
+	int* s;
 
 	std::cout << e.back() << std::endl;
 	std::cout << a.at(3) << std::endl;

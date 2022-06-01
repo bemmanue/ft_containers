@@ -84,12 +84,6 @@ build CMakeFiles/ft_containers.dir/vector.cpp.o: CXX_COMPILER__ft_containers_Deb
   OBJECT_DIR = CMakeFiles/ft_containers.dir
   OBJECT_FILE_DIR = CMakeFiles/ft_containers.dir
 
-build CMakeFiles/ft_containers.dir/iterator.cpp.o: CXX_COMPILER__ft_containers_Debug /Users/bemmanue/Desktop/ft_containers/iterator.cpp || cmake_object_order_depends_target_ft_containers
-  DEP_FILE = CMakeFiles/ft_containers.dir/iterator.cpp.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -mmacosx-version-min=10.14 -std=gnu++98
-  OBJECT_DIR = CMakeFiles/ft_containers.dir
-  OBJECT_FILE_DIR = CMakeFiles/ft_containers.dir
-
 build CMakeFiles/ft_containers.dir/elements_access.cpp.o: CXX_COMPILER__ft_containers_Debug /Users/bemmanue/Desktop/ft_containers/elements_access.cpp || cmake_object_order_depends_target_ft_containers
   DEP_FILE = CMakeFiles/ft_containers.dir/elements_access.cpp.o.d
   FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -mmacosx-version-min=10.14 -std=gnu++98
@@ -110,7 +104,7 @@ build CMakeFiles/ft_containers.dir/constructors.cpp.o: CXX_COMPILER__ft_containe
 #############################################
 # Link the executable ft_containers
 
-build ft_containers: CXX_EXECUTABLE_LINKER__ft_containers_Debug CMakeFiles/ft_containers.dir/main.cpp.o CMakeFiles/ft_containers.dir/vector.cpp.o CMakeFiles/ft_containers.dir/iterator.cpp.o CMakeFiles/ft_containers.dir/elements_access.cpp.o CMakeFiles/ft_containers.dir/constructors.cpp.o
+build ft_containers: CXX_EXECUTABLE_LINKER__ft_containers_Debug CMakeFiles/ft_containers.dir/main.cpp.o CMakeFiles/ft_containers.dir/vector.cpp.o CMakeFiles/ft_containers.dir/elements_access.cpp.o CMakeFiles/ft_containers.dir/constructors.cpp.o
   FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -mmacosx-version-min=10.14
   LINK_FLAGS = -L/Users/bemmanue/.brew/opt/readline/lib
   OBJECT_DIR = CMakeFiles/ft_containers.dir

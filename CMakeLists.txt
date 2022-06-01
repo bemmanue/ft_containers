@@ -5,8 +5,9 @@ set(CMAKE_CXX_STANDARD 98)
 
 add_executable(ft_containers
                 main.cpp
-                vector.cpp
-                vector.hpp
-        iterator.hpp
-                elements_access.cpp
-                constructors.cpp)
+        vector/vector.hpp
+                iterator/classes/iterator.hpp
+                iterator/classes/iterator_traits.hpp
+                iterator/classes/iterator_tr.hpp
+        vector/elements_access.cpp
+        vector/constructors.cpp)
