@@ -11,19 +11,31 @@ int main()
 	e[3] = 3;
 	e[4] = 4;
 
-	ft::vector<int> a(5);
-	a[0] = 1;
-	a[1] = 5;
-	a[2] = 2;
-	a[3] = 3;
-	a[4] = 4;
+//	ft::vector<int> a(5);
+//	a[0] = 1;
+//	a[1] = 5;
+//	a[2] = 2;
+//	a[3] = 3;
+//	a[4] = 4;
 
 	std::vector<int>::iterator h;
 	std::vector<int>::iterator w;
-	h = e.begin();
-	w = e.end();
-	int* s;
 
-	std::cout << e.back() << std::endl;
-	std::cout << a.at(3) << std::endl;
+	h = e.begin();
+	h += 3;
+	std::cout << *h << std::endl;
+
+	h = e.begin();
+	h + 3;
+	std::cout << *h << std::endl;
+
+	h = e.end();
+	h -= 3;
+	std::cout << *h << std::endl;
+
+	h = e.end();
+	h - 3;
+	std::cout << *h << std::endl;
+//	std::cout << e.back() << std::endl;
+//	std::cout << a.at(3) << std::endl;
 }

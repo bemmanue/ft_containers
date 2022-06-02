@@ -5,9 +5,11 @@ set(CMAKE_CXX_STANDARD 98)
 
 add_executable(ft_containers
                 main.cpp
-        vector/vector.hpp
-                iterator/classes/iterator.hpp
-                iterator/classes/iterator_traits.hpp
-                iterator/classes/iterator_tr.hpp
-        vector/elements_access.cpp
-        vector/constructors.cpp)
+                vector/vector.hpp
+                iterator/iterator.hpp
+                iterator/iterator_traits.hpp
+                iterator/iterator_tags.hpp
+                iterator/reverse_iterator.hpp
+                iterator/random_access_iterator.hpp
+                vector/elements_access.cpp
+                vector/constructors.cpp)
