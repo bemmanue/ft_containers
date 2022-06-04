@@ -5,14 +5,14 @@
 int main()
 {
 	ft::vector<int> a(5);
-//	a[0] = 1;
-//	a[1] = 5;
-//	a[2] = 2;
-//	a[3] = 3;
-//	a[4] = 4;
-
-//	ft::vector<int>::iterator i = a.begin();
-//	std::cout << a.front() << std::endl;
+	a[0] = 1;
+	a[1] = 5;
+	a[2] = 2;
+	a[3] = 3;
+	a[4] = 4;
+	ft::vector<int>::iterator i = a.begin();
+	std::cout << a.front() << std::endl;
+	std::cout << *i << std::endl;
 
 //	std::vector<int> e(5);
 //	e[0] = 1;
@@ -20,9 +20,8 @@ int main()
 //	e[2] = 2;
 //	e[3] = 3;
 //	e[4] = 4;
-//
-//	std::vector<int>::iterator h;
-//	std::vector<int>::iterator w;
+//	std::vector<int>::iterator h = e.begin();
+//	std::cout << *h << std::endl;
 //
 //	h = e.begin();
 //	h += 3;

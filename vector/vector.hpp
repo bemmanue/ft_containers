@@ -64,11 +64,14 @@ public:
 //	const_reverse_iterator	rend() const;
 
 
-	//Capasity
+	//Capacity
 
 	//Modifiers
 };
 
 }
+#include "constructors.hpp"
+#include "iterators.hpp"
+#include "elements_access.hpp"
 
 #endif

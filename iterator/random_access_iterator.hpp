@@ -11,10 +11,16 @@ namespace ft
 template<class T, class Distance = ptrdiff_t, class Pointer = T*, class Reference = T&>
 class random_access_iterator : iterator<random_access_iterator_tag, T, Distance, Pointer, Reference>
 {
+private:
+	Pointer		current;
 public:
 //	random_access_iterator();
 	explicit random_access_iterator(Pointer pointer);
 
+
+	Reference	operator*	() {
+		return *current;
+	}
 //	Reference	operator+=	(Distance n);
 //	T			operator+ 	(Distance n);
 //	Reference	operator-= 	(Distance n);
@@ -26,8 +32,7 @@ public:
 //	bool		operator<=	(T b);
 //	bool		operator>=	(T b);
 
-private:
-	Pointer		_pointer;
+
 };
 
 //template<class T, class Distance, class Pointer, class Reference>
@@ -37,12 +42,12 @@ private:
 
 template<class T, class Distance, class Pointer, class Reference>
 random_access_iterator<T, Distance, Pointer, Reference>::random_access_iterator(Pointer pointer) {
-	_pointer = pointer;
+	current = pointer;
 };
 
 //template<class T, class Distance, class Pointer, class Reference>
 //Reference random_access_iterator<T, Distance, Pointer, Reference>::operator+= (Distance n) {
-//	return _pointer + n;
+//	return current + n;
 //};
 //
 //template<class T, class Distance, class Pointer, class Reference>

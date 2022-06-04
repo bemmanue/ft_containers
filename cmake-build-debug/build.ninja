@@ -78,24 +78,6 @@ build CMakeFiles/ft_containers.dir/main.cpp.o: CXX_COMPILER__ft_containers_Debug
   OBJECT_DIR = CMakeFiles/ft_containers.dir
   OBJECT_FILE_DIR = CMakeFiles/ft_containers.dir
 
-build CMakeFiles/ft_containers.dir/vector/elements_access.cpp.o: CXX_COMPILER__ft_containers_Debug /Users/bemmanue/Desktop/ft_containers/vector/elements_access.cpp || cmake_object_order_depends_target_ft_containers
-  DEP_FILE = CMakeFiles/ft_containers.dir/vector/elements_access.cpp.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -mmacosx-version-min=10.14 -std=gnu++98
-  OBJECT_DIR = CMakeFiles/ft_containers.dir
-  OBJECT_FILE_DIR = CMakeFiles/ft_containers.dir/vector
-
-build CMakeFiles/ft_containers.dir/vector/constructors.cpp.o: CXX_COMPILER__ft_containers_Debug /Users/bemmanue/Desktop/ft_containers/vector/constructors.cpp || cmake_object_order_depends_target_ft_containers
-  DEP_FILE = CMakeFiles/ft_containers.dir/vector/constructors.cpp.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -mmacosx-version-min=10.14 -std=gnu++98
-  OBJECT_DIR = CMakeFiles/ft_containers.dir
-  OBJECT_FILE_DIR = CMakeFiles/ft_containers.dir/vector
-
-build CMakeFiles/ft_containers.dir/vector/iterators.cpp.o: CXX_COMPILER__ft_containers_Debug /Users/bemmanue/Desktop/ft_containers/vector/iterators.cpp || cmake_object_order_depends_target_ft_containers
-  DEP_FILE = CMakeFiles/ft_containers.dir/vector/iterators.cpp.o.d
-  FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -mmacosx-version-min=10.14 -std=gnu++98
-  OBJECT_DIR = CMakeFiles/ft_containers.dir
-  OBJECT_FILE_DIR = CMakeFiles/ft_containers.dir/vector
-
 
 # =============================================================================
 # Link build statements for EXECUTABLE target ft_containers
@@ -104,7 +86,7 @@ build CMakeFiles/ft_containers.dir/vector/iterators.cpp.o: CXX_COMPILER__ft_cont
 #############################################
 # Link the executable ft_containers
 
-build ft_containers: CXX_EXECUTABLE_LINKER__ft_containers_Debug CMakeFiles/ft_containers.dir/main.cpp.o CMakeFiles/ft_containers.dir/vector/elements_access.cpp.o CMakeFiles/ft_containers.dir/vector/constructors.cpp.o CMakeFiles/ft_containers.dir/vector/iterators.cpp.o
+build ft_containers: CXX_EXECUTABLE_LINKER__ft_containers_Debug CMakeFiles/ft_containers.dir/main.cpp.o
   FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -mmacosx-version-min=10.14
   LINK_FLAGS = -L/Users/bemmanue/.brew/opt/readline/lib
   OBJECT_DIR = CMakeFiles/ft_containers.dir
