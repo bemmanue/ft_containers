@@ -48,7 +48,8 @@ namespace ft
 */
 	template < typename T, class Alloc >
 	typename vector<T, Alloc>::reference vector<T, Alloc>::front() {
-		return *_first;
+//		return *_first;
+		return *this->begin();
 	}
 
 /*

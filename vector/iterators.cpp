@@ -9,4 +9,5 @@ typename vector<T, Alloc>::iterator vector<T, Alloc>::vector::begin() {
 };
 
 
+
 }
