@@ -11,84 +11,102 @@ namespace ft
 template<class T, class Distance = ptrdiff_t, class Pointer = T*, class Reference = T&>
 class random_access_iterator : iterator<random_access_iterator_tag, T, Distance, Pointer, Reference>
 {
-private:
-	Pointer		current;
+protected:
+	Pointer	current;
 public:
-//	random_access_iterator();
-	explicit random_access_iterator(Pointer pointer);
+	typedef random_access_iterator<T, Distance, Pointer, Reference>		iterator;
 
+	random_access_iterator() {
 
-	Reference	operator*	() {
+	}
+
+	explicit random_access_iterator(Pointer pointer): current(pointer) {
+
+	}
+
+	T operator*	() const {
 		return *current;
 	}
-//	Reference	operator+=	(Distance n);
-//	T			operator+ 	(Distance n);
-//	Reference	operator-= 	(Distance n);
-//	T			operator-	(Distance n);
-//	Distance	operator-	(T a);
-//	Reference	operator[]	(T i);
-//	bool		operator<	(T b);
-//	bool		operator>	(T b);
-//	bool		operator<=	(T b);
-//	bool		operator>=	(T b);
 
+	iterator& operator= (const iterator& a) {
+		current = a.current;
+		return *this;
+	}
 
+	iterator& operator+= (Distance n) {
+		current += n;
+		return *this;
+	}
+
+	iterator& operator++ () {
+		current++;
+		return *this;
+	}
+
+	iterator operator++ (int) {
+		iterator temp = *this;
+		current++;
+		return temp;
+	}
+
+	iterator operator+ (Distance n) {
+		iterator temp = *this;
+		return (temp += n);
+	}
+
+	iterator& operator-= (Distance n) {
+		current -= n;
+		return *this;
+	}
+
+	iterator& operator-- () {
+		current--;
+		return *this;
+	}
+
+	iterator operator-- (int) {
+		iterator temp = *this;
+		current--;
+		return temp;
+	}
+
+	iterator operator- (Distance n) {
+		iterator temp = *this;
+		return (temp -= n);
+	}
+
+	Distance operator- (const iterator& a) {
+		return (current - a.current);
+	}
+
+	iterator operator[] (Distance n) const {
+		return (current + n);
+	}
+
+	bool operator< (const iterator& b) const {
+		return (current < b.current);
+	}
+
+	bool operator> (const iterator& b) const {
+		return (current > b.current);
+	}
+
+	bool operator<= (const iterator& b) const {
+		return (current <= b.current);
+	}
+
+	bool operator>= (const iterator& b) const {
+		return (current >= b.current);
+	}
+
+	bool operator== (const iterator& b) const {
+		return (current == b.current);
+	}
+
+	bool operator!= (const iterator& b) const {
+		return (current != b.current);
+	}
 };
-
-//template<class T, class Distance, class Pointer, class Reference>
-//random_access_iterator<T, Distance, Pointer, Reference>::random_access_iterator() {
-//
-//};
-
-template<class T, class Distance, class Pointer, class Reference>
-random_access_iterator<T, Distance, Pointer, Reference>::random_access_iterator(Pointer pointer) {
-	current = pointer;
-};
-
-//template<class T, class Distance, class Pointer, class Reference>
-//Reference random_access_iterator<T, Distance, Pointer, Reference>::operator+= (Distance n) {
-//	return current + n;
-//};
-//
-//template<class T, class Distance, class Pointer, class Reference>
-//T random_access_iterator<T, Distance, Pointer, Reference>::operator+ (Distance n) {
-//
-//};
-//
-//template<class T, class Distance, class Pointer, class Reference>
-//Reference random_access_iterator<T, Distance, Pointer, Reference>::operator-= (Distance n) {
-//
-//};
-//
-//template<class T, class Distance, class Pointer, class Reference>
-//T random_access_iterator<T, Distance, Pointer, Reference>::operator- (Distance n) {
-//
-//};
-//
-//template<class T, class Distance, class Pointer, class Reference>
-//Reference random_access_iterator<T, Distance, Pointer, Reference>::operator[] (T i) {
-//
-//};
-//
-//template<class T, class Distance, class Pointer, class Reference>
-//bool random_access_iterator<T, Distance, Pointer, Reference>::operator< (T b) {
-//
-//};
-//
-//template<class T, class Distance, class Pointer, class Reference>
-//bool random_access_iterator<T, Distance, Pointer, Reference>::operator> (T b) {
-//
-//};
-//
-//template<class T, class Distance, class Pointer, class Reference>
-//bool random_access_iterator<T, Distance, Pointer, Reference>::operator<= (T b) {
-//
-//};
-//
-//template<class T, class Distance, class Pointer, class Reference>
-//bool random_access_iterator<T, Distance, Pointer, Reference>::operator>= (T b) {
-//
-//};
 
 }
 

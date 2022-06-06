@@ -68,7 +68,7 @@ Returns a reference to the last element in the vector
 */
 template < typename T, class Alloc >
 typename vector<T, Alloc>::reference vector<T, Alloc>::back() {
-	return *_last;
+	return *(_last - 1);
 }
 
 /*
@@ -76,7 +76,7 @@ Returns a const reference to the last element in the vector
 */
 template < typename T, class Alloc >
 typename vector<T, Alloc>::const_reference vector<T, Alloc>::back() const {
-	return *_last;
+	return *(_last - 1);
 }
 
 }

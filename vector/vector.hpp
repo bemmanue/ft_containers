@@ -28,9 +28,9 @@ public:
 	typedef typename ft::reverse_iterator<iterator>						reverse_iterator;
 	typedef typename ft::reverse_iterator<const_iterator>				const_reverse_iterator;
 
-	pointer					_first;
-	pointer					_last;
-	allocator_type			_allocator;
+	pointer			_first;
+	pointer			_last;
+	allocator_type	_allocator;
 
 	explicit vector(const allocator_type& alloc = allocator_type());
 	explicit vector(size_t n, const allocator_type& alloc = allocator_type());
@@ -56,7 +56,7 @@ public:
 
 	iterator				begin();
 //	const_iterator			begin() const;
-//	iterator				end();
+	iterator				end();
 //	const_iterator			end() const;
 //	reverse_iterator		rbegin();
 //	const_reverse_iterator	rbegin() const;
