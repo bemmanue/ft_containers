@@ -24,7 +24,7 @@ public:
 
 	}
 
-	T operator*	() const {
+	Reference operator*	() const {
 		return *current;
 	}
 

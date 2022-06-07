@@ -13,4 +13,6 @@ add_executable(ft_containers
                 iterator/random_access_iterator.hpp
         vector/elements_access.hpp
         vector/constructors.hpp
-        vector/iterators.hpp)
+        vector/iterators.hpp
+        vector/capasity.hpp
+        vector/modifiers.hpp)
