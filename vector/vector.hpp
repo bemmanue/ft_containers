@@ -22,9 +22,11 @@ public:
 	typedef typename allocator_type::pointer							pointer;
 	typedef typename allocator_type::const_pointer						const_pointer;
 	typedef typename ft::random_access_iterator
-		<value_type, difference_type, pointer, reference>				iterator;
+		<value_type, difference_type, pointer, reference,
+		pointer, reference>												iterator;
 	typedef typename ft::random_access_iterator
-		<value_type, difference_type, const_pointer, const_reference>	const_iterator;
+		<value_type, difference_type, pointer, reference,
+		const_pointer, const_reference>									const_iterator;
 	typedef typename ft::reverse_iterator<iterator>						reverse_iterator;
 	typedef typename ft::reverse_iterator<const_iterator>				const_reverse_iterator;
 
@@ -55,7 +57,7 @@ public:
 	//Iterators
 
 	iterator				begin();
-//	const_iterator			begin() const;
+	const_iterator			begin() const;
 	iterator				end();
 //	const_iterator			end() const;
 //	reverse_iterator		rbegin();
