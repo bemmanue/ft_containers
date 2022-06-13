@@ -25,13 +25,14 @@ public:
 		<value_type, difference_type, pointer, reference,
 		pointer, reference>												iterator;
 	typedef typename ft::random_access_iterator
-		<value_type, difference_type, pointer, reference,
-		const_pointer, const_reference>									const_iterator;
+		<value_type, difference_type, const_pointer, const_reference,
+		pointer, reference>												const_iterator;
 	typedef typename ft::reverse_iterator<iterator>						reverse_iterator;
 	typedef typename ft::reverse_iterator<const_iterator>				const_reverse_iterator;
 
 	pointer			_first;
 	pointer			_last;
+	pointer			_end;
 	allocator_type	_allocator;
 
 	explicit vector(const allocator_type& alloc = allocator_type());
@@ -59,11 +60,11 @@ public:
 	iterator				begin();
 	const_iterator			begin() const;
 	iterator				end();
-//	const_iterator			end() const;
-//	reverse_iterator		rbegin();
-//	const_reverse_iterator	rbegin() const;
-//	reverse_iterator		rend();
-//	const_reverse_iterator	rend() const;
+	const_iterator			end() const;
+	reverse_iterator		rbegin();
+	const_reverse_iterator	rbegin() const;
+	reverse_iterator		rend();
+	const_reverse_iterator	rend() const;
 
 
 	//Capacity
@@ -97,5 +98,6 @@ public:
 #include "constructors.hpp"
 #include "iterators.hpp"
 #include "elements_access.hpp"
+#include "capasity.hpp"
 
 #endif
