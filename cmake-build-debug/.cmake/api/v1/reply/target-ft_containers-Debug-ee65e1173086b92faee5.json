@@ -161,7 +161,7 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "vector/capasity.hpp",
+			"path" : "vector/capacity.hpp",
 			"sourceGroupIndex" : 1
 		},
 		{

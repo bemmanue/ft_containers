@@ -1,5 +1,5 @@
-#ifndef CAPASITY_HPP
-# define CAPASITY_HPP
+#ifndef CAPACITY_HPP
+# define CAPACITY_HPP
 
 #include "vector.hpp"
 
@@ -15,27 +15,29 @@ bool vector<T, Alloc>::empty() const {
 //Returns the number of elements in the container
 template<typename T, class Alloc>
 typename vector<T, Alloc>::size_type vector<T, Alloc>::size() const {
-	return (_first == 0 ? 0 : _last - _first);
+	return (_first == nullptr ? 0 : _last - _first);
 }
 
 //Returns the maximum number of elements the container is able to hold
 // due to system or library implementation limitations
 template<typename T, class Alloc>
 typename vector<T, Alloc>::size_type vector<T, Alloc>::max_size() const {
-	Alloc a;
-	return a.max_size();
+	return _allocator.max_size();
 }
 
 template<typename T, class Alloc>
-void vector<T, Alloc>::reserve(size_type new_cap) {
-	if (new_cap > max_size())
+void vector<T, Alloc>::reserve(size_type n) {
+	if (n > max_size())
 		throw std::length_error("vector");
-	else if (capacity() < new_cap) {
-		Alloc a;
-		pointer Q = a.allocate(new_cap, (void *)0);
-		try {
-			;
+	else if (capacity() < n) {
+		pointer newPointer = _allocator.allocate(n, nullptr);
+		pointer temp = newPointer;
+		for (int i = 0; i < size(); i++) {
+			_allocator.construct(temp++, *_first++);
 		}
+		_first = newPointer;
+		_last = _first + size();
+		_end = _first + n;
 	}
 }
 

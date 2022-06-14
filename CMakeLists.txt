@@ -14,5 +14,5 @@ add_executable(ft_containers
         vector/elements_access.hpp
         vector/constructors.hpp
         vector/iterators.hpp
-        vector/capasity.hpp
+        vector/capacity.hpp
         vector/modifiers.hpp)
