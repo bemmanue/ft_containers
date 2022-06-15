@@ -15,36 +15,15 @@ vector<T, Alloc>::vector(const allocator_type&):
 
 template <typename T, class Alloc>
 vector<T, Alloc>::vector(size_t n, const allocator_type&) {
-	if (!n) {
-		_first = _last = _end = nullptr;
-	} else if (n > max_size()) {
-		throw std::length_error("vector");
-	}
-	else {
-		_first = _allocator.allocate(n, nullptr);
-		_last = _end = _first + n;
-	}
+	if (allocate(n))
+		_last = fill(_first, n, T());
 }
 
 template <typename T, class Alloc>
 template <class InputIterator>
 vector<T, Alloc>::vector(InputIterator first, InputIterator last) {
-	size_t n = last - first;
-	if (!n) {
-		_first = _last = _end = nullptr;
-	} else if (n > max_size()) {
-		throw std::length_error("vector");
-	} else {
-		_first = _last = _allocator.allocate(n, nullptr);
-		_end = _first + n;
-		try {
-			for (; 0 < n; --n) {
-				_allocator.construct(_last++, *first++);
-			}
-		} catch (...) {
-			throw;
-		}
-	}
+	if (allocate(last - first))
+		_last = copy(_first, first, last);
 }
 
 template <typename T, class Alloc>
@@ -57,39 +36,27 @@ vector<T, Alloc>::vector(const vector& x):
 
 template <typename T, class Alloc>
 vector<T, Alloc>::~vector() {
-	size_t n = _end - _first;
-	if (_first != nullptr) {
-		_allocator.deallocate(_first, n);
-	}
+	clean();
 }
 
 //	Assignment operator overload
 
 template <typename T, class Alloc>
 vector<T, Alloc>& vector<T, Alloc>::operator= (const vector& x) {
+	size_t n = x.size();
 	if (this == &x) {
 		;
-	} else if (x.size() == 0) {
-//		clean();
-		std::cout << "hello\n";
-;
-	} else if (x.size() < size()) {
-//		destroy(_first + x.size(), _end);
-;
-	} else if (x.size() < capacity()) {
-		;
+	} else if (n == 0) {
+		clean();
+	} else if (n <= size()) {
+		destroy(_first + n, _last);
+		_last = copy(_first, x.begin(), x.end());
+	} else if (n <= capacity()) {
+		_last = copy(_first, x.begin(), x.end());
 	} else {
-		size_t n = x.size();
-		_first = _last = _allocator.allocate(n, nullptr);
-		_end = _first + n;
-		try {
-			pointer temp = x._first;
-			for (; 0 < n; --n) {
-				_allocator.construct(_last++, *temp++);
-			}
-		} catch (...) {
-			throw;
-		}
+		clean();
+		if (allocate(n))
+			_last = copy(_first, x.begin(), x.end());
 	}
 	return *this;
 }

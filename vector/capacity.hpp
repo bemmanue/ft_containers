@@ -31,13 +31,19 @@ void vector<T, Alloc>::reserve(size_type n) {
 		throw std::length_error("vector");
 	else if (capacity() < n) {
 		pointer newPointer = _allocator.allocate(n, nullptr);
-		pointer temp = newPointer;
-		for (int i = 0; i < size(); i++) {
-			_allocator.construct(temp++, *_first++);
+		try {
+			copy(newPointer, begin(), end());
+		} catch (...) {
+			_allocator.deallocate(newPointer, n);
+			throw;
 		}
+		if (_first) {
+			destroy(_first, _last);
+			_allocator.deallocate(_first, capacity());
+		}
+		_end = newPointer + n;
+		_last = newPointer + size();
 		_first = newPointer;
-		_last = _first + size();
-		_end = _first + n;
 	}
 }
 

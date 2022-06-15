@@ -75,7 +75,7 @@ public:
 	void			clear();
 	iterator		insert( iterator pos, const T& value );
 	void			insert( iterator pos, size_type count, const T& value );
-	template< class InputIt >
+	template <class InputIt>
 	void			insert( iterator pos, InputIt first, InputIt last );
 	iterator		erase( iterator pos );
 	iterator		erase( iterator first, iterator last );
@@ -91,7 +91,9 @@ protected:
 	pointer			_end;
 	allocator_type	_allocator;
 
-
+	template <class InputIt>
+	pointer			copy(pointer P, InputIt first, InputIt last);
+	pointer 		fill(pointer P, size_t n, const T& x);
 	bool			allocate(size_t n);
 	void			destroy(pointer first, pointer last);
 	void			clean();
@@ -104,3 +106,4 @@ protected:
 #include "elements_access.hpp"
 #include "capacity.hpp"
 #include "protected.hpp"
+#include "modifiers.hpp"
