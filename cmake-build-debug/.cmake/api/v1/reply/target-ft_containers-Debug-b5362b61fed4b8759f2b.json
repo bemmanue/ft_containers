@@ -35,7 +35,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -mmacosx-version-min=10.14"
+					"fragment" : "-g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.6"
 				},
 				{
 					"fragment" : "-std=gnu++98"
@@ -66,7 +66,7 @@
 				"role" : "flags"
 			},
 			{
-				"fragment" : "-L/Users/bemmanue/.brew/opt/readline/lib",
+				"fragment" : "",
 				"role" : "flags"
 			}
 		],

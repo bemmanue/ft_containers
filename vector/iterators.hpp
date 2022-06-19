@@ -18,12 +18,12 @@ typename vector<T, Alloc>::const_iterator vector<T, Alloc>::begin() const {
 
 template <typename T, class Alloc>
 typename vector<T, Alloc>::iterator vector<T, Alloc>::end() {
-	return iterator(_last);
+	return iterator(_end);
 };
 
 template <typename T, class Alloc>
 typename vector<T, Alloc>::const_iterator vector<T, Alloc>::end() const {
-	return const_iterator(_last);
+	return const_iterator(_end);
 };
 
 template <typename T, class Alloc>

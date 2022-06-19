@@ -73,8 +73,8 @@ public:
 	//Modifiers
 
 	void			clear();
-	iterator		insert( iterator pos, const T& value );
-	void			insert( iterator pos, size_type count, const T& value );
+	iterator		insert( iterator pos, const T& value);
+	void			insert(iterator P, size_type count, const T& value );
 	template <class InputIt>
 	void			insert( iterator pos, InputIt first, InputIt last );
 	iterator		erase( iterator pos );
@@ -97,6 +97,12 @@ protected:
 	bool			allocate(size_t n);
 	void			destroy(pointer first, pointer last);
 	void			clean();
+//    template <class It>
+//    void            Insert(iterator P, It first, It last, Int_iterator_tag);
+//    template <class It>
+//    void            Insert(iterator P, It first, It last, input_iterator_tag);
+//    template <class It>
+//    void            Insert(iterator P, It first, It last, forward_iterator_tag);
 };
 
 }

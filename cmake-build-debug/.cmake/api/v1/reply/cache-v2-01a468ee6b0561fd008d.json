@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/bemmanue/Desktop/ft_containers/cmake-build-debug"
+			"value" : "/Users/bemmanue/Documents/ft_containers/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -363,7 +363,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : "-L/Users/bemmanue/.brew/opt/readline/lib"
+			"value" : ""
 		},
 		{
 			"name" : "CMAKE_EXE_LINKER_FLAGS_DEBUG",
@@ -515,7 +515,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/bemmanue/Desktop/ft_containers"
+			"value" : "/Users/bemmanue/Documents/ft_containers"
 		},
 		{
 			"name" : "CMAKE_INSTALL_NAME_TOOL",
@@ -587,7 +587,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : "-L/Users/bemmanue/.brew/opt/readline/lib"
+			"value" : ""
 		},
 		{
 			"name" : "CMAKE_MODULE_LINKER_FLAGS_DEBUG",
@@ -735,7 +735,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : "10.14"
+			"value" : "11.6"
 		},
 		{
 			"name" : "CMAKE_OSX_SYSROOT",
@@ -747,7 +747,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk"
+			"value" : "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk"
 		},
 		{
 			"name" : "CMAKE_PLATFORM_INFO_INITIALIZED",
@@ -855,7 +855,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : "-L/Users/bemmanue/.brew/opt/readline/lib"
+			"value" : ""
 		},
 		{
 			"name" : "CMAKE_SHARED_LINKER_FLAGS_DEBUG",
@@ -1087,7 +1087,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/bemmanue/Desktop/ft_containers/cmake-build-debug"
+			"value" : "/Users/bemmanue/Documents/ft_containers/cmake-build-debug"
 		},
 		{
 			"name" : "ft_containers_IS_TOP_LEVEL",
@@ -1111,7 +1111,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/bemmanue/Desktop/ft_containers"
+			"value" : "/Users/bemmanue/Documents/ft_containers"
 		}
 	],
 	"kind" : "cache",
