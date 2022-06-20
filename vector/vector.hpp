@@ -9,6 +9,18 @@
 namespace ft
 {
 
+template<class T, class Alloc>
+class allocator_type
+{
+protected:
+    allocator_type(Alloc A = Alloc()): Alval(A)
+    {
+    }
+
+    typedef typename Alloc::template rebind<>::other type;
+    type Alval;
+};
+
 template <class T, class Alloc = std::allocator<T> > class vector
 {
 public:
@@ -31,7 +43,8 @@ public:
 
 	explicit vector(const allocator_type& alloc = allocator_type());
 	explicit vector(size_t n, const allocator_type& alloc = allocator_type());
-	template <class InputIterator> vector(InputIterator first, InputIterator last);
+	template <class InputIterator>
+        vector(InputIterator first, InputIterator last);
 	vector(const vector& x);
 	~vector();
 	vector& operator= (const vector& x);
@@ -74,16 +87,16 @@ public:
 
 	void			clear();
 	iterator		insert( iterator pos, const T& value);
-	void			insert(iterator P, size_type count, const T& value );
+	void			insert(iterator pos, size_type count, const T& value);
 	template <class InputIt>
-	void			insert( iterator pos, InputIt first, InputIt last );
-	iterator		erase( iterator pos );
-	iterator		erase( iterator first, iterator last );
-	void			push_back( const T& value );
+	void			insert(iterator pos, InputIt first, InputIt last);
+	iterator		erase(iterator pos);
+	iterator		erase(iterator first, iterator last);
+	void			push_back(const T& value);
 	void			pop_back();
-	void			resize( size_type count );
-	void			resize( size_type count, T value = T() );
-	void			swap( vector& other );
+	void			resize(size_type count);
+	void			resize(size_type count, T value = T());
+	void			swap(vector& other);
 
 protected:
 	pointer			_first;
@@ -91,18 +104,19 @@ protected:
 	pointer			_end;
 	allocator_type	_allocator;
 
+    bool			allocate(size_t n);
+    void			clean();
+    void			destroy(pointer first, pointer last);
 	template <class InputIt>
-	pointer			copy(pointer P, InputIt first, InputIt last);
-	pointer 		fill(pointer P, size_t n, const T& x);
-	bool			allocate(size_t n);
-	void			destroy(pointer first, pointer last);
-	void			clean();
-//    template <class It>
-//    void            Insert(iterator P, It first, It last, Int_iterator_tag);
-//    template <class It>
-//    void            Insert(iterator P, It first, It last, input_iterator_tag);
-//    template <class It>
-//    void            Insert(iterator P, It first, It last, forward_iterator_tag);
+	pointer			copy(pointer pos, InputIt first, InputIt last);
+	pointer 		fill(pointer pos, size_t n, const T& x);
+
+    template <class It>
+        void Insert(iterator pos, It first, It last, Int_iterator_tag);
+    template <class It>
+        void Insert(iterator pos, It first, It last, input_iterator_tag);
+    template <class It>
+        void Insert(iterator pos, It first, It last, forward_iterator_tag);
 };
 
 }

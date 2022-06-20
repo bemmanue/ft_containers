@@ -1,85 +1,83 @@
 #pragma once
 
 #include "vector.hpp"
+#include "../algorithm/copy.hpp"
 
 namespace ft
 {
-
-    template <class Iter1, class Iter2>
-    Iter1 copy_forward(Iter1 x, Iter2 first, Iter2 last)
+    template <typename T, class Alloc>
+    void vector<T, Alloc>::clear()
     {
-        while (first != last) {
-            *x++ = *first++;
-        }
-        return (x);
-    }
-
-    template <class Iter1, class Iter2>
-    Iter1 copy_backward(Iter1 x, Iter2 first, Iter2 last)
-    {
-        while (first != last) {
-            *--x = *--last;
-        }
-        return (x);
+        erase(begin(), end());
     }
 
     template <typename T, class Alloc>
-    void vector<T, Alloc>::clear() {
-        if (_first) {
-            destroy(_first, _last);
-            _last = _first;
-        }
-    }
-
-    template <typename T, class Alloc>
-    typename vector<T, Alloc>::iterator vector<T, Alloc>::insert(iterator pos, const T &value) {
+    typename vector<T, Alloc>::iterator vector<T, Alloc>::insert(iterator pos, const T &value)
+    {
         size_type off = size() == 0 ? 0 : pos - begin();
         insert(pos, 1, value);
-        return begin() + off;
+        return (begin() + off);
     }
 
     template <typename T, class Alloc>
-    void vector<T, Alloc>::insert(iterator pos, size_type count, const T &value) {
+    void vector<T, Alloc>::insert(iterator pos, size_type count, const T &value)
+    {
         size_t max_size = this->max_size();
         size_t capacity = this->capacity();
         size_t size = this->size();
 
-        if (count == 0) {
+        if (count == 0)
+        {
             ;
-        } else if (count > max_size - size) {
+        }
+        else if (count > max_size - size)
+        {
             throw std::length_error("vector");
-        } else if ((size + count) > capacity) {
+        }
+        else if ((size + count) > capacity)
+        {
             size_t new_capacity = (max_size - (capacity / 2)) < capacity ? 0 : (capacity * 2);
             if (new_capacity < size + count)
                 new_capacity = size + count;
             pointer new_first = _allocator.allocate(new_capacity, nullptr);
             pointer new_last;
-            try {
+            try
+            {
                 new_last = copy(new_first, begin(), pos);
                 new_last = fill(new_last, count, value);
                 copy(new_last, pos, end());
-            } catch (...) {
+            }
+            catch (...)
+            {
                 destroy(new_first, new_last);
                 _allocator.deallocate(new_first, new_capacity);
                 throw;
             }
-            if (_first) {
+            if (_first)
+            {
                 clean();
             }
             _first = new_first;
             _last = new_first + size + count;
             _end = new_first + new_capacity;
-        } else if ((size_type)(end() - pos) < count) {
+        }
+        else if ((size_type)(end() - pos) < count)
+        {
             copy(pos.base(), pos, end());
-            try {
+            try
+            {
                 fill(_last, count - (end() - pos), value);
-            } catch (...) {
+            }
+            catch (...)
+            {
                 destroy(pos.base() + count, _last + count);
                 throw;
             }
             _last += count;
             fill(pos, pos + count, value);
-        } else {
+        }
+        else
+        {
             iterator end = end();
             _last = copy(_last, end - count, _end);
             copy_backward(pos, end - count, end);
@@ -89,49 +87,74 @@ namespace ft
 
     template <typename T, class Alloc>
     template<class InputIt>
-    void vector<T, Alloc>::insert(iterator pos, InputIt first, InputIt last) {
+    void vector<T, Alloc>::insert(iterator pos, InputIt first, InputIt last)
+    {
         insert(pos, first, last, iterator_category(last));
     }
 
     template <typename T, class Alloc>
-    typename vector<T, Alloc>::iterator vector<T, Alloc>::erase(iterator pos) {
-
+    typename vector<T, Alloc>::iterator vector<T, Alloc>::erase(iterator pos)
+    {
+        copy(pos, pos + 1, end());
+        destroy(_last - 1, _last);
+        _last--;
+        return (pos);
     }
 
     template <typename T, class Alloc>
-    typename vector<T, Alloc>::iterator vector<T, Alloc>::erase(iterator first, iterator last) {
-
-    }
-
-    template <typename T, class Alloc>
-    void vector<T, Alloc>::push_back(const T &value) {
-
-    }
-
-    template <typename T, class Alloc>
-    void vector<T, Alloc>::pop_back() {
-        size_t n = size();
-        if (n == 0) {
-            ;
-        } else {
-            _allocator.destroy(_last);
-            _last--;
+    typename vector<T, Alloc>::iterator vector<T, Alloc>::erase(iterator first, iterator last)
+    {
+        if (first != last)
+        {
+            pointer P = copy(first.base(), last, end());
+            destroy(P, _last);
+            _last = P;
         }
+        return first;
     }
 
     template <typename T, class Alloc>
-    void vector<T, Alloc>::resize(size_type count) {
-
+    void vector<T, Alloc>::push_back(const T &value)
+    {
+        insert(end(), value);
     }
 
     template <typename T, class Alloc>
-    void vector<T, Alloc>::resize(size_type count, T value) {
-
+    void vector<T, Alloc>::pop_back()
+    {
+        erase(end() - 1);
     }
 
     template <typename T, class Alloc>
-    void vector<T, Alloc>::swap(vector &other) {
+    void vector<T, Alloc>::resize(size_type count)
+    {
+        resize(count, T());
+    }
 
+    template <typename T, class Alloc>
+    void vector<T, Alloc>::resize(size_type count, T value)
+    {
+        if (size() < count)
+            insert(end(), count - size(), value);
+        else if (count < size())
+            erase(begin() + count, end());
+    }
+
+    template <typename T, class Alloc>
+    void vector<T, Alloc>::swap(vector& other)
+    {
+        if (base::allocator_type == other.allocator_type)
+        {
+            std::swap(_first, other._first);
+            std::swap(_last, other._last);
+            std::swap(_end, other._end);
+        }
+        else
+        {
+            vector temp = *this;
+            *this = other;
+            other = this;
+        }
     }
 
 }
