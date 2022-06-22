@@ -1,8 +1,7 @@
-#ifndef ITERATOR_HPP
-# define ITERATOR_HPP
+#pragma once
 
-#include <memory>
-#include <iostream>
+# include <memory>
+# include <iostream>
 
 namespace ft
 {
@@ -18,4 +17,14 @@ struct iterator
 };
 
 }
-#endif
+
+# include "iterator_tags.hpp"
+# include "iterator_traits.hpp"
+# include "random_access_iterator.hpp"
+# include "iterator_distance.hpp"
+# include "iterator_advance.hpp"
+# include "reverse_iterator.hpp"
+# include "iterator_category.hpp"
+# include "iterator_swap.hpp"
+# include "value_type.hpp"
+# include "distance_type.hpp"

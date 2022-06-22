@@ -104,7 +104,13 @@
 				10,
 				11,
 				12,
-				13
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19
 			]
 		}
 	],
@@ -144,6 +150,36 @@
 		{
 			"backtrace" : 1,
 			"path" : "iterator/random_access_iterator.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "iterator/iterator_category.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "iterator/value_type.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "iterator/distance_type.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "iterator/iterator_swap.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "iterator/iterator_advance.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "iterator/iterator_distance.hpp",
 			"sourceGroupIndex" : 1
 		},
 		{

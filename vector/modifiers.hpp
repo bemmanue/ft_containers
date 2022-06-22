@@ -89,8 +89,9 @@ namespace ft
     template<class InputIt>
     void vector<T, Alloc>::insert(iterator pos, InputIt first, InputIt last)
     {
-        insert(pos, first, last, iterator_category(last));
-    }
+//        insert(pos, first, last, typename iterator_traits<InputIt>::iterator_category());
+		Insert(pos, first, last, Iter_cat(first));
+	}
 
     template <typename T, class Alloc>
     typename vector<T, Alloc>::iterator vector<T, Alloc>::erase(iterator pos)

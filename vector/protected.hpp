@@ -6,13 +6,19 @@ namespace ft
 {
 
     template <typename T, class Alloc>
-    bool vector<T, Alloc>::allocate(size_t n) {
-        if (!n) {
+    bool vector<T, Alloc>::allocate(size_t n)
+	{
+        if (!n)
+		{
             _first = _last = _end = nullptr;
             return false;
-        } else if (n > max_size()) {
+        }
+		else if (n > max_size())
+		{
             throw std::length_error("vector");
-        } else {
+        }
+		else
+		{
             _first = _last = _allocator.allocate(n, nullptr);
             _end = _first + n;
             return true;
@@ -64,12 +70,29 @@ namespace ft
         return P;
     }
 
-    template <typename T, class Alloc>
-    template <class It>
-    void    vector<T, Alloc>::Insert(iterator pos, It first, It last, Int_iterator_tag)
-    {
-        insert(pos, (size_type)first, (T)last);
-    }
+//	template <typename T, class Alloc>
+//	template<class It>
+//	void vector<T, Alloc>::construct(It first, It last, Int_iterator_tag)
+//	{
+//		size_type n = (size_type)first;
+//		if (allocate(n))
+//			_last = fill(_first, n, (T)last);
+//	}
+
+	template <typename T, class Alloc>
+	template<class It>
+	void vector<T, Alloc>::construct(It first, It last, input_iterator_tag)
+	{
+		allocate(0);
+		insert(begin(), first, last);
+	}
+
+//    template <typename T, class Alloc>
+//    template <class It>
+//    void    vector<T, Alloc>::Insert(iterator pos, It first, It last, Int_iterator_tag)
+//    {
+//        insert(pos, (size_type)first, (T)last);
+//    }
 
     template <typename T, class Alloc>
     template <class It>
@@ -90,7 +113,7 @@ namespace ft
         size_t      size = this->size();
         size_type   count = 0;
 
-        distance(first, last, count);
+        Distance(first, last, count);
         if (count == 0)
         {
             ;
