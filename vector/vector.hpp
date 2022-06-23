@@ -20,7 +20,8 @@ namespace ft
 		type Type;
 	};
 
-	template<class T, class Alloc = std::allocator<T> > class vector: public allocator_type<T, Alloc>
+	template<class T, class Alloc = std::allocator<T> >
+	class vector: public allocator_type<T, Alloc>
 	{
 	public:
 		typedef allocator_type<T, Alloc>									base;
