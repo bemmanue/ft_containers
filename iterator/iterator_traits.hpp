@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ITERATOR_TRAITS_HPP
+#define ITERATOR_TRAITS_HPP
 
 #include "iterator.hpp"
 
@@ -6,8 +7,7 @@ namespace ft
 {
 
     template<class Iterator>
-    struct iterator_traits
-    {
+    struct iterator_traits {
         typedef typename Iterator::iterator_category	iterator_category;
         typedef typename Iterator::value_type			value_type;
         typedef typename Iterator::difference_type		difference_type;
@@ -16,8 +16,7 @@ namespace ft
     };
 
     template<class T>
-    struct iterator_traits<T *>
-    {
+    struct iterator_traits<T *> {
         typedef random_access_iterator_tag				iterator_category;
         typedef T										value_type;
         typedef ptrdiff_t								difference_type;
@@ -26,8 +25,7 @@ namespace ft
     };
 
     template<class T>
-    struct iterator_traits<const T *>
-    {
+    struct iterator_traits<const T *> {
         typedef random_access_iterator_tag				iterator_category;
         typedef T										value_type;
         typedef ptrdiff_t								difference_type;
@@ -36,3 +34,5 @@ namespace ft
     };
 
 }
+
+#endif

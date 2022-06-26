@@ -1,29 +1,28 @@
-#pragma once
+#ifndef VECTOR_HPP
+#define VECTOR_HPP
 
 #include <memory>
 #include <iostream>
 
 #include "../iterator/iterator.hpp"
 
-namespace ft
-{
+namespace ft {
 
-	template<class T, class Alloc>
-	class allocator_type
-	{
+template<class T, class Alloc>
+class allocator_type {
 	protected:
-		allocator_type(Alloc A = Alloc()): Type(A)
-		{
-		}
+//		typedef typename Alloc::template rebind<T>::other type;
+//		allocator_type(Alloc A = Alloc()) : allocator(A) {}
+//		type allocator;
+		typedef Alloc	type;
+		allocator_type(Alloc A = Alloc()) : allocator(A) {}
+		type	allocator;
+};
 
-		typedef typename Alloc::template rebind<T>::other type;
-		type Type;
-	};
-
-	template<class T, class Alloc = std::allocator<T> >
-	class vector: public allocator_type<T, Alloc>
-	{
+template<class T, class Alloc = std::allocator<T> >
+class vector : public allocator_type<T, Alloc> {
 	public:
+		typedef vector<T, Alloc>											vector_type;
 		typedef allocator_type<T, Alloc>									base;
 		typedef typename base::type											allocator_type;
 		typedef T															value_type;
@@ -47,12 +46,10 @@ namespace ft
 		template <class InputIterator>
 			vector(InputIterator first, InputIterator last);
 		vector(const vector& x);
-		~vector();
 		vector& operator= (const vector& x);
-
+		~vector();
 
 		//Elements access
-
 		reference 				operator[] (size_type n);
 		const_reference			operator[] (size_type n) const;
 		reference				at(size_type n);
@@ -62,9 +59,7 @@ namespace ft
 		reference 				back();
 		const_reference 		back() const;
 
-
 		//Iterators
-
 		iterator				begin();
 		const_iterator			begin() const;
 		iterator				end();
@@ -74,18 +69,14 @@ namespace ft
 		reverse_iterator		rend();
 		const_reverse_iterator	rend() const;
 
-
 		//Capacity
-
 		bool			empty() const;
 		size_type		size() const;
 		size_type		max_size() const;
 		void			reserve(size_type new_cap);
 		size_type		capacity() const;
 
-
 		//Modifiers
-
 		void			clear();
 		iterator		insert( iterator pos, const T& value);
 		void			insert(iterator pos, size_type count, const T& value);
@@ -112,8 +103,8 @@ namespace ft
 		pointer			copy(pointer pos, InputIt first, InputIt last);
 		pointer 		fill(pointer pos, size_t n, const T& x);
 
-//		template<class It>
-//		void construct(It first, It last, Int_iterator_tag);
+		template<class It>
+		void construct(It first, It last, int_iterator_tag);
 		template<class It>
 		void construct(It first, It last, input_iterator_tag);
 
@@ -123,7 +114,7 @@ namespace ft
 		void Insert(iterator pos, It first, It last, input_iterator_tag);
 		template <class It>
 		void Insert(iterator pos, It first, It last, forward_iterator_tag);
-	};
+};
 
 }
 
@@ -133,3 +124,5 @@ namespace ft
 #include "capacity.hpp"
 #include "protected.hpp"
 #include "modifiers.hpp"
+
+#endif

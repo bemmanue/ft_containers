@@ -10,9 +10,10 @@ int main()
 	b[2] = 2;
 	b[3] = 3;
 	b[4] = 4;
-	ft::vector<int>::iterator a = b.begin();
-	ft::vector<int>::iterator c = b.end();
-
-	ft::vector<int> d(a, c);
+	ft::vector<int> a(b);
+	std::cout << a.max_size();
+//	for (int i = 0; i < a.size(); ++i) {
+//		std::cout << a.at(i) << std::endl;
+//	}
 	return 0;
 }

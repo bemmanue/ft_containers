@@ -11,16 +11,16 @@ namespace ft
 //        return (0);
 //    }
 
-    template<class C, class T, class D, class Pt, class Rt> inline
-    D*  Dist_type(iterator<C, T, D, Pt, Rt>)
-    {
-        return (0);
-    }
+template<class C, class T, class D, class Pt, class Rt> inline
+D*  Dist_type(iterator<C, T, D, Pt, Rt>)
+{
+	return (0);
+}
 
-    template <class T> inline
-    ptrdiff_t*  Dist_type(const T *)
-    {
-        return (0);
-    }
+template <class T> inline
+ptrdiff_t*  Dist_type(const T *)
+{
+	return (0);
+}
 
 }
