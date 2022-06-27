@@ -49,6 +49,11 @@ class vector : public allocator_type<T, Alloc> {
 		vector& operator= (const vector& x);
 		~vector();
 
+//		void assign( size_type count, const T& value );
+//		template< class InputIt >
+//		void assign( InputIt first, InputIt last );
+//		allocator_type get_allocator() const;
+
 		//Elements access
 		reference 				operator[] (size_type n);
 		const_reference			operator[] (size_type n) const;
@@ -108,8 +113,8 @@ class vector : public allocator_type<T, Alloc> {
 		template<class It>
 		void construct(It first, It last, input_iterator_tag);
 
-	//    template <class It>
-	//    void Insert(iterator pos, It first, It last, Int_iterator_tag);
+	    template <class It>
+	    void Insert(iterator pos, It first, It last, int_iterator_tag);
 		template <class It>
 		void Insert(iterator pos, It first, It last, input_iterator_tag);
 		template <class It>

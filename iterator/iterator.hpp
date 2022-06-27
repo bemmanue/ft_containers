@@ -40,6 +40,4 @@ struct iterator {
 # include "value_type.hpp"
 # include "distance_type.hpp"
 
-
-
 #endif // ITERATOR_HPP

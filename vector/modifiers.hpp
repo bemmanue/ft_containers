@@ -72,7 +72,6 @@ void vector<T, Alloc>::insert(iterator pos, size_type count, const T &value) {
 template <typename T, class Alloc>
 template<class InputIt>
 void vector<T, Alloc>::insert(iterator pos, InputIt first, InputIt last) {
-//        insert(pos, first, last, typename iterator_traits<InputIt>::iterator_category());
 	Insert(pos, first, last, Iter_cat(first));
 }
 
