@@ -5,6 +5,7 @@
 #include <iostream>
 
 #include "../iterator/iterator.hpp"
+#include "../algorithm/algorithm.hpp"
 
 namespace ft {
 
@@ -101,24 +102,24 @@ class vector : public allocator_type<T, Alloc> {
 		pointer			_end;
 		allocator_type	_allocator;
 
-		bool			allocate(size_t n);
-		void			clean();
-		void			destroy(pointer first, pointer last);
+		bool	Allocate(size_t n);
+		void	Clean();
+		void	Destroy(pointer first, pointer last);
 		template <class InputIt>
-		pointer			copy(pointer pos, InputIt first, InputIt last);
-		pointer 		fill(pointer pos, size_t n, const T& x);
+		pointer	Copy(pointer pos, InputIt first, InputIt last);
+		pointer	Fill(pointer pos, size_t n, const T& x);
 
 		template<class It>
-		void construct(It first, It last, int_iterator_tag);
+		void	Construct(It first, It last, int_iterator_tag);
 		template<class It>
-		void construct(It first, It last, input_iterator_tag);
+		void	Construct(It first, It last, input_iterator_tag);
 
 	    template <class It>
-	    void Insert(iterator pos, It first, It last, int_iterator_tag);
+	    void	Insert(iterator pos, It first, It last, int_iterator_tag);
 		template <class It>
-		void Insert(iterator pos, It first, It last, input_iterator_tag);
+		void 	Insert(iterator pos, It first, It last, input_iterator_tag);
 		template <class It>
-		void Insert(iterator pos, It first, It last, forward_iterator_tag);
+		void	Insert(iterator pos, It first, It last, forward_iterator_tag);
 };
 
 }

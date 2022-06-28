@@ -23,4 +23,5 @@ add_executable(ft_containers
         vector/capacity.hpp
         vector/modifiers.hpp
         vector/protected.hpp
-        algorithm/copy.hpp)
+        algorithm/copy.hpp
+        algorithm/fill.hpp)

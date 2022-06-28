@@ -32,13 +32,13 @@ void vector<T, Alloc>::reserve(size_type n) {
 	else if (capacity() < n) {
 		pointer new_first = base::allocator.allocate(n, nullptr);
 		try {
-			copy(new_first, begin(), end());
+			Copy(new_first, begin(), end());
 		} catch (...) {
 			base::allocator.deallocate(new_first, n);
 			throw;
 		}
 		if (_first) {
-			destroy(_first, _last);
+			Destroy(_first, _last);
 			base::allocator.deallocate(_first, capacity());
 		}
 		_end = new_first + n;

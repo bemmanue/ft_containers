@@ -17,7 +17,33 @@ int main()
 //	}
 //std::vector<int> n;
 //n.get_allocator();
-	int a[2] = {};
-	std::cout << a[0] << std::endl;
+	ft::vector<int> a(5);
+	a[0] = 1;
+	a[1] = 2;
+	a[2] = 3;
+	a[3] = 4;
+	a[4] = 5;
+	a.reserve(13);
+//	std::cout << *a.begin() << std::endl;
+	a.insert(a.begin() + 6, a.begin(), a.end());
+	for (int i = 0; i < a.size(); ++i) {
+		std::cout << a.at(i) << std::endl;
+	}
+	std::cout << "capasity = " << a.capacity() << std::endl;
+
+	std::vector<int> b(5);
+	b[0] = 1;
+	b[1] = 2;
+	b[2] = 3;
+	b[3] = 4;
+	b[4] = 5;
+	b.reserve(13);
+//	std::cout << *(b.begin()) << std::endl;
+	b.insert(b.begin() + 6, b.begin(), b.end());
+	for (int i = 0; i < b.size(); ++i) {
+		std::cout << b.at(i) << std::endl;
+	}
+	std::cout << "capasity = " << b.capacity() << std::endl;
+
 	return 0;
 }

@@ -7,7 +7,7 @@ namespace ft
 {
 
 template <typename T, class Alloc>
-bool vector<T, Alloc>::allocate(size_t n) {
+bool vector<T, Alloc>::Allocate(size_t n) {
 	_first = _last = _end = nullptr;
 	if (!n) {
 		return false;
@@ -21,45 +21,45 @@ bool vector<T, Alloc>::allocate(size_t n) {
 }
 
 template <typename T, class Alloc>
-void vector<T, Alloc>::clean() {
+void vector<T, Alloc>::Clean() {
 	if (_first) {
-		destroy(_first, _last);
+		Destroy(_first, _last);
 		_allocator.deallocate(_first, capacity());
 	}
 	_first = _last = _end = nullptr;
 }
 
 template <typename T, class Alloc>
-void vector<T, Alloc>::destroy(pointer first, pointer last) {
+void vector<T, Alloc>::Destroy(pointer first, pointer last) {
 	for (; first != last; ++first) {
-		_allocator.destroy(first++);
+		_allocator.destroy(first);
 	}
 }
 
 template <typename T, class Alloc>
 template <typename InputIt>
-typename vector<T, Alloc>::pointer vector<T, Alloc>::copy(pointer pos, InputIt first, InputIt last) {
+typename vector<T, Alloc>::pointer vector<T, Alloc>::Copy(pointer pos, InputIt first, InputIt last) {
 	pointer temp = pos;
 	try {
 		for (; first != last; ++pos, ++first) {
 			_allocator.construct(pos, *first);
 		}
 	} catch (...) {
-		destroy(temp, pos);
+		Destroy(temp, pos);
 		throw;
 	}
 	return pos;
 }
 
 template <typename T, class Alloc>
-typename vector<T, Alloc>::pointer vector<T, Alloc>::fill(pointer pos, size_t n, const T& x) {
+typename vector<T, Alloc>::pointer vector<T, Alloc>::Fill(pointer pos, size_t n, const T& x) {
 	pointer temp = pos;
 	try {
 		for (; 0 < n; --n, ++pos) {
-			_allocator.construct(pos++, x);
+			_allocator.construct(pos, x);
 		}
 	} catch (...) {
-		destroy(temp, pos);
+		Destroy(temp, pos);
 		throw;
 	}
 	return pos;
@@ -67,16 +67,16 @@ typename vector<T, Alloc>::pointer vector<T, Alloc>::fill(pointer pos, size_t n,
 
 template <typename T, class Alloc>
 template<class It>
-void vector<T, Alloc>::construct(It first, It last, int_iterator_tag) {
+void vector<T, Alloc>::Construct(It first, It last, int_iterator_tag) {
 	size_type n = (size_type)first;
-	if (allocate(n))
-		_last = fill(_first, n, (T)last);
+	if (Allocate(n))
+		_last = Fill(_first, n, (T) last);
 }
 
 template <typename T, class Alloc>
 template<class It>
-void vector<T, Alloc>::construct(It first, It last, input_iterator_tag) {
-	allocate(0);
+void vector<T, Alloc>::Construct(It first, It last, input_iterator_tag) {
+	Allocate(0);
 	insert(begin(), first, last);
 }
 
@@ -115,37 +115,37 @@ void    vector<T, Alloc>::Insert(iterator pos, It first, It last, forward_iterat
 		pointer new_first = _allocator.allocate(new_capacity, nullptr);
 		pointer new_last;
 		try {
-			new_last = copy(new_first, begin(), pos);
-			new_last = copy(new_last, first, last);
-			copy(new_last, pos, end());
+			new_last = Copy(new_first, begin(), pos);
+			new_last = Copy(new_last, first, last);
+			Copy(new_last, pos, end());
 		} catch (...) {
-			destroy(new_first, new_last);
+			Destroy(new_first, new_last);
 			_allocator.deallocate(new_first, new_capacity);
 			throw;
 		}
 		if (_first) {
-			clean();
+			Clean();
 		}
 		_first = new_first;
 		_last = new_first + size + n;
 		_end = new_first + new_capacity;
 	} else if (n > (size_type)(end() - pos)) {
-		copy(pos.base() + n, pos, end());
+		Copy(pos.base() + n, pos, end());
 		It mid = first;
 		advance(mid, end() - pos);
 		try {
-			copy(_last, mid, last);
+			Copy(_last, mid, last);
 		} catch (...) {
-			destroy(pos.base() + n, _last + n);
+			Destroy(pos.base() + n, _last + n);
 			throw;
 		}
 		_last += n;
 		copy_forward(pos, first, mid);
-	} else {
-		iterator end = end();
-		_last = copy(_last, end - n, _end);
-		copy_backward(pos, end - n, end);
-		copy(pos, first, last);
+	} else if (n > 0) {
+		iterator end = this->end();
+		_last = Copy(_last, end - n, end);
+//		copy_backward(pos, end - n, end);
+//		copy_forward(pos, first, last);
 	}
 }
 

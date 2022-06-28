@@ -54,7 +54,7 @@ namespace ft
 
 		iterator operator++ (int) {
 			iterator temp = *this;
-			current++;
+			++current;
 			return temp;
 		}
 
@@ -69,7 +69,7 @@ namespace ft
 		}
 
 		iterator& operator-- () {
-			current--;
+			--current;
 			return *this;
 		}
 

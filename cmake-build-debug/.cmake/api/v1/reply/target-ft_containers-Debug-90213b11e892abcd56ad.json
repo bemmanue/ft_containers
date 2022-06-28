@@ -110,7 +110,8 @@
 				16,
 				17,
 				18,
-				19
+				19,
+				20
 			]
 		}
 	],
@@ -215,6 +216,11 @@
 		{
 			"backtrace" : 1,
 			"path" : "algorithm/copy.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "algorithm/fill.hpp",
 			"sourceGroupIndex" : 1
 		}
 	],

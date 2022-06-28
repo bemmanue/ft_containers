@@ -33,39 +33,39 @@ void vector<T, Alloc>::insert(iterator pos, size_type count, const T &value) {
 		size_t new_capacity = (max_size - (capacity / 2)) < capacity ? 0 : (capacity * 2);
 		if (new_capacity < size + count)
 			new_capacity = size + count;
-		pointer new_first = _allocator.allocate(new_capacity, nullptr);
+		pointer new_first = _allocator.Allocate(new_capacity, nullptr);
 		pointer new_last;
 		try {
-			new_last = copy(new_first, begin(), pos);
-			new_last = fill(new_last, count, value);
-			copy(new_last, pos, end());
+			new_last = Copy(new_first, begin(), pos);
+			new_last = Fill(new_last, count, value);
+			Copy(new_last, pos, end());
 		} catch (...) {
-			destroy(new_first, new_last);
+			Destroy(new_first, new_last);
 			_allocator.deallocate(new_first, new_capacity);
 			throw;
 		}
 		if (_first) {
-			clean();
+			Clean();
 		}
 		_first = new_first;
 		_last = new_first + size + count;
 		_end = new_first + new_capacity;
 	}
 	else if ((size_type)(end() - pos) < count) {
-		copy(pos.base(), pos, end());
+		Copy(pos.base(), pos, end());
 		try {
-			fill(_last, count - (end() - pos), value);
+			Fill(_last, count - (end() - pos), value);
 		} catch (...) {
-			destroy(pos.base() + count, _last + count);
+			Destroy(pos.base() + count, _last + count);
 			throw;
 		}
 		_last += count;
-		fill(pos, pos + count, value);
+		Fill(pos, pos + count, value);
 	} else {
 		iterator end = end();
-		_last = copy(_last, end - count, _end);
+		_last = Copy(_last, end - count, _end);
 		copy_backward(pos, end - count, end);
-		fill(pos.base(), pos + count, value);
+		Fill(pos.base(), pos + count, value);
 	}
 }
 
@@ -77,8 +77,8 @@ void vector<T, Alloc>::insert(iterator pos, InputIt first, InputIt last) {
 
 template <typename T, class Alloc>
 typename vector<T, Alloc>::iterator vector<T, Alloc>::erase(iterator pos) {
-	copy(pos, pos + 1, end());
-	destroy(_last - 1, _last);
+	Copy(pos, pos + 1, end());
+	Destroy(_last - 1, _last);
 	_last--;
 	return (pos);
 }
@@ -86,8 +86,8 @@ typename vector<T, Alloc>::iterator vector<T, Alloc>::erase(iterator pos) {
 template <typename T, class Alloc>
 typename vector<T, Alloc>::iterator vector<T, Alloc>::erase(iterator first, iterator last) {
 	if (first != last) {
-		pointer P = copy(first.base(), last, end());
-		destroy(P, _last);
+		pointer P = Copy(first.base(), last, end());
+		Destroy(P, _last);
 		_last = P;
 	}
 	return first;
