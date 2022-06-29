@@ -3,8 +3,7 @@
 
 #include "iterator.hpp"
 
-namespace ft
-{
+namespace ft {
 
 template<class Category, class T, class Distance> inline
 Category Iter_cat(const iterator<Category, T, Distance>) {

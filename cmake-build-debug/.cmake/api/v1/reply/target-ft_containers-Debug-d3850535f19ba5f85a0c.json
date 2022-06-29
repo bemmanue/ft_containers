@@ -111,7 +111,8 @@
 				17,
 				18,
 				19,
-				20
+				20,
+				21
 			]
 		}
 	],
@@ -160,6 +161,11 @@
 		},
 		{
 			"backtrace" : 1,
+			"path" : "iterator/iterator_base.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
 			"path" : "iterator/value_type.hpp",
 			"sourceGroupIndex" : 1
 		},
@@ -190,7 +196,7 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "vector/constructors.hpp",
+			"path" : "vector/member_functions.hpp",
 			"sourceGroupIndex" : 1
 		},
 		{

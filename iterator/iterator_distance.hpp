@@ -2,12 +2,10 @@
 
 #include "iterator.hpp"
 
-namespace ft
-{
+namespace ft {
 
 template <class InIt> inline
-typename iterator_traits<InIt>::difference_type distance(InIt first, InIt last)
-{
+typename iterator_traits<InIt>::difference_type distance(InIt first, InIt last) {
 	typename iterator_traits<InIt>::difference_type n = 0;
 	Distance2(first, last, n, Iter_cat(first));
 	return (n);

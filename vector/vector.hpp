@@ -50,10 +50,10 @@ class vector : public allocator_type<T, Alloc> {
 		vector& operator= (const vector& x);
 		~vector();
 
-//		void assign( size_type count, const T& value );
-//		template< class InputIt >
-//		void assign( InputIt first, InputIt last );
-//		allocator_type get_allocator() const;
+		void assign(size_type count, const T& value);
+		template<class InputIt>
+		void assign(InputIt first, InputIt last);
+		allocator_type get_allocator() const;
 
 		//Elements access
 		reference 				operator[] (size_type n);
@@ -109,6 +109,11 @@ class vector : public allocator_type<T, Alloc> {
 		pointer	Copy(pointer pos, InputIt first, InputIt last);
 		pointer	Fill(pointer pos, size_t n, const T& x);
 
+		template <class It>
+		void Assign(It first, It last, int_iterator_tag);
+		template <class It>
+		void Assign(It first, It last, input_iterator_tag);
+
 		template<class It>
 		void	Construct(It first, It last, int_iterator_tag);
 		template<class It>
@@ -124,7 +129,7 @@ class vector : public allocator_type<T, Alloc> {
 
 }
 
-#include "constructors.hpp"
+#include "member_functions.hpp"
 #include "iterators.hpp"
 #include "elements_access.hpp"
 #include "capacity.hpp"

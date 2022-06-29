@@ -1,9 +1,9 @@
-#pragma once
+#ifndef ITERATOR_DISTANCE_TYPE
+#define ITERATOR_DISTANCE_TYPE
 
-# include "iterator.hpp"
+#include "iterator.hpp"
 
-namespace ft
-{
+namespace ft {
 
 //    template<class It> inline
 //    typename iterator_traits::difference_type *Dist_type(It)
@@ -22,3 +22,5 @@ ptrdiff_t*  Dist_type(const T *) {
 }
 
 }
+
+#endif

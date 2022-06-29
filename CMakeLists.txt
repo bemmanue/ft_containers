@@ -12,13 +12,14 @@ add_executable(ft_containers
                 iterator/reverse_iterator.hpp
                 iterator/random_access_iterator.hpp
         iterator/iterator_category.hpp
+        iterator/iterator_base.hpp
         iterator/value_type.hpp
         iterator/distance_type.hpp
         iterator/iterator_swap.hpp
         iterator/iterator_advance.hpp
         iterator/iterator_distance.hpp
         vector/elements_access.hpp
-        vector/constructors.hpp
+        vector/member_functions.hpp
         vector/iterators.hpp
         vector/capacity.hpp
         vector/modifiers.hpp

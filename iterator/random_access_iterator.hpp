@@ -3,11 +3,10 @@
 
 #include "iterator.hpp"
 
-namespace ft
-{
+namespace ft {
 
-	template<class T, class D, class P, class R, class P2, class R2>
-	class random_access_iterator: public iterator<random_access_iterator_tag, T, D, P, R> {
+template<class T, class D, class P, class R, class P2, class R2>
+class random_access_iterator: public iterator<random_access_iterator_tag, T, D, P, R> {
 	public:
 		typedef random_access_iterator<T, D, P, R, P2, R2>	iterator;
 		typedef typename iterator::difference_type 			difference_type;
@@ -18,15 +17,16 @@ namespace ft
 		random_access_iterator() {}
 
 		random_access_iterator(const random_access_iterator<T, D, P, R, P2, R2>& iterator)
-			: current(iterator.base()) {}
+				: current(iterator.base()) {}
 
 
 		template <class _T, class _D, class _P, class _R, class _P2, class _R2>
 		random_access_iterator(const random_access_iterator<_T, _D, _P, _R, _P2, _R2>& iterator)
-			: current(iterator.base()) {}
+				: current(iterator.base()) {}
 
 
-		explicit random_access_iterator(P2 pointer): current(pointer) {}
+		explicit random_access_iterator(P2 pointer)
+				: current(pointer) {}
 
 
 		pointer base() const {
@@ -118,12 +118,12 @@ namespace ft
 
 	protected:
 		pointer	current;
-	};
+};
 
-	template<class T, class D, class P, class R, class P2, class R2> inline
-	random_access_iterator<T, D, P, R, P2, R2> operator+ (D n, const random_access_iterator<T, D, P, R, P2, R2>& y) {
-		return (y + n);
-	}
+template<class T, class D, class P, class R, class P2, class R2> inline
+random_access_iterator<T, D, P, R, P2, R2> operator+ (D n, const random_access_iterator<T, D, P, R, P2, R2>& y) {
+	return (y + n);
+}
 
 }
 

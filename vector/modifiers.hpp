@@ -2,7 +2,6 @@
 #define MODIFIERS_HPP
 
 #include "vector.hpp"
-#include "../algorithm/copy.hpp"
 
 namespace ft
 {
@@ -65,7 +64,7 @@ void vector<T, Alloc>::insert(iterator pos, size_type count, const T &value) {
 		iterator end = end();
 		_last = Copy(_last, end - count, _end);
 		copy_backward(pos, end - count, end);
-		Fill(pos.base(), pos + count, value);
+		fill(pos, pos + count, value);
 	}
 }
 
@@ -75,6 +74,7 @@ void vector<T, Alloc>::insert(iterator pos, InputIt first, InputIt last) {
 	Insert(pos, first, last, Iter_cat(first));
 }
 
+// Removes the element at pos
 template <typename T, class Alloc>
 typename vector<T, Alloc>::iterator vector<T, Alloc>::erase(iterator pos) {
 	Copy(pos, pos + 1, end());
@@ -83,12 +83,14 @@ typename vector<T, Alloc>::iterator vector<T, Alloc>::erase(iterator pos) {
 	return (pos);
 }
 
+
+// Removes the elements in the range
 template <typename T, class Alloc>
 typename vector<T, Alloc>::iterator vector<T, Alloc>::erase(iterator first, iterator last) {
 	if (first != last) {
-		pointer P = Copy(first.base(), last, end());
-		Destroy(P, _last);
-		_last = P;
+		pointer new_last = Copy(first.base(), last, end());
+		Destroy(new_last, _last);
+		_last = new_last;
 	}
 	return first;
 }

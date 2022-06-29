@@ -65,6 +65,19 @@ typename vector<T, Alloc>::pointer vector<T, Alloc>::Fill(pointer pos, size_t n,
 	return pos;
 }
 
+template<typename T, class Alloc>
+template <class It>
+void vector<T, Alloc>::Assign(It first, It last, int_iterator_tag) {
+	assign((size_type)first, (T)last);
+}
+
+template<typename T, class Alloc>
+template<class It>
+void vector<T, Alloc>::Assign(It first, It last, input_iterator_tag) {
+	erase(begin(), end());
+	insert(begin(), first, last);
+}
+
 template <typename T, class Alloc>
 template<class It>
 void vector<T, Alloc>::Construct(It first, It last, int_iterator_tag) {
@@ -140,12 +153,12 @@ void    vector<T, Alloc>::Insert(iterator pos, It first, It last, forward_iterat
 			throw;
 		}
 		_last += n;
-		copy_forward(pos, first, mid);
+		copy_forward(first, mid, pos);
 	} else if (n > 0) {
 		iterator end = this->end();
 		_last = Copy(_last, end - n, end);
-//		copy_backward(pos, end - n, end);
-//		copy_forward(pos, first, last);
+		copy_backward(pos, end - n, end);
+		copy_forward(first, last, pos);
 	}
 }
 
