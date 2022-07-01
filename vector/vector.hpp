@@ -34,11 +34,9 @@ class vector : public allocator_type<T, Alloc> {
 		typedef typename allocator_type::pointer							pointer;
 		typedef typename allocator_type::const_pointer						const_pointer;
 		typedef typename ft::random_access_iterator
-			<value_type, difference_type, pointer, reference,
-			pointer, reference>												iterator;
+			<value_type, difference_type, pointer, reference>				iterator;
 		typedef typename ft::random_access_iterator
-			<value_type, difference_type, const_pointer, const_reference,
-			pointer, reference>												const_iterator;
+			<value_type, difference_type, const_pointer, const_reference>	const_iterator;
 		typedef typename ft::reverse_iterator<iterator>						reverse_iterator;
 		typedef typename ft::reverse_iterator<const_iterator>				const_reverse_iterator;
 
@@ -105,19 +103,20 @@ class vector : public allocator_type<T, Alloc> {
 		bool	Allocate(size_t n);
 		void	Clean();
 		void	Destroy(pointer first, pointer last);
-		template <class InputIt>
-		pointer	Copy(pointer pos, InputIt first, InputIt last);
 		pointer	Fill(pointer pos, size_t n, const T& x);
 
 		template <class It>
-		void Assign(It first, It last, int_iterator_tag);
+		void	Assign(It first, It last, int_iterator_tag);
 		template <class It>
-		void Assign(It first, It last, input_iterator_tag);
+		void	Assign(It first, It last, input_iterator_tag);
 
 		template<class It>
 		void	Construct(It first, It last, int_iterator_tag);
 		template<class It>
 		void	Construct(It first, It last, input_iterator_tag);
+
+		template <class InputIt>
+		pointer	Copy(pointer pos, InputIt first, InputIt last);
 
 	    template <class It>
 	    void	Insert(iterator pos, It first, It last, int_iterator_tag);
@@ -129,11 +128,11 @@ class vector : public allocator_type<T, Alloc> {
 
 }
 
-#include "member_functions.hpp"
-#include "iterators.hpp"
-#include "elements_access.hpp"
-#include "capacity.hpp"
+#include "vector_member_functions.hpp"
+#include "vector_iterators.hpp"
+#include "vector_elements_access.hpp"
+#include "vector_capacity.hpp"
 #include "protected.hpp"
-#include "modifiers.hpp"
+#include "vector_modifiers.hpp"
 
 #endif

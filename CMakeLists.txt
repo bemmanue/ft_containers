@@ -18,11 +18,19 @@ add_executable(ft_containers
         iterator/iterator_swap.hpp
         iterator/iterator_advance.hpp
         iterator/iterator_distance.hpp
-        vector/elements_access.hpp
-        vector/member_functions.hpp
-        vector/iterators.hpp
-        vector/capacity.hpp
-        vector/modifiers.hpp
+        vector/vector_elements_access.hpp
+        vector/vector_member_functions.hpp
+        vector/vector_non_member_functions.hpp
+        vector/vector_iterators.hpp
+        vector/vector_capacity.hpp
+        vector/vector_modifiers.hpp
         vector/protected.hpp
         algorithm/copy.hpp
-        algorithm/fill.hpp)
+        algorithm/fill.hpp
+        stack/stack.hpp
+        stack/stack_capacity.hpp
+        stack/stack_element_access.hpp
+        stack/stack_member_functions.hpp
+        stack/stack_modifiers.hpp
+        stack/stack_non_member_functions.hpp
+        )

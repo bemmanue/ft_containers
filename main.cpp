@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <stack>
 #include "vector/vector.hpp"
 
 int main()
@@ -17,13 +18,13 @@ int main()
 //	}
 //std::vector<int> n;
 //n.get_allocator();
-	ft::vector<int> a(5);
-	a[0] = 1;
-	a[1] = 2;
-	a[2] = 3;
-	a[3] = 4;
-	a[4] = 5;
-	a.get_allocator();
+//	ft::vector<int> a(5);
+//	a[0] = 1;
+//	a[1] = 2;
+//	a[2] = 3;
+//	a[3] = 4;
+//	a[4] = 5;
+//	a.get_allocator();
 //	a.reserve(13);
 //	std::cout << *a.begin() << std::endl;
 //	a.insert(a.begin() + 2, a.begin(), a.begin() + 2);
@@ -45,6 +46,9 @@ int main()
 //		std::cout << b.at(i) << std::endl;
 //	}
 //	std::cout << "capasity = " << b.capacity() << std::endl;
+
+//	std::stack<int, std::vector<int> > a;
+//	a.push(5);
 
 	return 0;
 }
