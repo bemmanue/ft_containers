@@ -34,9 +34,11 @@ class vector : public allocator_type<T, Alloc> {
 		typedef typename allocator_type::pointer							pointer;
 		typedef typename allocator_type::const_pointer						const_pointer;
 		typedef typename ft::random_access_iterator
-			<value_type, difference_type, pointer, reference>				iterator;
+			<value_type, difference_type, pointer, reference,
+			pointer, reference>												iterator;
 		typedef typename ft::random_access_iterator
-			<value_type, difference_type, const_pointer, const_reference>	const_iterator;
+			<value_type, difference_type, const_pointer, const_reference,
+			pointer, reference>												const_iterator;
 		typedef typename ft::reverse_iterator<iterator>						reverse_iterator;
 		typedef typename ft::reverse_iterator<const_iterator>				const_reverse_iterator;
 
@@ -132,7 +134,7 @@ class vector : public allocator_type<T, Alloc> {
 #include "vector_iterators.hpp"
 #include "vector_elements_access.hpp"
 #include "vector_capacity.hpp"
-#include "protected.hpp"
+#include "vector_protected.hpp"
 #include "vector_modifiers.hpp"
 
 #endif

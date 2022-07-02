@@ -119,7 +119,8 @@
 				25,
 				26,
 				27,
-				28
+				28,
+				29
 			]
 		}
 	],
@@ -173,12 +174,12 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "iterator/value_type.hpp",
+			"path" : "iterator/iterator_value_type.hpp",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 1,
-			"path" : "iterator/distance_type.hpp",
+			"path" : "iterator/iterator_distance_type.hpp",
 			"sourceGroupIndex" : 1
 		},
 		{
@@ -228,7 +229,7 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "vector/protected.hpp",
+			"path" : "vector/vector_protected.hpp",
 			"sourceGroupIndex" : 1
 		},
 		{
@@ -269,6 +270,11 @@
 		{
 			"backtrace" : 1,
 			"path" : "stack/stack_non_member_functions.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "set/set.hpp",
 			"sourceGroupIndex" : 1
 		}
 	],

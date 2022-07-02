@@ -12,8 +12,8 @@
 #include "iterator_advance.hpp"
 #include "iterator_category.hpp"
 #include "iterator_swap.hpp"
-#include "value_type.hpp"
-#include "distance_type.hpp"
+#include "iterator_value_type.hpp"
+#include "iterator_distance_type.hpp"
 
 #include "random_access_iterator.hpp"
 #include "reverse_iterator.hpp"

@@ -13,8 +13,8 @@ add_executable(ft_containers
                 iterator/random_access_iterator.hpp
         iterator/iterator_category.hpp
         iterator/iterator_base.hpp
-        iterator/value_type.hpp
-        iterator/distance_type.hpp
+        "iterator/iterator_value_type.hpp"
+        iterator/iterator_distance_type.hpp
         iterator/iterator_swap.hpp
         iterator/iterator_advance.hpp
         iterator/iterator_distance.hpp
@@ -24,7 +24,7 @@ add_executable(ft_containers
         vector/vector_iterators.hpp
         vector/vector_capacity.hpp
         vector/vector_modifiers.hpp
-        vector/protected.hpp
+        vector/vector_protected.hpp
         algorithm/copy.hpp
         algorithm/fill.hpp
         stack/stack.hpp
@@ -33,4 +33,5 @@ add_executable(ft_containers
         stack/stack_member_functions.hpp
         stack/stack_modifiers.hpp
         stack/stack_non_member_functions.hpp
+        set/set.hpp
         )
