@@ -6,7 +6,7 @@
 namespace ft {
 
 template<class Category, class T, class Distance> inline
-Category Iter_cat(const iterator<Category, T, Distance>) {
+Category Iter_cat(const tree_iterator<Category, T, Distance>) {
 	Category x;
 	return x;
 }

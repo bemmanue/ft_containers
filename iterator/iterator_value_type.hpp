@@ -12,7 +12,7 @@ namespace ft
 //    }
 
 //     template <class C, class T, class D, class Pt, class Rt> inline
-//     T *Val_type(iterator, T, D, Pt, Rt)
+//     T *Val_type(const_iterator, T, D, Pt, Rt)
 //     {
 //        return (0);
 //     }

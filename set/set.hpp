@@ -42,13 +42,13 @@ class set {
 //		allocator_type get_allocator() const;
 
 		// iterators
-//		iterator begin();
+//		const_iterator begin();
 //		const_iterator begin() const;
-//		iterator end();
+//		const_iterator end();
 //		const_iterator end() const;
-//		iterator rbegin();
+//		const_iterator rbegin();
 //		const_iterator rbegin() const;
-//		iterator rend();
+//		const_iterator rend();
 //		const_iterator rend() const;
 
 		// capacity
@@ -58,24 +58,24 @@ class set {
 
 		// modifiers
 //		void clear();
-//		std::pair<iterator,bool> insert(const value_type& value);
-//		iterator insert(iterator hint, const value_type& value);
+//		std::pair<const_iterator,bool> insert(const value_type& value);
+//		const_iterator insert(const_iterator hint, const value_type& value);
 //		template<class InputIt>
 //		void insert(InputIt first, InputIt last);
-//		void erase(iterator pos);
-//		void erase(iterator first, iterator last);
+//		void erase(const_iterator pos);
+//		void erase(const_iterator first, const_iterator last);
 //		size_type erase(const Key& key);
 //		void swap(set& other);
 
 		// lookup
 //		size_type count(const Key& key) const;
-//		iterator find(const Key& key);
+//		const_iterator find(const Key& key);
 //		const_iterator find(const Key& key) const;
-//		std::pair<iterator,iterator> equal_range(const Key& key);
+//		std::pair<const_iterator,const_iterator> equal_range(const Key& key);
 //		std::pair<const_iterator,const_iterator> equal_range(const Key& key) const;
-//		iterator lower_bound(const Key& key);
+//		const_iterator lower_bound(const Key& key);
 //		const_iterator lower_bound(const Key& key) const;
-//		iterator upper_bound(const Key& key);
+//		const_iterator upper_bound(const Key& key);
 //		const_iterator upper_bound(const Key& key) const;
 
 		// observers

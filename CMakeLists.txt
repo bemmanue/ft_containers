@@ -34,4 +34,14 @@ add_executable(ft_containers
         stack/stack_modifiers.hpp
         stack/stack_non_member_functions.hpp
         set/set.hpp
+        tree/tree.hpp
+        tree/tree_nod.hpp
+        tree/tree_ptr.hpp
+        tree/tree_traits.hpp
+        tree/tree_value.hpp
+        tree/tree_iterator.hpp
+        tree/tree_protected.hpp
+        tree/tree_iterators.hpp
+        tree/tree_modifiers.hpp
+        tree/tree_capacity.hpp
         )
