@@ -12,7 +12,7 @@ namespace ft {
 //    }
 
 template<class C, class T, class D, class Pt, class Rt> inline
-D*  Dist_type(tree_iterator<C, T, D, Pt, Rt>) {
+D*  Dist_type(iterator<C, T, D, Pt, Rt>) {
 	return (0);
 }
 

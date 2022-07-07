@@ -11,14 +11,14 @@ namespace ft
 //        return (0);
 //    }
 
-//     template <class C, class T, class D, class Pt, class Rt> inline
-//     T *Val_type(const_iterator, T, D, Pt, Rt)
+//     template <class C, class Tree_traits, class D, class Pt, class Rt> inline
+//     Tree_traits *Val_type(const_iterator, Tree_traits, D, Pt, Rt)
 //     {
 //        return (0);
 //     }
 //
-//     template<class T> inline
-//     T *Val_type(const T*)
+//     template<class Tree_traits> inline
+//     Tree_traits *Val_type(const Tree_traits*)
 //     {
 //        return (0);
 //     }

@@ -5,65 +5,34 @@
 
 namespace ft {
 
-class tree_const_iterator : public ft::iterator<bidirectional_iterator_tag, value_type, dift, tptr, reft> {
+class tree_const_iterator : public ft::tree_iterator<bidirectional_iterator_tag, value_type, dift, ctptr, const_reference> {
 
-	public:
-		typedef ft::iterator<bidirectional_iterator_tag, value_type, dift, tptr, reft> Mybase;
-		typedef typename Mybase::iterator_category	iterator_category;
-		typedef typename Mybase::value_type 		value_type;
-		typedef typename Mybase::difference_type 	difference_type;
-		typedef typename Mybase::pointer 			pointer;
-		typedef typename Mybase::reference 			reference;
+public:
+	typedef ft::tree_iterator<bidirectional_iterator_tag, value_type, dift, ctptr, const_reference> Mybase;
+	typedef typename Mybase::iterator_category	iterator_category;
+	typedef typename Mybase::value_type 		value_type;
+	typedef typename Mybase::difference_type 	difference_type;
+	typedef typename Mybase::pointer 			pointer;
+	typedef typename Mybase::reference 			reference;
 
-		const_iterator() : ptr(0) {}
-		const_iterator(nodeptr P) : ptr(P) {}
+	tree_const_iterator() : ptr(0) {}
+	tree_const_iterator(nodeptr P) : ptr(P) {}
+	tree_const_iterator(const typename tree<T>::iterator& x) : ptr(x.mynode()) {}
 
-		reference operator*() const {
+	const_reference operator*() const {}
+	tptr operator->() const {}
+	tree_const_iterator& operator++() {}
+	tree_const_iterator operator++(int) {}
+	tree_const_iterator& operator--() {}
+	tree_const_iterator operator--(int) {}
+	bool operator==(const tree_iterator x) const {}
+	bool operator!=(const tree_iterator x) const {}
+	void dec() {}
+	void Inc() {}
+	nodeptr mynode() const {}
 
-		}
-
-		tptr operator->() const {
-
-		}
-
-		iterators operator++() {
-
-		}
-
-		iterator operator**(int) {
-			;
-		}
-
-		iterators operator-() {
-
-		}
-
-		iterator operator--(int) {
-
-		}
-
-		bool operator==(const iterator x) const {
-
-		}
-
-		bool operator!=(const iterator x) const {
-
-		}
-
-		void dec() {
-
-		}
-
-		void Inc() {
-
-		}
-
-		nodeptr mynode() const {
-
-		}
-
-	protected:
-		nodeptr ptr;
+protected:
+	nodeptr ptr;
 };
 
 }

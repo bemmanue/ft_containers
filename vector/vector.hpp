@@ -12,7 +12,7 @@ namespace ft {
 template<class T, class Alloc>
 class allocator_type {
 	protected:
-//		typedef typename Alloc::template rebind<T>::other type;
+//		typedef typename Alloc::template rebind<Tree_traits>::other type;
 //		allocator_type(Alloc A = Alloc()) : allocator(A) {}
 //		type allocator;
 		typedef Alloc	type;

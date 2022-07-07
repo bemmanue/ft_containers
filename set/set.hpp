@@ -4,51 +4,52 @@
 #include <iostream>
 
 #include "../iterator/iterator.hpp"
+#include "set_traits.hpp"
+#include "../tree/tree.hpp"
 
 namespace ft {
 
 template<class Key, class Compare = std::less<Key>, class Allocator = std::allocator<Key> >
-class set {
+class set : public tree<set_traits<Key, Compare, Allocator> > {
 	public:
-		typedef Key										key_type;
-		typedef Key										value_type;
-		typedef std::size_t								size_type;
-		typedef std::ptrdiff_t 							difference_type;
-		typedef Compare									key_compare;
-		typedef Compare									value_compare;
-		typedef Allocator								allocator_type;
-		typedef typename Allocator::pointer				pointer;
-		typedef typename Allocator::const_pointer		const_pointer;
-		typedef typename Allocator::reference			reference;
-		typedef typename Allocator::const_reference		const_reference;
-		typedef T0										iterator;
-		typedef T1										const_iterator;
-		typedef T2										size_type;
-		typedef T3 										difference_type;
-		typedef reverse_iterator<const_iterator>		const_reverse_iterator;
-		typedef reverse_iterator<iterator>				reverse_iterator;
+		typedef set<Key, Compare, Allocator>				Myt;
+		typedef tree<set_traits<Key, Compare, Allocator> >	Mybase;
+		typedef Key											key_type;
+		typedef typename Mybase::value_type					value_type;
+		typedef typename Mybase::size_type 					size_type;
+		typedef typename Mybase::difference_type 			difference_type;
+		typedef Compare										key_compare;
+		typedef typename Mybase::value_compare				value_compare;
+		typedef typename Mybase::allocator_type				allocator_type;
+		typedef typename Mybase::reference 					reference;
+		typedef typename Mybase::const_reference 			const_reference;
+		typedef typename Mybase::pointer					pointer;
+		typedef typename Mybase::const_pointer 				const_pointer;
+		typedef typename Mybase::tree_iterator				iterator;
+		typedef typename Mybase::tree_const_iterator		const_iterator;
+		typedef typename Mybase::reverse_iterator			reverse_iterator;
+		typedef typename Mybase::const_reverse_iterator		const_reverse_iterator;
 
 		// member functions
-//		set();
-//		explicit set( const Compare& comp, const Allocator& alloc = Allocator());
-//		template<class InputIt>
-//		set(InputIt first, InputIt last,
-//			const Compare& comp = Compare(),
-//			const Allocator& alloc = Allocator());
-//		set(const set& other);
-//
+		set();
+		explicit set(const Compare& comp, const Allocator& alloc = Allocator());
+		template<class InputIt>
+				set(InputIt first, InputIt last,
+				const Compare& comp = Compare(), const Allocator& alloc = Allocator());
+		set(const set& other);
+
 //		~set();
 //		set& operator=(const set& other);
 //		allocator_type get_allocator() const;
 
 		// iterators
-//		const_iterator begin();
+//		iterator begin();
 //		const_iterator begin() const;
-//		const_iterator end();
+//		iterator end();
 //		const_iterator end() const;
-//		const_iterator rbegin();
+//		iterator rbegin();
 //		const_iterator rbegin() const;
-//		const_iterator rend();
+//		iterator rend();
 //		const_iterator rend() const;
 
 		// capacity

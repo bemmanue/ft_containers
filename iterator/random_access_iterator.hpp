@@ -6,7 +6,7 @@
 namespace ft {
 
 template<class T, class D, class P, class R, class P2, class R2>
-class random_access_iterator: public iterator<random_access_iterator_tag, T, D, P, R> {
+class random_access_iterator: public ft::iterator<random_access_iterator_tag, T, D, P, R> {
 	public:
 		typedef random_access_iterator<T, D, P, R, P2, R2>	iterator;
 		typedef typename iterator::difference_type 			difference_type;

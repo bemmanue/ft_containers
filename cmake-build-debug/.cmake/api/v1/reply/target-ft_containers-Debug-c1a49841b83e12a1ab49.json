@@ -130,7 +130,10 @@
 				36,
 				37,
 				38,
-				39
+				39,
+				40,
+				41,
+				42
 			]
 		}
 	],
@@ -289,6 +292,16 @@
 		},
 		{
 			"backtrace" : 1,
+			"path" : "set/set_traits.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "set/set_constructors.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
 			"path" : "tree/tree.hpp",
 			"sourceGroupIndex" : 1
 		},
@@ -335,6 +348,11 @@
 		{
 			"backtrace" : 1,
 			"path" : "tree/tree_capacity.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "tree/tree_observers.hpp",
 			"sourceGroupIndex" : 1
 		}
 	],
