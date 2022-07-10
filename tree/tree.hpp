@@ -4,7 +4,7 @@
 #include "../iterator/iterator.hpp"
 #include "tree_value.hpp"
 #include "tree_iterator.hpp"
-#include "tree_traits.hpp"
+#include "const_tree_iterator.hpp"
 
 namespace ft {
 
@@ -64,146 +64,27 @@ class tree : public tree_value<Tree_traits> {
 		}
 
 	public:
-		typedef typename allocator_type::size_type			size_type;
-		typedef typename allocator_type::difference_type	dift;
-		typedef dift										difference_type;
+		typedef typename allocator_type::size_type					size_type;
+		typedef typename allocator_type::difference_type			difference_type;
 		typedef typename allocator_type::template
-				rebind<value_type>::other::pointer			tptr;
+				rebind<value_type>::other::pointer					pointer;
 		typedef typename allocator_type::template
-				rebind<value_type>::other::const_pointer	ctptr;
+				rebind<value_type>::other::const_pointer			const_pointer;
 		typedef typename allocator_type::template
-				rebind<value_type>::other::reference		reft;
-		typedef tptr 										pointer;
-		typedef ctptr										const_pointer;
-		typedef reft 										reference;
+				rebind<value_type>::other::reference				reference;
 		typedef typename allocator_type::template
-				rebind<value_type>::other::const_reference	const_reference;
+				rebind<value_type>::other::const_reference			const_reference;
 
 		class tree_iterator;
-		friend class tree_iterator;
-		class tree_iterator : public ft::iterator<bidirectional_iterator_tag, value_type, dift, tptr, reft> {
-
-			public:
-				typedef ft::iterator<bidirectional_iterator_tag, value_type, dift, tptr, reft> Mybase;
-				typedef typename Mybase::iterator_category	iterator_category;
-				typedef typename Mybase::value_type 		value_type;
-				typedef typename Mybase::difference_type 	difference_type;
-				typedef typename Mybase::pointer 			pointer;
-				typedef typename Mybase::reference 			reference;
-
-			tree_iterator() : ptr(0) {}
-			tree_iterator(nodeptr P) : ptr(P) {}
-
-			reference operator*() const {}
-			tptr operator->() const {
-				return (&**this);
-			}
-
-			tree_iterator& operator++() {
-				inc();
-				return (*this);
-			}
-
-			tree_iterator operator++(int) {
-				tree_iterator temp = *this;
-				++*this;
-				return ;
-			}
-
-			tree_iterator& operator--() {
-				dec();
-				return (*this);
-			}
-
-			tree_iterator operator--(int) {
-				tree_iterator temp = *this;
-				--*this;
-				return ;
-			}
-
-			bool operator==(const tree_iterator x) const {
-				return (ptr == x.ptr);
-			}
-
-			bool operator!=(const tree_iterator x) const {
-				return (!(*this == x));
-			}
-
-			void dec() {
-				if (isnil(ptr)) {
-					ptr = right(ptr);
-				} else if (!isnil(left(ptr))) {
-					ptr = max(left(ptr));
-				} else {
-					nodeptr P;
-					while (!isnil(P = parent(ptr)) && ptr == left(P)) {
-						ptr = P;
-					}
-					if (!isnil(P)) {
-						ptr = P;
-					}
-				}
-			}
-
-			void inc() {
-				if (isnil(ptr)) {
-					;
-				} else if (!isnil(left(ptr))) {
-					ptr = min(right(ptr));
-				} else {
-					nodeptr P;
-					while (!isnil(P = parent(ptr)) && ptr == right(P)) {
-						ptr = P;
-					}
-					ptr = P;
-				}
-			}
-
-			nodeptr mynode() const {
-				return (ptr);
-			}
-
-			protected:
-				nodeptr ptr;
-		};
-
-		class tree_const_iterator;
-		friend class tree_const_iterator;
-		class tree_const_iterator : public ft::iterator<bidirectional_iterator_tag, value_type, dift, ctptr, const_reference> {
-
-			public:
-				typedef ft::iterator<bidirectional_iterator_tag, value_type, dift, ctptr, const_reference> Mybase;
-				typedef typename Mybase::iterator_category	iterator_category;
-//				typedef typename Mybase::value_type 		value_type;
-				typedef typename Mybase::difference_type 	difference_type;
-				typedef typename Mybase::pointer 			pointer;
-				typedef typename Mybase::reference 			reference;
-
-				tree_const_iterator() : ptr(0) {}
-				tree_const_iterator(nodeptr P) : ptr(P) {}
-				tree_const_iterator(const typename tree<Tree_traits>::iterator& x) : ptr(x.mynode()) {}
-
-				const_reference operator*() const {}
-				tptr operator->() const {}
-				tree_const_iterator& operator++() {}
-				tree_const_iterator operator++(int) {}
-				tree_const_iterator& operator--() {}
-				tree_const_iterator operator--(int) {}
-				bool operator==(const tree_iterator x) const {}
-				bool operator!=(const tree_iterator x) const {}
-				void dec() {}
-				void Inc() {}
-				nodeptr mynode() const {}
-
-			protected:
-				nodeptr ptr;
-		};
+		class const_tree_iterator;
 
 		typedef ft::reverse_iterator<tree_iterator> 				reverse_iterator;
-		typedef ft::reverse_iterator<tree_const_iterator>			const_reverse_iterator;
+		typedef ft::reverse_iterator<const_tree_iterator>			const_reverse_iterator;
 		typedef ft::pair<tree_iterator, bool>						pairib;
 		typedef ft::pair<tree_iterator, tree_iterator>				pairii;
-		typedef ft::pair<tree_const_iterator, tree_const_iterator>	paircc;
+		typedef ft::pair<const_tree_iterator, const_tree_iterator>	paircc;
+
+
 
 		//constructors
 		explicit tree(const key_compare& parg, const allocator_type& Al);
@@ -211,17 +92,17 @@ class tree : public tree_value<Tree_traits> {
 		tree(const Myt& x);
 		~tree();
 		Myt& operator=(const Myt& x);
-		allocator_type		get_allocator() const;
+		allocator_type get_allocator() const;
 
 		//iterators
 		tree_iterator		begin();
-		tree_const_iterator	begin() const;
+		const_tree_iterator	begin() const;
 		tree_iterator		end();
-		tree_const_iterator end() const;
+		const_tree_iterator end() const;
 		tree_iterator 		rbegin();
-		tree_const_iterator rbegin() const;
+		const_tree_iterator rbegin() const;
 		tree_iterator 		rend();
-		tree_const_iterator rend() const;
+		const_tree_iterator rend() const;
 
 		//capacity
 		bool				empty() const;
@@ -243,13 +124,13 @@ class tree : public tree_value<Tree_traits> {
 		// lookup
 		size_type			count(const key_type& Kv) const;
 		tree_iterator		find(const key_type& Kv);
-		tree_const_iterator	find(const key_type& Kv) const;
+		const_tree_iterator	find(const key_type& Kv) const;
 		pairii				equal_range(const key_type& Kv);
 		paircc				equal_range(const key_type& Kv) const;
 		tree_iterator		lower_bound(const key_type& Kv);
-		tree_const_iterator	lower_bound(const key_type& Kv) const;
+		const_tree_iterator	lower_bound(const key_type& Kv) const;
 		tree_iterator		upper_bound(const key_type& Kv);
-		tree_const_iterator	upper_bound(const key_type& Kv) const;
+		const_tree_iterator	upper_bound(const key_type& Kv) const;
 
 		//observers
 		key_compare			key_comp() const;
@@ -260,7 +141,7 @@ class tree : public tree_value<Tree_traits> {
 		nodeptr			Copy(nodeptr x, nodeptr p);
 		void			Erase(nodeptr x);
 		void			Init();
-		tree_iterator	insert(bool Addleft, nodeptr Y, const value_type& v);
+		tree_iterator	Insert(bool Addleft, nodeptr Y, const value_type& v);
 		nodeptr 		Lbound(const key_type& Kv) const;
 		nodeptr& 		Lmost();
 		nodeptr& 		Lmost() const;
@@ -274,8 +155,8 @@ class tree : public tree_value<Tree_traits> {
 		void 			Rrotate(nodeptr x);
 		nodeptr			Ubound(const key_type& Kv) const;
 		nodeptr			Buynode(nodeptr parg, char Carg);
-		void			Consval(tptr P, const value_type& V);
-		void			Destval(tptr P);
+		void			Consval(pointer P, const value_type& V);
+		void			Destval(pointer P);
 		void			Freenode(nodeptr S);
 
 		nodeptr			Head;

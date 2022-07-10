@@ -1,12 +1,12 @@
-#ifndef FT_CONTAINERS_TREE_ITERATOR_HPP
-#define FT_CONTAINERS_TREE_ITERATOR_HPP
+#ifndef FT_CONTAINERS_CONST_TREE_ITERATOR_HPP
+#define FT_CONTAINERS_CONST_TREE_ITERATOR_HPP
 
 #include "../iterator/iterator.hpp"
 #include "tree.hpp"
 
 namespace ft {
 
-class tree_iterator : public ft::iterator<bidirectional_iterator_tag, value_type, dift, tptr, reft> {
+class const_tree_iterator : public ft::tree_iterator<bidirectional_iterator_tag, value_type, dift, ctptr, const_reference> {{
 	public:
 		typedef ft::iterator<bidirectional_iterator_tag, value_type, dift, tptr, reft> Mybase;
 		typedef typename Mybase::iterator_category	iterator_category;
@@ -15,43 +15,48 @@ class tree_iterator : public ft::iterator<bidirectional_iterator_tag, value_type
 		typedef typename Mybase::pointer 			pointer;
 		typedef typename Mybase::reference 			reference;
 
-		tree_iterator() : ptr(0) {}
+		const_tree_iterator() : ptr(0) {}
 
-		tree_iterator(nodeptr P) : ptr(P) {}
+		const_tree_iterator(nodeptr P) : ptr(P) {}
 
-		reference operator*() const {}
+		const_tree_iterator(const typename tree<Traits>::iterator& x)
+				: ptr(x.mynode()) {}
+
+		const_reference operator*() const {
+			return (value(ptr));
+		}
 
 		tptr operator->() const {
 			return (&**this);
 		}
 
-		tree_iterator& operator++() {
+		const_tree_iterator& operator++() {
 			inc();
 			return (*this);
 		}
 
-		tree_iterator operator++(int) {
-			tree_iterator temp = *this;
+		const_tree_iterator operator++(int) {
+			const_tree_iterator temp = *this;
 			++*this;
 			return (temp);
 		}
 
-		tree_iterator& operator--() {
+		const_tree_iterator& operator--() {
 			dec();
 			return (*this);
 		}
 
-		tree_iterator operator--(int) {
-			tree_iterator temp = *this;
+		const_tree_iterator operator--(int) {
+			const_tree_iterator temp = *this;
 			--*this;
 			return ;
 		}
 
-		bool operator==(const tree_iterator x) const {
+		bool operator==(const const_tree_iterator x) const {
 			return (ptr == x.ptr);
 		}
 
-		bool operator!=(const tree_iterator x) const {
+		bool operator!=(const const_tree_iterator x) const {
 			return (!(*this == x));
 		}
 
@@ -95,4 +100,5 @@ class tree_iterator : public ft::iterator<bidirectional_iterator_tag, value_type
 
 }
 
-#endif //FT_CONTAINERS_TREE_ITERATOR_HPP
+
+#endif //FT_CONTAINERS_CONST_TREE_ITERATOR_HPP
