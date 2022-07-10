@@ -1,32 +1,28 @@
 #ifndef FT_CONTAINERS_CONST_TREE_ITERATOR_HPP
 #define FT_CONTAINERS_CONST_TREE_ITERATOR_HPP
 
-#include "../iterator/iterator.hpp"
 #include "tree.hpp"
+#include "../iterator/iterator.hpp"
 
 namespace ft {
 
-class const_tree_iterator : public ft::tree_iterator<bidirectional_iterator_tag, value_type, dift, ctptr, const_reference> {{
+template<class Tree_traits>
+class tree<Tree_traits>::const_tree_iterator
+		: public ft::iterator<bidirectional_iterator_tag, value_type, difference_type, const_pointer, const_reference> {
 	public:
-		typedef ft::iterator<bidirectional_iterator_tag, value_type, dift, tptr, reft> Mybase;
-		typedef typename Mybase::iterator_category	iterator_category;
-		typedef typename Mybase::value_type 		value_type;
-		typedef typename Mybase::difference_type 	difference_type;
-		typedef typename Mybase::pointer 			pointer;
-		typedef typename Mybase::reference 			reference;
 
 		const_tree_iterator() : ptr(0) {}
 
-		const_tree_iterator(nodeptr P) : ptr(P) {}
+		const_tree_iterator(nodeptr p) : ptr(p) {}
 
-		const_tree_iterator(const typename tree<Traits>::iterator& x)
+		const_tree_iterator(const typename ft::tree<Tree_traits>::iterator& x)
 				: ptr(x.mynode()) {}
 
-		const_reference operator*() const {
+		reference operator*() const {
 			return (value(ptr));
 		}
 
-		tptr operator->() const {
+		pointer operator->() const {
 			return (&**this);
 		}
 
@@ -66,12 +62,12 @@ class const_tree_iterator : public ft::tree_iterator<bidirectional_iterator_tag,
 			} else if (!isnil(left(ptr))) {
 				ptr = max(left(ptr));
 			} else {
-				nodeptr P;
-				while (!isnil(P = parent(ptr)) && ptr == left(P)) {
-					ptr = P;
+				nodeptr p;
+				while (!isnil(p = parent(ptr)) && ptr == left(p)) {
+					ptr = p;
 				}
-				if (!isnil(P)) {
-					ptr = P;
+				if (!isnil(p)) {
+					ptr = p;
 				}
 			}
 		}
@@ -82,11 +78,11 @@ class const_tree_iterator : public ft::tree_iterator<bidirectional_iterator_tag,
 			} else if (!isnil(left(ptr))) {
 				ptr = min(right(ptr));
 			} else {
-				nodeptr P;
-				while (!isnil(P = parent(ptr)) && ptr == right(P)) {
-					ptr = P;
+				nodeptr p;
+				while (!isnil(p = parent(ptr)) && ptr == right(p)) {
+					ptr = p;
 				}
-				ptr = P;
+				ptr = p;
 			}
 		}
 

@@ -13,7 +13,6 @@ class random_access_iterator: public ft::iterator<random_access_iterator_tag, T,
 		typedef typename iterator::pointer 					pointer;
 		typedef typename iterator::reference 				reference;
 
-
 		random_access_iterator() {}
 
 		random_access_iterator(const random_access_iterator<T, D, P, R, P2, R2>& iterator)

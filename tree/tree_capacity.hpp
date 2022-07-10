@@ -1,7 +1,7 @@
 #ifndef FT_CONTAINERS_TREE_CAPACITY_HPP
 #define FT_CONTAINERS_TREE_CAPACITY_HPP
 
-#include "tree.hpp"
+#include "tree_base.hpp"
 
 namespace ft {
 

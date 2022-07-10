@@ -3,15 +3,15 @@
 
 namespace ft {
 
-template <class T>
-class tree_nod : public T {
+template <class Tree_traits>
+class tree_nod : public Tree_traits {
 
 	protected:
-		typedef typename T::allocator_type			allocator_type;
-		typedef typename T::key_compare				key_compare;
-		typedef typename T::value_type				value_type;
+		typedef typename Tree_traits::allocator_type		allocator_type;
+		typedef typename Tree_traits::key_compare			key_compare;
+		typedef typename Tree_traits::value_type			value_type;
 		typedef typename allocator_type::template
-				rebind<void>::other::pointer 		genptr;
+				rebind<void>::other::pointer 				genptr;
 
 		struct node;
 		friend struct node;
@@ -25,10 +25,10 @@ class tree_nod : public T {
 		};
 
 		tree_nod(const key_compare& parg, allocator_type Al)
-				: T(parg), Alnod(Al) {}
+				: Tree_traits(parg), Alnod(Al) {}
 
 		typename allocator_type::template
-				rebind<node>::other					Alnod;
+				rebind<node>::other							Alnod;
 
 };
 

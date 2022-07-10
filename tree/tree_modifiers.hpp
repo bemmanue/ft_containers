@@ -15,7 +15,7 @@ typename tree<T>::pairib tree<T>::insert(const value_type& v) {
 		Addleft = comp(Kfn()(v), Key(x));
 		x = Addleft ? Left(x) : Right(x);
 	}
-	tree_iterator P = tree_iterator(y);
+	iterator P = iterator(y);
 	if (Addleft)
 		;
 	else if (P == begin())
@@ -30,7 +30,7 @@ typename tree<T>::pairib tree<T>::insert(const value_type& v) {
 }
 
 template<class T>
-typename tree<T>::tree_iterator tree<T>::insert(tree_iterator P, const value_type& v) {
+typename tree<T>::iterator tree<T>::insert(iterator P, const value_type& v) {
 	if (size() == 0) {
 		return (Insert(true, Head, v));
 	} else if (P == begin()) {
@@ -63,7 +63,7 @@ void tree<T>::insert(It F, It L) {
 }
 
 template<class T>
-typename tree<T>::tree_iterator tree<T>::erase(tree_iterator P) {
+typename tree<T>::iterator tree<T>::erase(iterator P) {
 	if (isnil(P.mynode()))
 		throw std::out_of_range("tree");
 	nodeptr x, xpar;
@@ -81,7 +81,7 @@ typename tree<T>::tree_iterator tree<T>::erase(tree_iterator P) {
 		if (!isnil(x)) {
 			parent(x) == xpar;
 		}
-		if (Root() == Z) {
+		if (Root() == z) {
 			Root() = x;
 		} else if (left(xpar) == z) {
 			left(xpar) = x;
@@ -183,7 +183,7 @@ typename tree<T>::tree_iterator tree<T>::erase(tree_iterator P) {
 			}
 			color(x) = Black;
 		}
-		Destval(&value(z);
+		Destval(&value(z));
 	}
 	Freenode(z);
 	if (0 < Size)
@@ -192,7 +192,7 @@ typename tree<T>::tree_iterator tree<T>::erase(tree_iterator P) {
 }
 
 template<class T>
-typename tree<T>::tree_iterator tree<T>::erase(tree_iterator F, tree_iterator L) {
+typename tree<T>::iterator tree<T>::erase(iterator F, iterator L) {
 	if (size() == 0 || F != begin() || L != end()) {
 		while (F != L) {
 			erase(F++);
@@ -225,69 +225,6 @@ void tree<T>::erase(const key_type *F, const key_type *L) {
 template<class T>
 void tree<T>::clear() {
 	erase(begin(), end());
-}
-
-template<class T>
-typename tree<T>::tree_iterator tree<T>::find(const key_type& Kv) {
-	tree_iterator P = lower_bound(Kv);
-	return (P == end() || comp(Kv, Key(P.mynode())) ? end() : P);
-}
-
-template<class T>
-typename tree<T>::tree_const_iterator tree<T>::find(const key_type& Kv) const {
-	const_tree_iterator P = lower_bound(Kv);
-	return (P == end() || comp(Kv, Key(P.mynode())) ? end() : P);
-}
-
-template<class T>
-typename tree<T>::size_type tree<T>::count(const key_type& Kv) const {
-	paircc Ans = equal_range(Kv);
-	size_type N = 0;
-	Distance(Ans.first, Ans.second, N);
-	return (N);
-}
-
-template<class T>
-typename tree<T>::tree_iterator tree<T>::lower_bound(const key_type& Kv) {
-	return (tree_iterator(Lbound(Kv)));
-}
-
-template<class T>
-typename tree<T>::tree_const_iterator tree<T>::lower_bound(const key_type& Kv) const {
-	return (const_tree_iterator(Lbound(Kv)));
-}
-
-template<class T>
-typename tree<T>::tree_iterator tree<T>::upper_bound(const key_type& Kv) {
-	return (tree_iterator(Ubound(Kv)));
-}
-
-template<class T>
-typename tree<T>::tree_const_iterator tree<T>::upper_bound(const key_type& Kv) const {
-	return (const_tree_iterator(Ubound(Kv)));
-}
-
-template<class T>
-typename tree<T>::pairii tree<T>::equal_range(const key_type& Kv) {
-	return (pairii(lower_bound(Kv), upper_bound(Kv)));
-}
-
-template<class T>
-typename tree<T>::paircc tree<T>::equal_range(const key_type& Kv) const {
-	return (paircc(lower_bound(Kv), upper_bound(Kv)));
-}
-
-template<class T>
-void tree<T>::swap(Myt& x) {
-	if (get_allocator() == x.get_allocator()) {
-		std::swap(comp, x.comp);
-		std::swap(Head, x.Head);
-		std::swap(Size, x.Size);
-	} else {
-		Myt Ts = *this;
-		*this = x;
-		x = Ts;
-	}
 }
 
 }

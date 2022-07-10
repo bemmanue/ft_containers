@@ -84,7 +84,7 @@ class vector : public allocator_type<T, Alloc> {
 
 		//Modifiers
 		void			clear();
-		iterator		insert( iterator pos, const T& value);
+		iterator		insert(iterator pos, const T& value);
 		void			insert(iterator pos, size_type count, const T& value);
 		template <class InputIt>
 		void			insert(iterator pos, InputIt first, InputIt last);

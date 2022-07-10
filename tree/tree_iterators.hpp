@@ -6,42 +6,42 @@
 namespace ft {
 
 template<class T>
-typename tree<T>::tree_iterator tree<T>::begin() {
-	return (tree_iterator(Lmost()));
+typename tree<T>::iterator tree<T>::begin() {
+	return (iterator(Lmost()));
 }
 
 template<class T>
-typename tree<T>::const_tree_iterator tree<T>::begin() const {
-	return (const_tree_iterator(Lmost()));
+typename tree<T>::const_iterator tree<T>::begin() const {
+	return (const_iterator(Lmost()));
 }
 
 template<class T>
-typename tree<T>::tree_iterator tree<T>::end() {
-	return (tree_iterator(Head));
+typename tree<T>::iterator tree<T>::end() {
+	return (iterator(Head));
 }
 
 template<class T>
-typename tree<T>::const_tree_iterator tree<T>::end() const {
-	return (const_tree_iterator(Head));
+typename tree<T>::const_iterator tree<T>::end() const {
+	return (const_iterator(Head));
 }
 
 template<class T>
-typename tree<T>::tree_iterator tree<T>::rbegin() {
+typename tree<T>::iterator tree<T>::rbegin() {
 	return (reverse_iterator(end()));
 }
 
 template<class T>
-typename tree<T>::const_tree_iterator tree<T>::rbegin() const {
+typename tree<T>::const_iterator tree<T>::rbegin() const {
 	return (const_reverse_iterator(end()));
 }
 
 template<class T>
-typename tree<T>::tree_iterator tree<T>::rend() {
+typename tree<T>::iterator tree<T>::rend() {
 	return (reverse_iterator(begin()));
 }
 
 template<class T>
-typename tree<T>::const_tree_iterator tree<T>::rend() const {
+typename tree<T>::const_iterator tree<T>::rend() const {
 	return (const_reverse_iterator(begin()));
 }
 

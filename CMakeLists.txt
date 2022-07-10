@@ -37,11 +37,15 @@ add_executable(ft_containers
         set/set_traits.hpp
         set/set_constructors.hpp
         tree/tree.hpp
+        tree/tree_lookup.hpp
+        tree/tree_base.hpp
         tree/tree_nod.hpp
         tree/tree_ptr.hpp
         tree/tree_traits.hpp
         tree/tree_value.hpp
+        tree/tree_constructors.hpp
         tree/tree_iterator.hpp
+        tree/const_tree_iterator.hpp
         tree/tree_protected.hpp
         tree/tree_iterators.hpp
         tree/tree_modifiers.hpp

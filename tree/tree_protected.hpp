@@ -25,7 +25,7 @@ typename tree<T>::nodeptr tree<T>::Copy(nodeptr x, nodeptr p) {
 		try {
 			Consval(&value(y), value(x));
 		} catch(...) {
-			Freenode(Y);
+			Freenode(y);
 			Erase(R);
 			throw;
 		}
@@ -70,7 +70,7 @@ typename tree<T>::tree_iterator tree<T>::Insert(bool Addleft, nodeptr Y, const v
 	nodeptr Z = Buynode(Y, Red);    //create new node that we insert. Y is considered its parent node
 	Left(Z) = Head, Right(Z) = Head;
 	try {
-		Consval(&Value(Z), V); //initialize its value
+		Consval(&Value(Z), v); //initialize its value
 	} catch (...) {
 		Freenode(Z);
 		throw;
@@ -89,7 +89,7 @@ typename tree<T>::tree_iterator tree<T>::Insert(bool Addleft, nodeptr Y, const v
 		if (Y == Rmost())
 			Rmost() = Z;
 	}
-	for (Nodeptr X = Z; Color(Parent(X)) == Red;) //check that we didn't disbalance our tree
+	for (nodeptr X = Z; Color(Parent(X)) == Red;) //check that we didn't disbalance our tree
 		{
 		if (Parent(X) == Left(Parent(Parent(X)))) {
 			Y = Right(Parent(Parent(X)));
@@ -126,16 +126,16 @@ typename tree<T>::tree_iterator tree<T>::Insert(bool Addleft, nodeptr Y, const v
 		}
 		}
 	Color(Root()) = Black;
-	return iterator(Z);
+	return tree_iterator(Z);
 }
 
 template<class T>
 typename tree<T>::nodeptr tree<T>::Lbound(const key_type& Kv) const {
-	Nodeptr X = Root();
-	Nodeptr Y = Head;
+	nodeptr X = Root();
+	nodeptr Y = Head;
 	while (!(Isnil(X)))
 	{
-		if (TreeTraits::comp(Key(X), Kv))
+		if (T::comp(Key(X), Kv))
 			X = Right(X);
 		else
 			Y = X, X = Left(X);
@@ -154,8 +154,8 @@ typename tree<T>::nodeptr& tree<T>::Lmost() const {
 }
 
 template<class T>
-void tree<T>::Lrotate(nodeptr x) {
-	Nodeptr Y = Right(X);
+void tree<T>::Lrotate(nodeptr X) {
+	nodeptr Y = Right(X);
 	Right(X) = Left(Y);
 	if (!Isnil(Left(Y)))
 		Parent(Left(Y)) = X;
@@ -205,8 +205,8 @@ typename tree<T>::nodeptr& tree<T>::Root() const {
 }
 
 template<class T>
-void tree<T>::Rrotate(nodeptr x) {
-	Nodeptr Y = Left(X);
+void tree<T>::Rrotate(nodeptr X) {
+	nodeptr Y = Left(X);
 	Left(X) = Right(Y);
 	if (!Isnil(Right(Y)))
 		Parent(Right(Y)) = X;
@@ -223,11 +223,11 @@ void tree<T>::Rrotate(nodeptr x) {
 
 template<class T>
 typename tree<T>::nodeptr tree<T>::Ubound(const key_type& Kv) const {
-	Nodeptr X = Root();
-	Nodeptr Y = Head;
+	nodeptr X = Root();
+	nodeptr Y = Head;
 	while (!Isnil(X))
 	{
-		if (TreeTraits::comp(Kv, Key(X)))
+		if (T::comp(Kv, Key(X)))
 			Y = X, X = Left(X);
 		else
 			X = Right(X);
@@ -237,10 +237,10 @@ typename tree<T>::nodeptr tree<T>::Ubound(const key_type& Kv) const {
 
 template<class T>
 typename tree<T>::nodeptr tree<T>::Buynode(nodeptr parg, char Carg) {
-	Nodeptr S = this->Alnod.allocate(1);
+	nodeptr S = this->Alnod.allocate(1);
 	this->Alptr.construct(&Left(S), nullptr);
 	this->Alptr.construct(&Right(S), nullptr);
-	this->Alptr.construct(&Parent(S), Parg);
+	this->Alptr.construct(&Parent(S), parg);
 	Color(S) = Carg;
 	Isnil(S) = false;
 	return S;
