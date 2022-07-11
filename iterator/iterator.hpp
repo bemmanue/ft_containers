@@ -1,13 +1,12 @@
 #ifndef ITERATOR_HPP
 #define ITERATOR_HPP
 
-#include <memory>
 #include <iostream>
+#include <memory>
 
-#include "iterator_base.hpp"
 #include "iterator_tags.hpp"
 #include "iterator_traits.hpp"
-
+#include "iterator_base.hpp"
 #include "iterator_distance.hpp"
 #include "iterator_advance.hpp"
 #include "iterator_category.hpp"

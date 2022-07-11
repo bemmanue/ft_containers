@@ -7,10 +7,11 @@ template<class K, class Pr, class Ax>
 class set_traits {
 
 	public:
-		typedef K	key_type;
-		typedef K	value_type;
-		typedef Pr	key_compare;
-		typedef typename Ax::template rebind<value_type>::other allocator_type;
+		typedef K							key_type;
+		typedef K							value_type;
+		typedef Pr							key_compare;
+		typedef typename Ax::template
+		        rebind<value_type>::other	allocator_type;
 
 		set_traits() : comp() {}
 		set_traits(Pr parg) : comp(parg) {}

@@ -1,7 +1,7 @@
-#ifndef CONSTRUCTORS_HPP
-#define CONSTRUCTORS_HPP
+#ifndef VECTOR_MEMBER_FUNCTIONS_HPP
+#define VECTOR_MEMBER_FUNCTIONS_HPP
 
-#include "vector.hpp"
+#include "vector_base.hpp"
 
 namespace ft {
 
@@ -77,4 +77,4 @@ typename vector<T, Alloc>::allocator_type vector<T, Alloc>::get_allocator() cons
 
 }
 
-#endif // CONSTRUCTORS_HPP
+#endif //VECTOR_MEMBER_FUNCTIONS_HPP

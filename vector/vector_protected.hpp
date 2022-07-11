@@ -1,10 +1,9 @@
-#ifndef PROTECTED_HPP
-#define PROTECTED_HPP
+#ifndef VECTOR_PROTECTED_HPP
+#define VECTOR_PROTECTED_HPP
 
-#include "vector.hpp"
+#include "vector_base.hpp"
 
-namespace ft
-{
+namespace ft {
 
 template <typename T, class Alloc>
 bool vector<T, Alloc>::Allocate(size_t n) {
@@ -81,7 +80,7 @@ void vector<T, Alloc>::Assign(It first, It last, input_iterator_tag) {
 template <typename T, class Alloc>
 template<class It>
 void vector<T, Alloc>::Construct(It first, It last, int_iterator_tag) {
-	size_type n = (size_type)first;
+	size_type n = first;
 	if (Allocate(n))
 		_last = Fill(_first, n, (T) last);
 }
@@ -164,4 +163,4 @@ void    vector<T, Alloc>::Insert(iterator pos, It first, It last, forward_iterat
 
 }
 
-#endif // PROTECTED_HPP
+#endif //VECTOR_PROTECTED_HPP

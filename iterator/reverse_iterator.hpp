@@ -6,7 +6,7 @@
 namespace ft {
 
 template<class RanIt>
-class reverse_iterator: public iterator<
+class reverse_iterator: public ft::iterator<
 	typename ft::iterator_traits<RanIt>::iterator_category,
 	typename ft::iterator_traits<RanIt>::value_type,
 	typename ft::iterator_traits<RanIt>::difference_type,

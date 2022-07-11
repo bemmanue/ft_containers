@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ITERATOR_SWAP
+#define ITERATOR_SWAP
 
 #include "iterator.hpp"
 
@@ -17,3 +18,5 @@ void Iter_swap(FwdIt1 x, FwdIt2 y, T*) {
 }
 
 }
+
+#endif

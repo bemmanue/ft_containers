@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD 98)
 add_executable(ft_containers
                 main.cpp
                 vector/vector.hpp
+                vector/vector_base.hpp
                 iterator/iterator.hpp
                 iterator/iterator_traits.hpp
                 iterator/iterator_tags.hpp
@@ -20,7 +21,7 @@ add_executable(ft_containers
         iterator/iterator_distance.hpp
         vector/vector_elements_access.hpp
         vector/vector_member_functions.hpp
-        vector/vector_non_member_functions.hpp
+        vector/vector_template_functions.hpp
         vector/vector_iterators.hpp
         vector/vector_capacity.hpp
         vector/vector_modifiers.hpp
@@ -36,6 +37,7 @@ add_executable(ft_containers
         set/set.hpp
         set/set_traits.hpp
         set/set_constructors.hpp
+        map/map_base.hpp
         tree/tree.hpp
         tree/tree_lookup.hpp
         tree/tree_base.hpp

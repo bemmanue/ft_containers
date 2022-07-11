@@ -1,10 +1,9 @@
-#ifndef ITERATORS_HPP
-#define ITERATORS_HPP
+#ifndef VECTOR_ITERATORS_HPP
+#define VECTOR_ITERATORS_HPP
 
-#include "vector.hpp"
+#include "vector_base.hpp"
 
-namespace ft
-{
+namespace ft {
 
 template <typename T, class Alloc>
 typename vector<T, Alloc>::iterator vector<T, Alloc>::begin() {
@@ -48,4 +47,4 @@ typename vector<T, Alloc>::const_reverse_iterator vector<T, Alloc>::rend() const
 
 }
 
-#endif
+#endif //VECTOR_ITERATORS_HPP

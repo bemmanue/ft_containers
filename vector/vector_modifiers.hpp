@@ -1,10 +1,9 @@
-#ifndef MODIFIERS_HPP
-#define MODIFIERS_HPP
+#ifndef VECTOR_MODIFIERS_HPP
+#define VECTOR_MODIFIERS_HPP
 
-#include "vector.hpp"
+#include "vector_base.hpp"
 
-namespace ft
-{
+namespace ft {
 
 template <typename T, class Alloc>
 void vector<T, Alloc>::clear() {
@@ -134,4 +133,4 @@ void vector<T, Alloc>::swap(vector& other) {
 
 }
 
-#endif
+#endif //VECTOR_MODIFIERS_HPP

@@ -1,10 +1,9 @@
-#ifndef CAPACITY_HPP
-# define CAPACITY_HPP
+#ifndef VECTOR_CAPACITY_HPP
+#define VECTOR_CAPACITY_HPP
 
-#include "vector.hpp"
+#include "vector_base.hpp"
 
-namespace ft
-{
+namespace ft {
 
 //Checks if the container has no elements
 template<typename T, class Alloc>
@@ -55,4 +54,4 @@ typename vector<T, Alloc>::size_type vector<T, Alloc>::capacity() const {
 
 }
 
-#endif
+#endif //VECTOR_CAPACITY_HPP

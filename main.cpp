@@ -6,17 +6,10 @@
 
 int main() {
 
-std::vector<int> b;
-	ft::vector<int> a(5);
+	std::map<int, int> a;
 
-//	int x = a["Yulya"];
-//	std::cout << x << std::endl;
-//
-//	int y = a["Yulya"];
-//	a["Kuliyulya"] = 7;
 
-//	int y = a["Yulya"];
-//	a["Kuliyulya"] = 9;
+
 
 	return 0;
 }

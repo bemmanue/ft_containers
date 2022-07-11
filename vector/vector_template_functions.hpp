@@ -1,7 +1,7 @@
-#ifndef VECTOR_NON_MEMBER_FUNCTIONS_HPP
-#define VECTOR_NON_MEMBER_FUNCTIONS_HPP
+#ifndef VECTOR_TEMPLATE_FUNCTIONS_HPP
+#define VECTOR_TEMPLATE_FUNCTIONS_HPP
 
-#include "vector.hpp"
+#include "vector_base.hpp"
 
 namespace ft {
 
@@ -37,4 +37,4 @@ bool operator>=(const std::vector<T,Alloc>& lhs, const std::vector<T,Alloc>& rhs
 
 }
 
-#endif // VECTOR_NON_MEMBER_FUNCTIONS_HPP
+#endif // VECTOR_TEMPLATE_FUNCTIONS_HPP

@@ -1,10 +1,9 @@
-#ifndef ELEMENTS_ACCESS_HPP
-#define ELEMENTS_ACCESS_HPP
+#ifndef VECTOR_ELEMENTS_ACCESS_HPP
+#define VECTOR_ELEMENTS_ACCESS_HPP
 
-#include "vector.hpp"
+#include "vector_base.hpp"
 
-namespace ft
-{
+namespace ft {
 
 template <typename T, class Alloc>
 typename vector<T, Alloc>::reference vector<T, Alloc>::operator[] (size_type n) {
@@ -52,4 +51,4 @@ typename vector<T, Alloc>::const_reference vector<T, Alloc>::back() const {
 
 }
 
-#endif // ELEMENTS_ACCESS_HPP
+#endif //VECTOR_ELEMENTS_ACCESS_HPP

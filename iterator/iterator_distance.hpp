@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ITERATOR_DISTANCE
+#define ITERATOR_DISTANCE
 
 #include "iterator.hpp"
 
@@ -60,3 +61,5 @@ void Distance_Tree(InIt first, InIt last, Distance& n)
 }
 
 }
+
+#endif //ITERATOR_DISTANCE
