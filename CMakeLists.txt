@@ -4,21 +4,9 @@ project(ft_containers)
 set(CMAKE_CXX_STANDARD 98)
 
 add_executable(ft_containers
-                main.cpp
-                vector/vector.hpp
-                vector/vector_base.hpp
-                iterator/iterator.hpp
-                iterator/iterator_traits.hpp
-                iterator/iterator_tags.hpp
-                iterator/reverse_iterator.hpp
-                iterator/random_access_iterator.hpp
-        iterator/iterator_category.hpp
-        iterator/iterator_base.hpp
-        iterator/iterator_value_type.hpp
-        iterator/iterator_distance_type.hpp
-        iterator/iterator_swap.hpp
-        iterator/iterator_advance.hpp
-        iterator/iterator_distance.hpp
+        main.cpp
+        vector/vector.hpp
+        vector/vector_base.hpp
         vector/vector_elements_access.hpp
         vector/vector_member_functions.hpp
         vector/vector_template_functions.hpp
@@ -26,6 +14,19 @@ add_executable(ft_containers
         vector/vector_capacity.hpp
         vector/vector_modifiers.hpp
         vector/vector_protected.hpp
+        iterator/iterator.hpp
+        iterator/iterator_traits.hpp
+        iterator/iterator_tags.hpp
+        iterator/reverse_iterator.hpp
+        iterator/random_access_iterator.hpp
+        iterator/iterator_category.hpp
+        iterator/iterator_base.hpp
+        iterator/iterator_value_type.hpp
+        iterator/iterator_distance_type.hpp
+        iterator/iterator_swap.hpp
+        iterator/iterator_advance.hpp
+        iterator/iterator_distance.hpp
+        algorithm/algorithm.hpp
         algorithm/copy.hpp
         algorithm/fill.hpp
         stack/stack.hpp

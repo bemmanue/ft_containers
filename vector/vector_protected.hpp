@@ -13,7 +13,7 @@ bool vector<T, Alloc>::Allocate(size_t n) {
 	} else if (n > max_size()) {
 		throw std::length_error("vector");
 	} else {
-		_first = _last = _allocator.allocate(n, nullptr);
+		_first = _last = base::allocator.allocate(n, nullptr);
 		_end = _first + n;
 		return true;
 	}
@@ -23,7 +23,7 @@ template <typename T, class Alloc>
 void vector<T, Alloc>::Clean() {
 	if (_first) {
 		Destroy(_first, _last);
-		_allocator.deallocate(_first, capacity());
+		base::allocator.deallocate(_first, capacity());
 	}
 	_first = _last = _end = nullptr;
 }
@@ -31,7 +31,7 @@ void vector<T, Alloc>::Clean() {
 template <typename T, class Alloc>
 void vector<T, Alloc>::Destroy(pointer first, pointer last) {
 	for (; first != last; ++first) {
-		_allocator.destroy(first);
+		base::allocator.destroy(first);
 	}
 }
 
@@ -41,7 +41,7 @@ typename vector<T, Alloc>::pointer vector<T, Alloc>::Copy(pointer pos, InputIt f
 	pointer temp = pos;
 	try {
 		for (; first != last; ++pos, ++first) {
-			_allocator.construct(pos, *first);
+			base::allocator.construct(pos, *first);
 		}
 	} catch (...) {
 		Destroy(temp, pos);
@@ -55,7 +55,7 @@ typename vector<T, Alloc>::pointer vector<T, Alloc>::Fill(pointer pos, size_t n,
 	pointer temp = pos;
 	try {
 		for (; 0 < n; --n, ++pos) {
-			_allocator.construct(pos, x);
+			base::allocator.construct(pos, x);
 		}
 	} catch (...) {
 		Destroy(temp, pos);
@@ -124,7 +124,7 @@ void    vector<T, Alloc>::Insert(iterator pos, It first, It last, forward_iterat
 		size_type new_capacity = max_size - capacity / 2 < capacity ? 0 : capacity * 2;
 		if (new_capacity < size + n)
 			new_capacity = size + n;
-		pointer new_first = _allocator.allocate(new_capacity, nullptr);
+		pointer new_first = base::allocator.allocate(new_capacity, nullptr);
 		pointer new_last;
 		try {
 			new_last = Copy(new_first, begin(), pos);
@@ -132,7 +132,7 @@ void    vector<T, Alloc>::Insert(iterator pos, It first, It last, forward_iterat
 			Copy(new_last, pos, end());
 		} catch (...) {
 			Destroy(new_first, new_last);
-			_allocator.deallocate(new_first, new_capacity);
+			base::allocator.deallocate(new_first, new_capacity);
 			throw;
 		}
 		if (_first) {

@@ -1,8 +1,6 @@
 #ifndef ITERATOR_SWAP
 #define ITERATOR_SWAP
 
-#include "iterator.hpp"
-
 namespace ft {
 
 template<class FwdIt1, class FwdIt2> inline

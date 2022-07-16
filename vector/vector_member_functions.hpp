@@ -6,19 +6,24 @@
 namespace ft {
 
 template<typename T, class Alloc>
-vector<T, Alloc>::vector(const allocator_type&) : base() {
+vector<T, Alloc>::vector() : base() {
 	Allocate(0);
 }
 
 template<typename T, class Alloc>
-vector<T, Alloc>::vector(size_t n, const allocator_type&) : base() {
-	if (Allocate(n))
-		_last = Fill(_first, n, T());
+vector<T, Alloc>::vector(const allocator_type& alloc) : base() {
+	Allocate(0);
+}
+
+template<typename T, class Alloc>
+vector<T, Alloc>::vector(size_type count, const T& value, const allocator_type&) : base() {
+	if (Allocate(count))
+		_last = Fill(_first, count, value);
 }
 
 template<typename T, class Alloc>
 template<class It>
-vector<T, Alloc>::vector(It first, It last) : base() {
+vector<T, Alloc>::vector(It first, It last, const allocator_type& alloc) : base() {
 	Construct(first, last, Iter_cat(first));
 }
 
@@ -30,7 +35,7 @@ vector<T, Alloc>::vector(const vector& x) : base() {
 }
 
 template<typename T, class Alloc>
-vector<T, Alloc>& vector<T, Alloc>::operator= (const vector& x) {
+vector<T, Alloc>& vector<T, Alloc>::operator= (const vector_type& x) {
 	size_t n = x.size();
 
 	if (this == &x) {
@@ -38,10 +43,13 @@ vector<T, Alloc>& vector<T, Alloc>::operator= (const vector& x) {
 	} else if (n == 0) {
 		Clean();
 	} else if (n <= size()) {
-		Destroy(_first + n, _last);
-		_last = copy_forward(x.begin(), x.end(), _first);
+		pointer Q = copy_forward(x.begin(), x.end(), _first);
+		Destroy(Q, _last);
+		_last = _first + n;
 	} else if (n <= capacity()) {
-		_last = Copy(_first, x.begin(), x.end());
+		const_iterator S = x.begin() + size();
+		copy_forward(x.begin(), S, _first);
+		_last = Copy(_last, S, x.end());
 	} else {
 		Clean();
 		if (Allocate(n)) {

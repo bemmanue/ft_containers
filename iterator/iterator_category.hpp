@@ -1,7 +1,7 @@
 #ifndef ITERATOR_CATEGORY_HPP
 #define ITERATOR_CATEGORY_HPP
 
-#include "iterator.hpp"
+#include "iterator_tags.hpp"
 
 namespace ft {
 

@@ -1,8 +1,6 @@
 #ifndef ITERATOR_VALUE_TYPE_HPP
 #define ITERATOR_VALUE_TYPE_HPP
 
-#include "iterator.hpp"
-
 namespace ft
 {
 //    template<class It> inline

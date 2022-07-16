@@ -8,9 +8,11 @@ namespace ft {
 template<class T, class Alloc>
 class allocator_type {
 	protected:
-	//	typedef typename Alloc::template rebind<Tree_traits>::other	type;
 		typedef Alloc	type;
-		allocator_type(Alloc A = Alloc()) : allocator(A) {}
+
+		allocator_type(Alloc A = Alloc())
+				: allocator(A) {}
+
 		type	allocator;
 	};
 
@@ -19,7 +21,7 @@ class allocator_type {
 	public:
 		typedef vector<T, Alloc>											vector_type;
 		typedef allocator_type<T, Alloc>									base;
-		typedef typename base::type											allocator_type;
+		typedef typename base::type										allocator_type;
 		typedef T															value_type;
 		typedef typename allocator_type::size_type							size_type;
 		typedef typename allocator_type::difference_type					difference_type;
@@ -37,12 +39,13 @@ class allocator_type {
 		typedef typename ft::reverse_iterator<const_iterator>				const_reverse_iterator;
 
 		//Member functions
-		explicit vector(const allocator_type& alloc = allocator_type());
-		explicit vector(size_t n, const allocator_type& alloc = allocator_type());
-		template <class InputIterator>
-		vector(InputIterator first, InputIterator last);
-		vector(const vector& x);
-		vector& operator= (const vector& x);
+		vector();
+		explicit vector(const allocator_type& alloc);
+		explicit vector(size_type count, const T& value = T(), const allocator_type& alloc = allocator_type());
+		template<class InputIt>
+		vector(InputIt first, InputIt last, const allocator_type& alloc = allocator_type());
+		vector(const vector& other);
+		vector& operator= (const vector_type& x);
 		~vector();
 
 		void					assign(size_type count, const T& value);
@@ -87,7 +90,6 @@ class allocator_type {
 		iterator		erase(iterator first, iterator last);
 		void			push_back(const T& value);
 		void			pop_back();
-		void			resize(size_type count);
 		void			resize(size_type count, T value = T());
 		void			swap(vector& other);
 
@@ -95,7 +97,6 @@ class allocator_type {
 		pointer			_first;
 		pointer			_last;
 		pointer			_end;
-		allocator_type	_allocator;
 
 		bool	Allocate(size_t n);
 		void	Clean();

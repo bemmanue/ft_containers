@@ -1,8 +1,6 @@
 #ifndef RANDOM_ACCESS_ITERATOR_HPP
 #define RANDOM_ACCESS_ITERATOR_HPP
 
-#include "iterator.hpp"
-
 namespace ft {
 
 template<class T, class D, class P, class R, class P2, class R2>

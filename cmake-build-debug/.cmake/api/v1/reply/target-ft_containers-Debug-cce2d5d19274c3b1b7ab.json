@@ -139,7 +139,8 @@
 				45,
 				46,
 				47,
-				48
+				48,
+				49
 			]
 		}
 	],
@@ -159,6 +160,41 @@
 		{
 			"backtrace" : 1,
 			"path" : "vector/vector_base.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "vector/vector_elements_access.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "vector/vector_member_functions.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "vector/vector_template_functions.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "vector/vector_iterators.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "vector/vector_capacity.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "vector/vector_modifiers.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "vector/vector_protected.hpp",
 			"sourceGroupIndex" : 1
 		},
 		{
@@ -223,37 +259,7 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "vector/vector_elements_access.hpp",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
-			"path" : "vector/vector_member_functions.hpp",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
-			"path" : "vector/vector_template_functions.hpp",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
-			"path" : "vector/vector_iterators.hpp",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
-			"path" : "vector/vector_capacity.hpp",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
-			"path" : "vector/vector_modifiers.hpp",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
-			"path" : "vector/vector_protected.hpp",
+			"path" : "algorithm/algorithm.hpp",
 			"sourceGroupIndex" : 1
 		},
 		{

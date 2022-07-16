@@ -1,7 +1,5 @@
-#ifndef ITERATOR_ADVANCE
-#define ITERATOR_ADVANCE
-
-#include "iterator.hpp"
+#ifndef ITERATOR_ADVANCE_HPP
+#define ITERATOR_ADVANCE_HPP
 
 namespace ft {
 
@@ -41,4 +39,4 @@ void	Advance(RanIt& iterator, Distance n, random_access_iterator_tag) {
 
 }
 
-#endif // ITERATOR_ADVANCE
+#endif // ITERATOR_ADVANCE_HPP

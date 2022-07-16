@@ -1,6 +1,8 @@
 #ifndef VECTOR_HPP
 #define VECTOR_HPP
 
+#include "../algorithm/algorithm.hpp"
+
 #include "vector_base.hpp"
 #include "vector_member_functions.hpp"
 #include "vector_elements_access.hpp"

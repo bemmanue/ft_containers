@@ -1,8 +1,6 @@
 #ifndef ITERATOR_DISTANCE_TYPE
 #define ITERATOR_DISTANCE_TYPE
 
-#include "iterator.hpp"
-
 namespace ft {
 
 //    template<class It> inline

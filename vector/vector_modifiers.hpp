@@ -31,7 +31,7 @@ void vector<T, Alloc>::insert(iterator pos, size_type count, const T &value) {
 		size_t new_capacity = (max_size - (capacity / 2)) < capacity ? 0 : (capacity * 2);
 		if (new_capacity < size + count)
 			new_capacity = size + count;
-		pointer new_first = _allocator.Allocate(new_capacity, nullptr);
+		pointer new_first = base::allocator.allocate(new_capacity, nullptr);
 		pointer new_last;
 		try {
 			new_last = Copy(new_first, begin(), pos);
@@ -39,7 +39,7 @@ void vector<T, Alloc>::insert(iterator pos, size_type count, const T &value) {
 			Copy(new_last, pos, end());
 		} catch (...) {
 			Destroy(new_first, new_last);
-			_allocator.deallocate(new_first, new_capacity);
+			base::allocator.deallocate(new_first, new_capacity);
 			throw;
 		}
 		if (_first) {
@@ -102,11 +102,6 @@ void vector<T, Alloc>::push_back(const T &value) {
 template <typename T, class Alloc>
 void vector<T, Alloc>::pop_back() {
 	erase(end() - 1);
-}
-
-template <typename T, class Alloc>
-void vector<T, Alloc>::resize(size_type count) {
-	resize(count, T());
 }
 
 template <typename T, class Alloc>
