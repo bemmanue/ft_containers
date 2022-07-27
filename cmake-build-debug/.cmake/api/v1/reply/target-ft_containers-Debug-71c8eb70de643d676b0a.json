@@ -140,7 +140,14 @@
 				46,
 				47,
 				48,
-				49
+				49,
+				50,
+				51,
+				52,
+				53,
+				54,
+				55,
+				56
 			]
 		}
 	],
@@ -395,6 +402,41 @@
 		{
 			"backtrace" : 1,
 			"path" : "tree/tree_observers.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "utility/enable_if.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "utility/pair.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "utility/is_integral.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "utility/utility.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "utility/equal.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "utility/lexicographical_compare.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "utility/make_pair.hpp",
 			"sourceGroupIndex" : 1
 		}
 	],

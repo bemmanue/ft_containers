@@ -1,0 +1,12 @@
+#ifndef FT_CONTAINERS_LEXICOGRAPHICAL_COMPARE_HPP
+#define FT_CONTAINERS_LEXICOGRAPHICAL_COMPARE_HPP
+
+namespace ft {
+
+class lexicographical_compare {
+
+};
+
+}
+
+#endif //FT_CONTAINERS_LEXICOGRAPHICAL_COMPARE_HPP

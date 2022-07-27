@@ -54,4 +54,4 @@ add_executable(ft_containers
         tree/tree_modifiers.hpp
         tree/tree_capacity.hpp
         tree/tree_observers.hpp
-        )
+        utility/enable_if.hpp utility/pair.hpp utility/is_integral.hpp utility/utility.hpp utility/equal.hpp utility/lexicographical_compare.hpp utility/make_pair.hpp)
