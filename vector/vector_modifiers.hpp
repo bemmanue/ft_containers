@@ -18,52 +18,53 @@ typename vector<T, Alloc>::iterator vector<T, Alloc>::insert(iterator pos, const
 }
 
 template <typename T, class Alloc>
-void vector<T, Alloc>::insert(iterator pos, size_type count, const T &value) {
-	size_t max_size = this->max_size();
+void vector<T, Alloc>::insert(iterator pos, size_type count, const T& value) {
+	T x = value;
 	size_t capacity = this->capacity();
-	size_t size = this->size();
 
 	if (count == 0) {
 		;
-	} else if (count > max_size - size) {
+	} else if (count > max_size() - size()) {
 		throw std::length_error("vector");
-	} else if ((size + count) > capacity) {
-		size_t new_capacity = (max_size - (capacity / 2)) < capacity ? 0 : (capacity * 2);
-		if (new_capacity < size + count)
-			new_capacity = size + count;
-		pointer new_first = base::allocator.allocate(new_capacity, nullptr);
+	} else if (size() + count > capacity) {
+		size_t new_capacity = (max_size() - (capacity / 2)) < capacity ? 0 : (capacity * 2);
+		if (new_capacity < size() + count)
+			new_capacity = size() + count;
+		pointer new_first = base::allocator.allocate(capacity, nullptr);
 		pointer new_last;
 		try {
 			new_last = Copy(new_first, begin(), pos);
-			new_last = Fill(new_last, count, value);
+			new_last = Fill(new_last, count, x);
 			Copy(new_last, pos, end());
 		} catch (...) {
 			Destroy(new_first, new_last);
 			base::allocator.deallocate(new_first, new_capacity);
 			throw;
 		}
-		if (_first) {
-			Clean();
+		if (_first != 0) {
+			Destroy(_first, _last);
+			base::allocator.deallocate(new_first, new_capacity);
+			throw;
 		}
-		_first = new_first;
-		_last = new_first + size + count;
 		_end = new_first + new_capacity;
+		_last = new_first + this->size() + count;
+		_first = new_first;
 	}
 	else if ((size_type)(end() - pos) < count) {
 		Copy(pos.base(), pos, end());
 		try {
-			Fill(_last, count - (end() - pos), value);
+			Fill(_last, count - (end() - pos), x);
 		} catch (...) {
 			Destroy(pos.base() + count, _last + count);
 			throw;
 		}
 		_last += count;
-		Fill(pos, pos + count, value);
+		fill(pos, end() - count, x);
 	} else {
-		iterator end = end();
-		_last = Copy(_last, end - count, _end);
-		copy_backward(pos, end - count, end);
-		fill(pos, pos + count, value);
+		iterator new_end = end();
+		_last = Copy(_last, new_end - count, new_end);
+		copy_backward(pos, new_end - count, new_end);
+		fill(pos, pos + count, x);
 	}
 }
 
@@ -76,7 +77,7 @@ void vector<T, Alloc>::insert(iterator pos, InputIt first, InputIt last) {
 // Removes the element at pos
 template <typename T, class Alloc>
 typename vector<T, Alloc>::iterator vector<T, Alloc>::erase(iterator pos) {
-	Copy(pos, pos + 1, end());
+	copy_forward(pos + 1, end(), pos);
 	Destroy(_last - 1, _last);
 	_last--;
 	return (pos);
@@ -105,24 +106,24 @@ void vector<T, Alloc>::pop_back() {
 }
 
 template <typename T, class Alloc>
-void vector<T, Alloc>::resize(size_type count, T value) {
-	if (size() < count) {
-		insert(end(), count - size(), value);
-	} else if (count < size()) {
-		erase(begin() + count, end());
+void vector<T, Alloc>::resize(size_type n, T value) {
+	if (size() < n) {
+		insert(end(), n - size(), value);
+	} else if (n < size()) {
+		erase(begin() + n, end());
 	}
 }
 
 template <typename T, class Alloc>
-void vector<T, Alloc>::swap(vector& other) {
-	if (base::allocator_type == other.allocator_type) {
+void vector<T, Alloc>::swap(vector_type& other) {
+	if (base::allocator == other.allocator) {
 		std::swap(_first, other._first);
 		std::swap(_last, other._last);
 		std::swap(_end, other._end);
 	} else {
-		vector temp = *this;
+		vector_type temp = *this;
 		*this = other;
-		other = this;
+		other = temp;
 	}
 }
 

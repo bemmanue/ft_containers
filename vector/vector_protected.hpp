@@ -138,9 +138,9 @@ void    vector<T, Alloc>::Insert(iterator pos, It first, It last, forward_iterat
 		if (_first) {
 			Clean();
 		}
-		_first = new_first;
-		_last = new_first + size + n;
 		_end = new_first + new_capacity;
+		_last = new_first + size + n;
+		_first = new_first;
 	} else if (n > (size_type)(end() - pos)) {
 		Copy(pos.base() + n, pos, end());
 		It mid = first;

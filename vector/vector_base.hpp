@@ -1,7 +1,9 @@
 #ifndef VECTOR_BASE_HPP
 #define VECTOR_BASE_HPP
 
-#include "../iterator/iterator.hpp"
+#include "../iterator2/iterator.hpp"
+#include "../algorithm/algorithm.hpp"
+#include "../utility/utility.hpp"
 
 namespace ft {
 
@@ -21,7 +23,7 @@ class allocator_type {
 	public:
 		typedef vector<T, Alloc>											vector_type;
 		typedef allocator_type<T, Alloc>									base;
-		typedef typename base::type										allocator_type;
+		typedef typename base::type											allocator_type;
 		typedef T															value_type;
 		typedef typename allocator_type::size_type							size_type;
 		typedef typename allocator_type::difference_type					difference_type;
@@ -90,7 +92,7 @@ class allocator_type {
 		iterator		erase(iterator first, iterator last);
 		void			push_back(const T& value);
 		void			pop_back();
-		void			resize(size_type count, T value = T());
+		void			resize(size_type n, T value = T());
 		void			swap(vector& other);
 
 	protected:
@@ -124,6 +126,37 @@ class allocator_type {
 		void	Insert(iterator pos, It first, It last, forward_iterator_tag);
 
 };
+
+template<class T, class Alloc> inline
+bool operator==(const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs) {
+	return (lhs.size() == rhs.size() && ft::equal(lhs.begin(), lhs.end(), rhs.begin()));
+}
+
+template<class T, class Alloc> inline
+bool operator!=(const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs) {
+	return (!(lhs == rhs));
+}
+
+template<class T, class Alloc> inline
+bool operator<(const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs) {
+	return (ft::lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end()));
+}
+
+template<class T, class Alloc> inline
+bool operator>(const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs) {
+	return (rhs < lhs);
+}
+
+template<class T, class Alloc> inline
+bool operator<=(const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs) {
+	return (!(rhs < lhs));
+}
+
+template<class T, class Alloc> inline
+bool operator>=(const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs) {
+	return (!(lhs < rhs));
+}
+
 
 }
 

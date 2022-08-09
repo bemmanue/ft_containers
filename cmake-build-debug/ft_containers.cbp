@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="ft_containers"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/uliakulikova/Desktop/ft_containers/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/uliakulikova/Desktop/ft_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/uliakulikova/Desktop/ft_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/uliakulikova/Desktop/ft_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/uliakulikova/Desktop/ft_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/uliakulikova/Desktop/ft_containers/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/uliakulikova/Desktop/ft_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/uliakulikova/Desktop/ft_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/uliakulikova/Desktop/ft_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/uliakulikova/Desktop/ft_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/uliakulikova/Desktop/ft_containers/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/uliakulikova/Desktop/ft_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/uliakulikova/Desktop/ft_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/uliakulikova/Desktop/ft_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/uliakulikova/Desktop/ft_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ft_containers">
+				<Option output="/Users/uliakulikova/Desktop/ft_containers/cmake-build-debug/ft_containers" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/uliakulikova/Desktop/ft_containers/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/uliakulikova/Desktop/ft_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 ft_containers"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/uliakulikova/Desktop/ft_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/uliakulikova/Desktop/ft_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/uliakulikova/Desktop/ft_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ft_containers/fast">
+				<Option output="/Users/uliakulikova/Desktop/ft_containers/cmake-build-debug/ft_containers" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/uliakulikova/Desktop/ft_containers/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/uliakulikova/Desktop/ft_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 ft_containers/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/uliakulikova/Desktop/ft_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/uliakulikova/Desktop/ft_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/uliakulikova/Desktop/ft_containers/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/algorithm/algorithm.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/algorithm/copy.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/algorithm/equal.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/algorithm/fill.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/algorithm/lexicographical_compare.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/algorithm/mismatch.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/iterator/iterator.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/iterator/iterator_advance.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/iterator/iterator_base.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/iterator/iterator_category.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/iterator/iterator_distance.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/iterator/iterator_distance_type.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/iterator/iterator_swap.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/iterator/iterator_tags.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/iterator/iterator_traits.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/iterator/iterator_value_type.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/iterator/random_access_iterator.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/iterator/reverse_iterator.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/iterator2/Dist_type.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/iterator2/Val_type.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/iterator2/iter_advance.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/iterator2/iter_cat.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/iterator2/iter_distance.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/iterator2/iter_swap.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/iterator2/iterator.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/iterator2/iterator_category.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/iterator2/iterator_tag.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/iterator2/iterator_traits.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/iterator2/random_access_iterator.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/iterator2/reverse_iterator.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/main.cpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/map/map_base.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/set/set.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/set/set_constructors.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/set/set_traits.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/stack/stack.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/stack/stack_capacity.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/stack/stack_element_access.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/stack/stack_member_functions.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/stack/stack_modifiers.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/stack/stack_non_member_functions.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/tree/const_tree_iterator.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/tree/tree.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/tree/tree_base.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/tree/tree_capacity.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/tree/tree_constructors.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/tree/tree_iterator.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/tree/tree_iterators.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/tree/tree_lookup.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/tree/tree_modifiers.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/tree/tree_nod.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/tree/tree_observers.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/tree/tree_protected.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/tree/tree_ptr.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/tree/tree_traits.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/tree/tree_value.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/utility/enable_if.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/utility/is_integral.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/utility/make_pair.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/utility/pair.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/utility/utility.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/vector/vector.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/vector/vector_base.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/vector/vector_capacity.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/vector/vector_elements_access.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/vector/vector_iterators.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/vector/vector_member_functions.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/vector/vector_modifiers.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/vector/vector_oerator_overloads.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/vector/vector_protected.hpp">
+			<Option target="ft_containers"/>
+		</Unit>
+		<Unit filename="/Users/uliakulikova/Desktop/ft_containers/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

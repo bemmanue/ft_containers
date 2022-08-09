@@ -1,5 +1,5 @@
-#ifndef FT_CONTAINERS_IS_INTEGRAL_HPP
-#define FT_CONTAINERS_IS_INTEGRAL_HPP
+#ifndef UTILITY_IS_INTEGRAL_HPP
+#define UTILITY_IS_INTEGRAL_HPP
 
 #include <iostream>
 
@@ -67,4 +67,4 @@ struct is_integral<unsigned long long>	:  public std::integral_constant<bool, tr
 
 }
 
-#endif //FT_CONTAINERS_IS_INTEGRAL_HPP
+#endif //UTILITY_IS_INTEGRAL_HPP

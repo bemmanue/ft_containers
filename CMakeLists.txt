@@ -1,15 +1,27 @@
-cmake_minimum_required(VERSION 3.21)
+cmake_minimum_required(VERSION 3.20)
 project(ft_containers)
 
 set(CMAKE_CXX_STANDARD 98)
 
 add_executable(ft_containers
         main.cpp
+        iterator2/Dist_type.hpp
+        iterator2/iter_advance.hpp
+        iterator2/iter_cat.hpp
+        iterator2/iter_distance.hpp
+        iterator2/iter_swap.hpp
+        iterator2/iterator.hpp
+        iterator2/iterator_category.hpp
+        iterator2/iterator_tag.hpp
+        iterator2/iterator_traits.hpp
+        iterator2/random_access_iterator.hpp
+        iterator2/reverse_iterator.hpp
+        iterator2/Val_type.hpp
         vector/vector.hpp
         vector/vector_base.hpp
         vector/vector_elements_access.hpp
         vector/vector_member_functions.hpp
-        vector/vector_template_functions.hpp
+        vector/vector_oerator_overloads.hpp
         vector/vector_iterators.hpp
         vector/vector_capacity.hpp
         vector/vector_modifiers.hpp
@@ -27,7 +39,9 @@ add_executable(ft_containers
         iterator/iterator_advance.hpp
         iterator/iterator_distance.hpp
         algorithm/algorithm.hpp
+        algorithm/lexicographical_compare.hpp
         algorithm/copy.hpp
+        algorithm/equal.hpp
         algorithm/fill.hpp
         stack/stack.hpp
         stack/stack_capacity.hpp
@@ -54,4 +68,8 @@ add_executable(ft_containers
         tree/tree_modifiers.hpp
         tree/tree_capacity.hpp
         tree/tree_observers.hpp
-        utility/enable_if.hpp utility/pair.hpp utility/is_integral.hpp utility/utility.hpp utility/equal.hpp utility/lexicographical_compare.hpp utility/make_pair.hpp)
+        utility/enable_if.hpp
+        utility/pair.hpp
+        utility/is_integral.hpp
+        utility/utility.hpp
+        utility/make_pair.hpp algorithm/mismatch.hpp)

@@ -3,8 +3,6 @@
 
 #include "enable_if.hpp"
 #include "is_integral.hpp"
-#include "equal.hpp"
-#include "lexicographical_compare.hpp"
 #include "pair.hpp"
 #include "make_pair.hpp"
 

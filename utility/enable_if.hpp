@@ -1,5 +1,5 @@
-#ifndef FT_CONTAINERS_ENABLE_IF_HPP
-#define FT_CONTAINERS_ENABLE_IF_HPP
+#ifndef UTILITY_ENABLE_IF_HPP
+#define UTILITY_ENABLE_IF_HPP
 
 namespace ft {
 
@@ -13,4 +13,4 @@ struct enable_if<true, T> {
 
 }
 
-#endif //FT_CONTAINERS_ENABLE_IF_HPP
+#endif //UTILITY_ENABLE_IF_HPP

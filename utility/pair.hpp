@@ -1,5 +1,5 @@
-#ifndef FT_CONTAINERS_PAIR_HPP
-#define FT_CONTAINERS_PAIR_HPP
+#ifndef UTILITY_PAIR_HPP
+#define UTILITY_PAIR_HPP
 
 namespace ft {
 
@@ -54,4 +54,4 @@ pair<T1, T2> make_pair(const T1& first, const T2& second) {
 
 }
 
-#endif //FT_CONTAINERS_PAIR_HPP
+#endif //UTILITY_PAIR_HPP
