@@ -238,8 +238,8 @@ typename tree<T>::nodeptr tree<T>::Ubound(const key_type& Kv) const {
 template<class T>
 typename tree<T>::nodeptr tree<T>::Buynode(nodeptr parg, char Carg) {
 	nodeptr S = this->Alnod.allocate(1);
-	this->Alptr.construct(&Left(S), nullptr);
-	this->Alptr.construct(&Right(S), nullptr);
+	this->Alptr.construct(&Left(S), (void *)0);
+	this->Alptr.construct(&Right(S), (void *)0);
 	this->Alptr.construct(&Parent(S), parg);
 	Color(S) = Carg;
 	Isnil(S) = false;

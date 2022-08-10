@@ -7,13 +7,13 @@ namespace ft {
 
 template <typename T, class Alloc>
 bool vector<T, Alloc>::Allocate(size_t n) {
-	_first = _last = _end = nullptr;
+	_first = _last = _end = 0;
 	if (!n) {
 		return false;
 	} else if (n > max_size()) {
 		throw std::length_error("vector");
 	} else {
-		_first = _last = base::allocator.allocate(n, nullptr);
+		_first = _last = base::allocator.allocate(n, (void *)0);
 		_end = _first + n;
 		return true;
 	}
@@ -25,7 +25,7 @@ void vector<T, Alloc>::Clean() {
 		Destroy(_first, _last);
 		base::allocator.deallocate(_first, capacity());
 	}
-	_first = _last = _end = nullptr;
+	_first = _last = _end = 0;
 }
 
 template <typename T, class Alloc>
@@ -124,7 +124,7 @@ void    vector<T, Alloc>::Insert(iterator pos, It first, It last, forward_iterat
 		size_type new_capacity = max_size - capacity / 2 < capacity ? 0 : capacity * 2;
 		if (new_capacity < size + n)
 			new_capacity = size + n;
-		pointer new_first = base::allocator.allocate(new_capacity, nullptr);
+		pointer new_first = base::allocator.allocate(new_capacity, (void *)0);
 		pointer new_last;
 		try {
 			new_last = Copy(new_first, begin(), pos);

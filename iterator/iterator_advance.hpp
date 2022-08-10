@@ -1,6 +1,8 @@
 #ifndef ITERATOR_ADVANCE_HPP
 #define ITERATOR_ADVANCE_HPP
 
+#include "iterator_tags.hpp"
+
 namespace ft {
 
 template<class InIt, class Distance> inline
@@ -10,26 +12,22 @@ void	advance(InIt& I, Distance N) {
 
 template<class InIt, class Distance> inline
 void	Advance(InIt& iterator, Distance n, input_iterator_tag) {
-	while (n-- > 0) {
+	for (; 0 < n; --n)
 		++iterator;
-	}
 }
 
 template<class FwdIt, class Distance> inline
 void	Advance(FwdIt& iterator, Distance n, forward_iterator_tag) {
-	while (n-- > 0) {
+	for (; 0 < n; --n)
 		++iterator;
-	}
 }
 
 template<class BidIt, class Distance> inline
 void	Advance(BidIt& iterator, Distance n, bidirectional_iterator_tag) {
-	while (n-- > 0) {
+	for (; 0 < n; --n)
 		++iterator;
-	}
-	while (n++ < 0) {
+	for (; n < 0; ++n)
 		--iterator;
-	}
 }
 
 template<class RanIt, class Distance> inline

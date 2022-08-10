@@ -35,7 +35,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk -mmacosx-version-min=11.0"
+					"fragment" : "-g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.6"
 				},
 				{
 					"fragment" : "-std=gnu++98"
@@ -159,8 +159,7 @@
 				65,
 				66,
 				67,
-				68,
-				69
+				68
 			]
 		}
 	],
@@ -254,7 +253,7 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "vector/vector_oerator_overloads.hpp",
+			"path" : "vector/vector_operator_overloads.hpp",
 			"sourceGroupIndex" : 1
 		},
 		{
@@ -505,11 +504,6 @@
 		{
 			"backtrace" : 1,
 			"path" : "utility/utility.hpp",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
-			"path" : "utility/make_pair.hpp",
 			"sourceGroupIndex" : 1
 		},
 		{

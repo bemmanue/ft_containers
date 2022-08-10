@@ -30,7 +30,7 @@ void vector<T, Alloc>::insert(iterator pos, size_type count, const T& value) {
 		size_t new_capacity = (max_size() - (capacity / 2)) < capacity ? 0 : (capacity * 2);
 		if (new_capacity < size() + count)
 			new_capacity = size() + count;
-		pointer new_first = base::allocator.allocate(capacity, nullptr);
+		pointer new_first = base::allocator.allocate(capacity, (void *)0);
 		pointer new_last;
 		try {
 			new_last = Copy(new_first, begin(), pos);
@@ -82,7 +82,6 @@ typename vector<T, Alloc>::iterator vector<T, Alloc>::erase(iterator pos) {
 	_last--;
 	return (pos);
 }
-
 
 // Removes the elements in the range
 template <typename T, class Alloc>

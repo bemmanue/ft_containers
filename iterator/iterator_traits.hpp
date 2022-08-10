@@ -1,6 +1,10 @@
 #ifndef ITERATOR_TRAITS_HPP
 #define ITERATOR_TRAITS_HPP
 
+#include "iostream"
+
+#include "iterator_tags.hpp"
+
 namespace ft {
 
 template<class Iterator>
@@ -32,4 +36,4 @@ struct iterator_traits<const T *> {
 
 }
 
-#endif // ITERATOR_TRAITS_HPP
+#endif //ITERATOR_TRAITS_HPP

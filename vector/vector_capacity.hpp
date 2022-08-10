@@ -14,7 +14,7 @@ bool vector<T, Alloc>::empty() const {
 //Returns the number of elements in the container
 template<typename T, class Alloc>
 typename vector<T, Alloc>::size_type vector<T, Alloc>::size() const {
-	return (_first == nullptr ? 0 : _last - _first);
+	return (_first == (void *)0 ? 0 : _last - _first);
 }
 
 //Returns the maximum number of elements the container is able to hold
@@ -29,7 +29,7 @@ void vector<T, Alloc>::reserve(size_type n) {
 	if (n > max_size())
 		throw std::length_error("vector");
 	else if (capacity() < n) {
-		pointer new_first = base::allocator.allocate(n, nullptr);
+		pointer new_first = base::allocator.allocate(n, (void *)0);
 		try {
 			Copy(new_first, begin(), end());
 		} catch (...) {
@@ -49,7 +49,7 @@ void vector<T, Alloc>::reserve(size_type n) {
 //Returns the number of elements that the container has currently allocated space for
 template<typename T, class Alloc>
 typename vector<T, Alloc>::size_type vector<T, Alloc>::capacity() const {
-	return (_first == nullptr ? 0 : _end - _first);
+	return (_first == 0 ? 0 : _end - _first);
 }
 
 }

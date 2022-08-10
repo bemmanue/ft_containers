@@ -21,7 +21,7 @@ add_executable(ft_containers
         vector/vector_base.hpp
         vector/vector_elements_access.hpp
         vector/vector_member_functions.hpp
-        vector/vector_oerator_overloads.hpp
+        vector/vector_operator_overloads.hpp
         vector/vector_iterators.hpp
         vector/vector_capacity.hpp
         vector/vector_modifiers.hpp
@@ -72,4 +72,4 @@ add_executable(ft_containers
         utility/pair.hpp
         utility/is_integral.hpp
         utility/utility.hpp
-        utility/make_pair.hpp algorithm/mismatch.hpp)
+        algorithm/mismatch.hpp)

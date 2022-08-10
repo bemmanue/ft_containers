@@ -39,13 +39,13 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = /Users/bemmanue/Documents/ft_containers/cmake-build-debug/
+cmake_ninja_workdir = /Users/bemmanue/Desktop/ft_containers/cmake-build-debug/
 
 #############################################
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /Users/bemmanue/Documents/ft_containers/cmake-build-debug && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --regenerate-during-build -S/Users/bemmanue/Documents/ft_containers -B/Users/bemmanue/Documents/ft_containers/cmake-build-debug
+  COMMAND = cd /Users/bemmanue/Desktop/ft_containers/cmake-build-debug && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --regenerate-during-build -S/Users/bemmanue/Desktop/ft_containers -B/Users/bemmanue/Desktop/ft_containers/cmake-build-debug
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -57,7 +57,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /Users/bemmanue/Documents/ft_containers/cmake-build-debug && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /Users/bemmanue/Desktop/ft_containers/cmake-build-debug && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -72,7 +72,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 
 build cmake_object_order_depends_target_ft_containers: phony || CMakeFiles/ft_containers.dir
 
-build CMakeFiles/ft_containers.dir/main.cpp.o: CXX_COMPILER__ft_containers_Debug /Users/bemmanue/Documents/ft_containers/main.cpp || cmake_object_order_depends_target_ft_containers
+build CMakeFiles/ft_containers.dir/main.cpp.o: CXX_COMPILER__ft_containers_Debug /Users/bemmanue/Desktop/ft_containers/main.cpp || cmake_object_order_depends_target_ft_containers
   DEP_FILE = CMakeFiles/ft_containers.dir/main.cpp.o.d
   FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.6 -std=gnu++98
   OBJECT_DIR = CMakeFiles/ft_containers.dir
@@ -103,7 +103,7 @@ build ft_containers: CXX_EXECUTABLE_LINKER__ft_containers_Debug CMakeFiles/ft_co
 # =============================================================================
 
 #############################################
-# Folder: /Users/bemmanue/Documents/ft_containers/cmake-build-debug
+# Folder: /Users/bemmanue/Desktop/ft_containers/cmake-build-debug
 
 build all: phony ft_containers
 

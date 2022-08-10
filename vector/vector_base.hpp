@@ -1,7 +1,7 @@
 #ifndef VECTOR_BASE_HPP
 #define VECTOR_BASE_HPP
 
-#include "../iterator2/iterator.hpp"
+#include "../iterator/iterator.hpp"
 #include "../algorithm/algorithm.hpp"
 #include "../utility/utility.hpp"
 
@@ -12,8 +12,7 @@ class allocator_type {
 	protected:
 		typedef Alloc	type;
 
-		allocator_type(Alloc A = Alloc())
-				: allocator(A) {}
+		allocator_type(Alloc A = Alloc()) : allocator(A) {}
 
 		type	allocator;
 	};
@@ -126,37 +125,6 @@ class allocator_type {
 		void	Insert(iterator pos, It first, It last, forward_iterator_tag);
 
 };
-
-template<class T, class Alloc> inline
-bool operator==(const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs) {
-	return (lhs.size() == rhs.size() && ft::equal(lhs.begin(), lhs.end(), rhs.begin()));
-}
-
-template<class T, class Alloc> inline
-bool operator!=(const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs) {
-	return (!(lhs == rhs));
-}
-
-template<class T, class Alloc> inline
-bool operator<(const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs) {
-	return (ft::lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end()));
-}
-
-template<class T, class Alloc> inline
-bool operator>(const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs) {
-	return (rhs < lhs);
-}
-
-template<class T, class Alloc> inline
-bool operator<=(const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs) {
-	return (!(rhs < lhs));
-}
-
-template<class T, class Alloc> inline
-bool operator>=(const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs) {
-	return (!(lhs < rhs));
-}
-
 
 }
 

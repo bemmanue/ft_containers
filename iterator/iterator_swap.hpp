@@ -1,5 +1,5 @@
-#ifndef ITERATOR_SWAP
-#define ITERATOR_SWAP
+#ifndef ITERATOR_SWAP_HPP
+#define ITERATOR_SWAP_HPP
 
 namespace ft {
 
@@ -17,4 +17,4 @@ void Iter_swap(FwdIt1 x, FwdIt2 y, T*) {
 
 }
 
-#endif
+#endif //ITERATOR_SWAP_HPP

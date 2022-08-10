@@ -1,6 +1,9 @@
 #ifndef REVERSE_ITERATOR_HPP
 #define REVERSE_ITERATOR_HPP
 
+#include "iterator_base.hpp"
+#include "iterator_traits.hpp"
+
 namespace ft {
 
 template<class RanIt>
@@ -12,9 +15,9 @@ class reverse_iterator: public ft::iterator<
 	typename ft::iterator_traits<RanIt>::reference>
 {
 	public:
-		typedef typename ft::iterator_traits<RanIt>::difference_type		difference_type;
-		typedef typename ft::iterator_traits<RanIt>::pointer				pointer;
-		typedef typename ft::iterator_traits<RanIt>::reference				reference;
+		typedef typename ft::iterator_traits<RanIt>::difference_type	difference_type;
+		typedef typename ft::iterator_traits<RanIt>::pointer			pointer;
+		typedef typename ft::iterator_traits<RanIt>::reference			reference;
 
 		reverse_iterator() {}
 
@@ -52,12 +55,12 @@ class reverse_iterator: public ft::iterator<
 			return temp;
 		}
 
-		reverse_iterator& operator+= (difference_type n) {
+		reverse_iterator& operator+=(difference_type n) {
 			current -= n;
 			return *this;
 		}
 
-		reverse_iterator operator- (difference_type n) const {
+		reverse_iterator operator-(difference_type n) const {
 			return reverse_iterator(current + n);
 		}
 
@@ -72,16 +75,16 @@ class reverse_iterator: public ft::iterator<
 			return temp;
 		}
 
-		reverse_iterator& operator-= (difference_type n) {
+		reverse_iterator& operator-=(difference_type n) {
 			current += n;
 			return *this;
 		}
 
 		pointer operator->() const {
-			return std::addressof(operator*());
+			return &**this;
 		}
 
-		reference operator[] (difference_type n) const {
+		reference operator[](difference_type n) const {
 			return *(*this + n);
 		}
 
@@ -122,4 +125,4 @@ bool operator>= (const reverse_iterator<Iterator1>& lhs, const reverse_iterator<
 
 }
 
-#endif // REVERSE_ITERATOR_HPP
+#endif //REVERSE_ITERATOR_HPP
