@@ -21,15 +21,10 @@ class reverse_iterator: public ft::iterator<
 
 		reverse_iterator() {}
 
-		explicit reverse_iterator(RanIt iterator): current(iterator) {}
+		reverse_iterator(RanIt iterator): current(iterator) {}
 
 		template<class Iter>
 		reverse_iterator(const reverse_iterator<Iter>& other): current(other.base()) {}
-
-		template<class Iter>
-		reverse_iterator& operator=(const reverse_iterator<Iter>& other) {
-			current = other.base();
-		}
 
 		RanIt base() const {
 			return current;

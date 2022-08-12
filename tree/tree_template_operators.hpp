@@ -1,46 +1,46 @@
-#ifndef FT_CONTAINERS_tREE_OPERATORS_HPP
-#define FT_CONTAINERS_tREE_OPERATORS_HPP
+#ifndef TREE_OPERATORS_HPP
+#define TREE_OPERATORS_HPP
 
 #include "tree_base.hpp"
+#include "../algorithm/algorithm.hpp"
 
 namespace ft {
 
-template <class Traits> inline
-void swap(tree<Traits>& X, tree<Traits>& Y) {
-	X.swap(Y);
+template<class Tree_traits> inline
+void swap(tree<Tree_traits>& lhs, tree<Tree_traits>& rhs) {
+	lhs.swap(rhs);
 }
 
-template <class Traits> inline
-bool operator== (const tree<Traits>& X, const tree<Traits>& Y) {
-	return (X.size() == Y.size() && equal(X.begin(), X.end(), Y.begin()));
+template<class Tree_traits> inline
+bool operator==(const tree<Tree_traits>& lhs, const tree<Tree_traits>& rhs) {
+	return (lhs.size() == rhs.size() && equal(lhs.begin(), lhs.end(), rhs.begin()));
 }
 
-template <class Traits> inline
-bool operator!= (const tree<Traits>& X, const tree<Traits>& Y) {
-	return !(X == Y);
+template<class Tree_traits> inline
+bool operator!=(const tree<Tree_traits>& lhs, const tree<Tree_traits>& rhs) {
+	return !(lhs == rhs);
 }
 
-template <class Traits> inline
-bool operator< (const tree<Traits>& X, const tree<Traits>& Y) {
-	return ft::lexicographical_compare(X.begin(), X.end(), Y.begin(), Y.end(), X.value_comp());
+template<class Tree_traits> inline
+bool operator<(const tree<Tree_traits>& lhs, const tree<Tree_traits>& rhs) {
+	return ft::lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end(), lhs.value_comp());
 }
 
-template <class Traits> inline
-bool operator> (const tree<Traits>& X, const tree<Traits>& Y) {
-	return Y < X;
+template<class Tree_traits> inline
+bool operator>(const tree<Tree_traits>& lhs, const tree<Tree_traits>& rhs) {
+	return rhs < lhs;
 }
 
-template <class Traits> inline
-bool operator<= (const tree<Traits>& X, const tree<Traits>& Y) {
-	return !(Y < X);
+template<class Tree_traits> inline
+bool operator<=(const tree<Tree_traits>& lhs, const tree<Tree_traits>& rhs) {
+	return !(rhs < lhs);
 }
 
-template <class Traits> inline
-bool operator>= (const tree<Traits>& X, const tree<Traits>& Y) {
-	return !(X < Y);
+template<class Tree_traits> inline
+bool operator>=(const tree<Tree_traits>& lhs, const tree<Tree_traits>& rhs) {
+	return !(lhs < rhs);
 }
 
 }
 
-
-#endif //FT_CONTAINERS_tREE_OPERATORS_HPP
+#endif //TREE_OPERATORS_HPP

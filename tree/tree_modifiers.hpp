@@ -1,194 +1,206 @@
-#ifndef FT_CONTAINERS_TREE_MODIFIERS_HPP
-#define FT_CONTAINERS_TREE_MODIFIERS_HPP
+#ifndef TREE_MODIFIERS_HPP
+#define TREE_MODIFIERS_HPP
 
-#include "tree.hpp"
+#include "tree_base.hpp"
 
 namespace ft {
 
-template<class T>
-typename tree<T>::pairib tree<T>::insert(const value_type& v) {
-	nodeptr x = Root();
-	nodeptr y = Head;
-	bool Addleft = true;
-	while (!isnil(x)) {
-		y = x;
-		Addleft = comp(Kfn()(v), Key(x));
-		x = Addleft ? Left(x) : Right(x);
-	}
-	iterator P = iterator(y);
-	if (Addleft)
-		;
-	else if (P == begin())
-		return (pairib(Insert(true, y, v), true));
-	else
-		--P;
-	if (comp(Key(P.Mynode()), Kfn()(v)))
-		return (pairib(Insert(Addleft, y, v), true));
-	else
-		return (pairib(P, false));
+template<class Tree_traits>
+typename tree<Tree_traits>::Pairib tree<Tree_traits>::insert(const value_type& v) {
+	Nodeptr	X = Root();
+	Nodeptr	Y = Head;
+	bool	Addleft = true;
 
+	while (!Isnil(X))
+	{
+		Y = X;
+		Addleft = Tree_traits::comp(Tree_traits::GetKey(v), Key(X));
+		X = Addleft ? Left(X) : Right(X);
+	}
+	iterator P = iterator(Y);
+	if (!Addleft) {
+		;
+	} else if (P == begin()) {
+		return Pairib(Insert(true, Y, v), true);
+	} else {
+		--P;
+	}
+	if (Tree_traits::comp(Key(P.Mynode()), Tree_traits::GetKey(v))) {
+		return (Pairib(Insert(Addleft, Y, v), true));
+	} else {
+		return (Pairib(P, false));
+	}
 }
 
-template<class T>
-typename tree<T>::iterator tree<T>::insert(iterator P, const value_type& v) {
+template<class Tree_traits>
+typename tree<Tree_traits>::iterator tree<Tree_traits>::insert(iterator P, const value_type& v) {
 	if (size() == 0) {
-		return (Insert(true, Head, v));
+		return Insert(true, Head, v);
 	} else if (P == begin()) {
-		if (comp(Kfn()(v), Key(P.mynode()))) {
-			return (Insert(true, P.mynode(), v));
-		}
-	} else if (P == end()) {
-		if (comp (Key(Rmost()), Kfn()(v))) {
-			return (Insert(false, Rmost(), v));
-		}
+		if (Tree_traits::comp(Tree_traits::GetKey(v), Key(P.Mynode())))
+			return Insert(false, Rmost(), v);
 	} else {
 		iterator Pb = P;
-		if (comp(Key((--Pb) - Mynode()), Kfn()(v)) && comp(Kfn()(v), Key(P.mynode()))) {
-			if (isnil(Right(Pb.mynode()))) {
-				return (Insert(false, Pb.mynode(), v));
-			} else {
-				return (Insert(true, Pb.mynode(), v));
-			}
+		if (Tree_traits::comp(Key((--Pb).Mynode()), Tree_traits::GetKey(v))
+			&& Tree_traits::comp(Tree_traits::GetKey(v), Key(P.Mynode())))
+		{
+			if (Isnil(Right(Pb.Mynode())))
+				return Insert(false, Pb.Mynode(), v);
+			else
+				return Insert(true, P.Mynode(), v);
 		}
-		return (insert(v).first);
 	}
+	return insert(v).first;
 }
 
-template<class T>
+template<class Tree_traits>
 template<class It>
-void tree<T>::insert(It F, It L) {
+void tree<Tree_traits>::insert(It F, It L) {
 	for (; F != L; ++F) {
 		insert(*F);
 	}
 }
 
-template<class T>
-typename tree<T>::iterator tree<T>::erase(iterator P) {
-	if (isnil(P.mynode()))
-		throw std::out_of_range("tree");
-	nodeptr x, xpar;
-	nodeptr y = (P++).mynode();
-	nodeptr z = y;
-	if (isnil(left(y))) {
-		x = right(y);
-	} else if (isnil(right(y))) {
-		x = left(y);
-	} else {
-		y = min(right(y), x = right(y));
-	}
-	if (y == z) {
-		xpar = parent(z);
-		if (!isnil(x)) {
-			parent(x) == xpar;
-		}
-		if (Root() == z) {
-			Root() = x;
-		} else if (left(xpar) == z) {
-			left(xpar) = x;
-		} else {
-			right(xpar) = x;
-		}
-		if (Lmost() != z) {
+template<class Tree_traits>
+typename tree<Tree_traits>::iterator tree<Tree_traits>::erase(iterator P) {
+	if (Isnil(P.Mynode()))
+		throw std::out_of_range("map/set<T> iterator");
+	Nodeptr X;
+	Nodeptr Xpar;
+	Nodeptr Y = (P++).Mynode();
+	Nodeptr	Z = Y;
+	if (Isnil(Left(Y)))
+		X = Right(Y);
+	else if (Isnil(Right(Y)))
+		X = Left(Y);
+	else
+		Y = Min(Right(Y)), X = Right(Y);
+	if (Y == Z)
+	{
+		Xpar = Parent(Z);
+		if (!Isnil(X))
+			Parent(X) = Xpar;
+		if (Root() == Z)
+			Root() = X;
+		else if (Left(Xpar) == Z)
+			Left(Xpar) = X;
+		else
+			Right(Xpar) = X;
+		if (Lmost() != Z)
 			;
-		} else if (isnil(right(z))) {
-			Lmost() = xpar;
-		} else {
-			Lmost() = Min(x);
-		}
-		if (Rmost() != z) {
+		else if (Isnil(Right(Z)))
+			Lmost() = Xpar;
+		else
+			Lmost() = Min(X);
+		if (Rmost() != Z)
 			;
-		} else if (isnil(left(z))) {
-			Rmost() = xpar;
-		} else {
-			Rmost() = Max(x);
-		}
-	} else {
-		parent(left(z)) = y;
-		left(y) = left(z);
-		if (y == right(z)) {
-			xpar = y;
-		} else {
-			xpar = parent(y);
-			if (!isnil(x))
-				parent(x) = xpar;
-			left(xpar) = x;
-			right(y) = right(z);
-			parent(right(z)) = y;
-		}
-		if (Root() == z) {
-			Root() = y;
-		} else if (left(parent(z)) == z) {
-			left(parent(z)) = y;
-		} else {
-			right(parent(z)) = y;
-		}
-		parent(y) = parent(z);
-		std::swap(color(y), color(z));
+		else if (Isnil(Left(Z)))
+			Rmost() = Xpar;
+		else
+			Rmost() = Max(X);
 	}
-	if (color(z) == Black) {
-		for (; x != Root() && color(x) == Black; xpar = parent(x)) {
-			if (x == left(xpar)) {
-				nodeptr w = right(xpar);
-				if (color(w) == Red) {
-					color(w) = Black;
-					color(xpar) = Red;
-					Lrotate(xpar);
-					w = right(xpar);
+	else
+	{
+		Parent(Left(Z)) = Y;
+		Left(Y) = Left(Z);
+		if (Y == Right(Z))
+			Xpar = Y;
+		else
+		{
+			Xpar = Parent(Y);
+			if (!Isnil(X))
+				Parent(X) = Xpar;
+			Left(Xpar) = X;
+			Right(Y) = Right(Z);
+			Parent(Right(Z)) = Y;
+		}
+		if (Root() == Z)
+			Root() = Y;
+		else if (Left(Parent(Z)) == Z)
+			Left(Parent(Z)) = Y;
+		else
+			Right(Parent(Z)) = Y;
+		Parent(Y) = Parent(Z);
+		std::swap(Color(Y), Color(Z));
+	}
+	if (Color(Z) == Black) //check that we didn't disbalance our tree (erase-fixup)
+	{
+		for (; X != Root() && Color(X) == Black; Xpar = Parent(X))
+		{
+			if (X == Left(Xpar))
+			{
+				Nodeptr W = Right(Xpar);
+				if (Color(W) == Red)
+				{
+					Color(W) = Black;
+					Color(Xpar) = Red;
+					Lrotate(Xpar);
+					W = Right(Xpar);
 				}
-				if (isnil(w)) {
-					x = xpar;
-				} else if (color(left(w)) == Black && color(right(w)) == Black) {
-					color(w) = Red;
-					x = xpar;
-				} else {
-					if (color(right(w)) == Black) {
-						color(left(w)) = Black;
-						color(w) = Red;
-						Rrotate(w);
-						w = right(xpar);
+				if (Isnil(W))
+					X = Xpar; // shouldn't happen
+				else if (Color(Left(W)) == Black && Color(Right(W)) == Black)
+				{
+					Color(W) = Red;
+					X = Xpar;
+				}
+				else
+				{
+					if (Color(Right(W)) == Black)
+					{
+						Color(Left(W)) = Black;
+						Color(W) = Red;
+						Rrotate(W);
+						W = Right(Xpar);
 					}
-					color(w) = color(xpar);
-					color(xpar) = Black;
-					color(right(w)) = Black;
-					Lrotate(xpar);
+					Color(W) = Color(Xpar);
+					Color(Xpar) = Black;
+					Color(Right(W)) = Black;
+					Lrotate(Xpar);
 					break;
 				}
 			}
-			else {
-				nodeptr w = left(xpar);
-				if (color(w) == Red) {
-					color(w) = Black;
-					color(xpar) = Red;
-					Rrotate(xpar);
-					w = left(xpar);
+			else
+			{
+				Nodeptr W = Left(Xpar);
+				if (Color(W) == Red)
+				{
+					Color(W) = Black;
+					Color(Xpar) = Red;
+					Rrotate(Xpar);
+					W = Left(Xpar);
 				}
-				if (isnil(w)) {
-					x = xpar;
-				} else if (color(right(w)) == Black && color(left(w)) == Black) {
-					color(w) = Red;
-					x = xpar;
-				} else {
-					if (color(left(w)) == Black) {
-						color(right(w)) = Black;
-						color(w) = Red;
-						Lrotate(w);
-						w = left(xpar);
+				if (Isnil(W))
+					X = Xpar; //shouldn't happen
+				else if (Color(Right(W)) == Black && Color(Left(W)) == Black)
+				{
+					Color(W) = Red;
+					X = Xpar;
+				}
+				else
+				{
+					if (Color(Left(W)) == Black)
+					{
+						Color(Right(W)) = Black;
+						Color(W) = Red;
+						Lrotate(W);
+						W = Left(Xpar);
 					}
-					color(w) = color(xpar);
-					color(xpar) = Black;
-					color(left(w)) = Black;
-					Rrotate(xpar);
+					Color(W) = Color(Xpar);
+					Color(Xpar) = Black;
+					Color(Left(W)) = Black;
+					Rrotate(Xpar);
 					break;
 				}
 			}
-			color(x) = Black;
 		}
-		Destval(&value(z));
+		Color(X) = Black;
 	}
-	Freenode(z);
+	Destval(&Value(Z));
+	Freenode(Z);
 	if (0 < Size)
 		--Size;
-	return (P);
+	return P;
 }
 
 template<class T>
@@ -206,27 +218,27 @@ typename tree<T>::iterator tree<T>::erase(iterator F, iterator L) {
 	}
 }
 
-template<class T>
-typename tree<T>::size_type tree<T>::erase(const key_type& x) {
-	pairii P = equal_range(x);
+template<class Tree_traits>
+typename tree<Tree_traits>::size_type tree<Tree_traits>::erase(const key_type& x) {
+	Pairii P = equal_range(x);
 	size_type N = 0;
 	Distance(P.first, P.second, N);
 	erase(P.first, P.second);
 	return (N);
 }
 
-template<class T>
-void tree<T>::erase(const key_type *F, const key_type *L) {
+template<class Tree_traits>
+void tree<Tree_traits>::erase(const key_type *F, const key_type *L) {
 	while (F != L) {
 		erase(*F++);
 	}
 }
 
-template<class T>
-void tree<T>::clear() {
+template<class Tree_traits>
+void tree<Tree_traits>::clear() {
 	erase(begin(), end());
 }
 
 }
 
-#endif //FT_CONTAINERS_TREE_MODIFIERS_HPP
+#endif //TREE_MODIFIERS_HPP

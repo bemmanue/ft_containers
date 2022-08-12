@@ -1,25 +1,25 @@
-#ifndef FT_CONTAINERS_TREE_CONSTRUCTORS_HPP
-#define FT_CONTAINERS_TREE_CONSTRUCTORS_HPP
+#ifndef TREE_CONSTRUCTORS_HPP
+#define TREE_CONSTRUCTORS_HPP
 
-#include "tree.hpp"
+#include "tree_base.hpp"
 
 namespace ft {
 
 template<class Tree_traits>
-tree<Tree_traits>::tree(const key_compare &parg, const allocator_type &Al)
+tree<Tree_traits>::tree(const key_compare& parg, const allocator_type& Al)
 		: Mybase(parg, Al) {
 	Init();
 }
 
 template <class Tree_traits>
-tree<Tree_traits>::tree(const value_type *F, const value_type *L, const key_compare &parg, const allocator_type &Al)
+tree<Tree_traits>::tree(const value_type* F, const value_type* L, const key_compare& parg, const allocator_type& Al)
 		: Mybase(parg, Al) {
 	Init();
 	insert(F, L);
 }
 
 template<class Tree_traits>
-tree<Tree_traits>::tree(const Myt &x)
+tree<Tree_traits>::tree(const Myt& x)
 		: Mybase(x.key_comp(), x.get_allocator()) {
 	Init();
 	Copy(x);
@@ -34,19 +34,19 @@ tree<Tree_traits>::~tree() {
 }
 
 template<class Tree_traits>
-typename tree<Tree_traits>::Myt& tree<Tree_traits>::operator=(const Myt &x) {
+typename tree<Tree_traits>::Myt& tree<Tree_traits>::operator=(const Myt& x) {
 	if (this != &x) {
 		erase(begin(), end());
 		Tree_traits::comp = x.comp;
 		Copy(x);
 	}
-	return (*this);
+	return *this;
 }
 
 template<class Tree_traits>
 typename tree<Tree_traits>::allocator_type tree<Tree_traits>::get_allocator() const {
-	return (Mybase::Alval);
+	return this->Alval;
 }
 
 }
-#endif //FT_CONTAINERS_TREE_CONSTRUCTORS_HPP
+#endif //TREE_CONSTRUCTORS_HPP

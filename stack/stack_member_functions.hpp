@@ -1,26 +1,27 @@
 #ifndef STACK_MEMBER_FUNCTIONS_HPP
 #define STACK_MEMBER_FUNCTIONS_HPP
 
-#include "stack.hpp"
+#include "stack_base.hpp"
 
 namespace ft {
 
-// constructs the stack
 template<class T, class Container>
-stack<T, Container>::stack() : container() {}
+stack<T, Container>::stack() : container(container_type()) {}
 
-// constructs the stack
 template<class T, class Container>
-stack<T, Container>::stack(const container_type& cont) : container(cont) {}
+stack<T, Container>::stack(const container_type& other) : container(other) {}
 
-// destructs the stack
+template <class Type_stack, class Container_stack>
+stack<Type_stack, Container_stack>::stack(const stack& other)
+	: container(other.container) {}
+
 template<class T, class Container>
 stack<T, Container>::~stack() {}
 
-// assigns values to the container adaptor
-template<class T, class Container>
-typename stack<T, Container>::stack& stack<T, Container>::operator=(const stack& other) {
-	container = other;
+template <class T, class Container>
+stack<T, Container>& stack<T, Container>::operator=(const stack& other) {
+	this->container = other.container;
+	return *this;
 }
 
 }

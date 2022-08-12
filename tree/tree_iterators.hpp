@@ -1,50 +1,50 @@
-#ifndef FT_CONTAINERS_TREE_ITERATORS_HPP
-#define FT_CONTAINERS_TREE_ITERATORS_HPP
+#ifndef TREE_ITERATORS_HPP
+#define TREE_ITERATORS_HPP
 
-#include "tree.hpp"
+#include "tree_base.hpp"
 
 namespace ft {
 
-template<class T>
-typename tree<T>::iterator tree<T>::begin() {
-	return (iterator(Lmost()));
+template<class Tree_traits>
+typename tree<Tree_traits>::iterator tree<Tree_traits>::begin() {
+	return iterator(Lmost());
 }
 
-template<class T>
-typename tree<T>::const_iterator tree<T>::begin() const {
-	return (const_iterator(Lmost()));
+template<class Tree_traits>
+typename tree<Tree_traits>::const_iterator tree<Tree_traits>::begin() const {
+	return const_iterator(Lmost());
 }
 
-template<class T>
-typename tree<T>::iterator tree<T>::end() {
-	return (iterator(Head));
+template<class Tree_traits>
+typename tree<Tree_traits>::iterator tree<Tree_traits>::end() {
+	return iterator(Head);
 }
 
-template<class T>
-typename tree<T>::const_iterator tree<T>::end() const {
-	return (const_iterator(Head));
+template<class Tree_traits>
+typename tree<Tree_traits>::const_iterator tree<Tree_traits>::end() const {
+	return const_iterator(Head);
 }
 
-template<class T>
-typename tree<T>::iterator tree<T>::rbegin() {
-	return (reverse_iterator(end()));
+template<class Tree_traits>
+typename tree<Tree_traits>::reverse_iterator tree<Tree_traits>::rbegin() {
+	return reverse_iterator(end());
 }
 
-template<class T>
-typename tree<T>::const_iterator tree<T>::rbegin() const {
-	return (const_reverse_iterator(end()));
+template<class Tree_traits>
+typename tree<Tree_traits>::const_reverse_iterator tree<Tree_traits>::rbegin() const {
+	return const_reverse_iterator(end());
 }
 
-template<class T>
-typename tree<T>::iterator tree<T>::rend() {
-	return (reverse_iterator(begin()));
+template<class Tree_traits>
+typename tree<Tree_traits>::reverse_iterator tree<Tree_traits>::rend() {
+	return reverse_iterator(begin());
 }
 
-template<class T>
-typename tree<T>::const_iterator tree<T>::rend() const {
-	return (const_reverse_iterator(begin()));
+template<class Tree_traits>
+typename tree<Tree_traits>::const_reverse_iterator tree<Tree_traits>::rend() const {
+	return const_reverse_iterator(begin());
 }
 
 }
 
-#endif //FT_CONTAINERS_TREE_ITERATORS_HPP
+#endif //TREE_ITERATORS_HPP

@@ -9,10 +9,10 @@ namespace ft {
 template<class T, class D, class P, class R, class P2, class R2>
 class random_access_iterator: public ft::iterator<random_access_iterator_tag, T, D, P, R> {
 	public:
-		typedef random_access_iterator<T, D, P, R, P2, R2>		iterator_type;
-		typedef typename iterator_type::difference_type 		difference_type;
-		typedef typename iterator_type::pointer 				pointer;
-		typedef typename iterator_type::reference 				reference;
+		typedef random_access_iterator<T, D, P, R, P2, R2>		Myt;
+		typedef typename Myt::difference_type 		difference_type;
+		typedef typename Myt::pointer 				pointer;
+		typedef typename Myt::reference 				reference;
 
 		random_access_iterator() {}
 
@@ -48,44 +48,44 @@ class random_access_iterator: public ft::iterator<random_access_iterator_tag, T,
 			return *this;
 		}
 
-		iterator_type& operator++() {
+		Myt& operator++() {
 			current++;
 			return *this;
 		}
 
-		iterator_type operator++(int) {
-			iterator_type temp = *this;
+		Myt operator++(int) {
+			Myt temp = *this;
 			++current;
 			return temp;
 		}
 
-		iterator_type operator+(difference_type n) {
-			iterator_type temp = *this;
+		Myt operator+(difference_type n) {
+			Myt temp = *this;
 			return (temp += n);
 		}
 
-		iterator_type& operator-=(difference_type n) {
+		Myt& operator-=(difference_type n) {
 			current -= n;
 			return *this;
 		}
 
-		iterator_type& operator--() {
+		Myt& operator--() {
 			--current;
 			return *this;
 		}
 
-		iterator_type operator--(int) {
-			iterator_type temp = *this;
+		Myt operator--(int) {
+			Myt temp = *this;
 			current--;
 			return temp;
 		}
 
-		iterator_type operator-(difference_type n) const {
-			iterator_type temp = *this;
+		Myt operator-(difference_type n) const {
+			Myt temp = *this;
 			return (temp -= n);
 		}
 
-		difference_type operator-(const iterator_type& a) const {
+		difference_type operator-(const Myt& a) const {
 			return (current - a.current);
 		}
 
@@ -93,27 +93,27 @@ class random_access_iterator: public ft::iterator<random_access_iterator_tag, T,
 			return *(current + n);
 		}
 
-		bool operator<(const iterator_type& b) const {
+		bool operator<(const Myt& b) const {
 			return (current < b.current);
 		}
 
-		bool operator>(const iterator_type& b) const {
+		bool operator>(const Myt& b) const {
 			return (current > b.current);
 		}
 
-		bool operator<=(const iterator_type& b) const {
+		bool operator<=(const Myt& b) const {
 			return (current <= b.current);
 		}
 
-		bool operator>=(const iterator_type& b) const {
+		bool operator>=(const Myt& b) const {
 			return (current >= b.current);
 		}
 
-		bool operator==(const iterator_type& b) const {
+		bool operator==(const Myt& b) const {
 			return (current == b.current);
 		}
 
-		bool operator!=(const iterator_type& b) const {
+		bool operator!=(const Myt& b) const {
 			return (current != b.current);
 		}
 

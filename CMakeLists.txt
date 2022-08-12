@@ -48,21 +48,17 @@ add_executable(ft_containers
         stack/stack_element_access.hpp
         stack/stack_member_functions.hpp
         stack/stack_modifiers.hpp
-        stack/stack_non_member_functions.hpp
+        stack/stack_operator_overloads.hpp
         set/set.hpp
         set/set_traits.hpp
-        set/set_constructors.hpp
-        map/map_base.hpp
+        map/map.hpp
         tree/tree.hpp
         tree/tree_lookup.hpp
         tree/tree_base.hpp
-        tree/tree_nod.hpp
+        tree/tree_node.hpp
         tree/tree_ptr.hpp
-        tree/tree_traits.hpp
         tree/tree_value.hpp
         tree/tree_constructors.hpp
-        tree/tree_iterator.hpp
-        tree/const_tree_iterator.hpp
         tree/tree_protected.hpp
         tree/tree_iterators.hpp
         tree/tree_modifiers.hpp
@@ -72,4 +68,4 @@ add_executable(ft_containers
         utility/pair.hpp
         utility/is_integral.hpp
         utility/utility.hpp
-        algorithm/mismatch.hpp)
+        algorithm/mismatch.hpp test/test_vector.cpp test/test_stack.cpp test/test_map.cpp test/test_set.cpp)

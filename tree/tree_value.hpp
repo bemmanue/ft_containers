@@ -1,12 +1,12 @@
-#ifndef FT_CONTAINERS_TREE_VALUE_HPP
-#define FT_CONTAINERS_TREE_VALUE_HPP
+#ifndef TREE_VALUE_HPP
+#define TREE_VALUE_HPP
 
-#include "tree.hpp"
+#include "tree_ptr.hpp"
 
 namespace ft {
 
 template<class Tree_traits>
-class tree_value : public tree_ptr<Tree_traits> {
+class tree_value : public ft::tree_ptr<Tree_traits> {
 
 	protected:
 		typedef typename Tree_traits::allocator_type		allocator_type;
@@ -20,4 +20,4 @@ class tree_value : public tree_ptr<Tree_traits> {
 
 }
 
-#endif //FT_CONTAINERS_TREE_VALUE_HPP
+#endif //TREE_VALUE_HPP

@@ -20,17 +20,18 @@ typename vector<T, Alloc>::iterator vector<T, Alloc>::insert(iterator pos, const
 template <typename T, class Alloc>
 void vector<T, Alloc>::insert(iterator pos, size_type count, const T& value) {
 	T x = value;
-	size_t capacity = this->capacity();
+	size_type N = capacity();
 
 	if (count == 0) {
 		;
-	} else if (count > max_size() - size()) {
+	} else if (max_size() - size() < count) {
 		throw std::length_error("vector");
-	} else if (size() + count > capacity) {
-		size_t new_capacity = (max_size() - (capacity / 2)) < capacity ? 0 : (capacity * 2);
-		if (new_capacity < size() + count)
-			new_capacity = size() + count;
-		pointer new_first = base::allocator.allocate(capacity, (void *)0);
+	} else if (N < size() + count) {
+		N = (max_size() - N < N) ?
+			0 : N + N;
+		if (N < size() + count)
+			N = size() + count;
+		pointer new_first = base::allocator.allocate(N);
 		pointer new_last;
 		try {
 			new_last = Copy(new_first, begin(), pos);
@@ -38,19 +39,17 @@ void vector<T, Alloc>::insert(iterator pos, size_type count, const T& value) {
 			Copy(new_last, pos, end());
 		} catch (...) {
 			Destroy(new_first, new_last);
-			base::allocator.deallocate(new_first, new_capacity);
+			base::allocator.deallocate(new_first, N);
 			throw;
 		}
-		if (_first != 0) {
+		if (_first) {
 			Destroy(_first, _last);
-			base::allocator.deallocate(new_first, new_capacity);
-			throw;
+			base::allocator.deallocate(_first, _end - _first);
 		}
-		_end = new_first + new_capacity;
-		_last = new_first + this->size() + count;
+		_end = new_first + N;
+		_last = new_first + size() + count;
 		_first = new_first;
-	}
-	else if ((size_type)(end() - pos) < count) {
+	} else if ((size_type) (end() - pos) < count) {
 		Copy(pos.base(), pos, end());
 		try {
 			Fill(_last, count - (end() - pos), x);
@@ -59,12 +58,12 @@ void vector<T, Alloc>::insert(iterator pos, size_type count, const T& value) {
 			throw;
 		}
 		_last += count;
-		fill(pos, end() - count, x);
+		ft::fill(pos, end() - count, x);
 	} else {
 		iterator new_end = end();
 		_last = Copy(_last, new_end - count, new_end);
-		copy_backward(pos, new_end - count, new_end);
-		fill(pos, pos + count, x);
+		std::copy_backward(pos, new_end - count, new_end);
+		ft::fill(pos, pos + count, x);
 	}
 }
 

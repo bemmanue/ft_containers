@@ -1,76 +1,78 @@
-#ifndef FT_CONTAINERS_TREE_PROTECTED_HPP
-#define FT_CONTAINERS_TREE_PROTECTED_HPP
+#ifndef TREE_PROTECTED_HPP
+#define TREE_PROTECTED_HPP
 
-#include "tree.hpp"
+#include "tree_base.hpp"
 
 namespace ft {
 
-template<class T>
-void tree<T>::Copy(const Myt& x) {
+template<class Tree_traits>
+void tree<Tree_traits>::Copy(const Myt& x) {
 	Root() = Copy(x.Root(), Head);
 	Size = x.size();
-	if (!isnil(Root())) {
+
+	if (!Isnil(Root())) {
 		Lmost() = Min(Root());
 		Rmost() = Max(Root());
 	} else {
-		Lmost() = Head, Rmost() = Head();
+		Lmost() = Head;
+		Rmost() = Head;
 	}
 }
 
-template<class T>
-typename tree<T>::nodeptr tree<T>::Copy(nodeptr x, nodeptr p) {
-	nodeptr R = Head;
+template<class Tree_traits>
+typename tree<Tree_traits>::Nodeptr tree<Tree_traits>::Copy(Nodeptr x, Nodeptr p) {
+	Nodeptr R = Head;
 	if (!Isnil(x)) {
-		nodeptr y = Buynode(p, Color(x));
+		Nodeptr y = Buynode(p, Color(x));
 		try {
-			Consval(&value(y), value(x));
+			Consval(&Value(y), Value(x));
 		} catch(...) {
 			Freenode(y);
 			Erase(R);
 			throw;
 		}
-		left(y) = Head, right(y) = Head;
-		if (isnil(R)) {
+		Left(y) = Head, Right(y) = Head;
+		if (Isnil(R)) {
 			R = y;
 		}
 		try {
-			left(y) = Copy(left(x), y);
-			right(y) = Copy(right(x), y);
+			Left(y) = Copy(Left(x), y);
+			Right(y) = Copy(Right(x), y);
 		} catch (...) {
 			Erase(R);
 			throw;
 		}
 	}
-	return (R);
+	return R;
 }
 
-template<class T>
-void tree<T>::Erase(nodeptr x) {
-	for (nodeptr y = x; !isnil(y); x = y) {
-		Erase(right(y));
-		y = left(y);
-		Destval(&value(x));
+template<class Tree_traits>
+void tree<Tree_traits>::Erase(Nodeptr x) {
+	for (Nodeptr y = x; !Isnil(y); x = y) {
+		Erase(Right(y));
+		y = Left(y);
+		Destval(&Value(x));
 		Freenode(x);
 	}
 }
 
-template<class T>
-void tree<T>::Init() {
+template<class Tree_traits>
+void tree<Tree_traits>::Init() {
 	Head = Buynode(0, Black);
-	isnil(Head) = true;
+	Isnil(Head) = true;
 	Root() = Head;
 	Lmost() = Head, Rmost() = Head;
 	Size = 0;
 }
 
-template<class T>
-typename tree<T>::tree_iterator tree<T>::Insert(bool Addleft, nodeptr Y, const value_type& v) {
+template<class Tree_traits>
+typename tree<Tree_traits>::iterator tree<Tree_traits>::Insert(bool Addleft, Nodeptr Y, const value_type& v) {
 	if (max_size() - 1 <= Size)
-		throw std::length_error("map/set<T> too long");
-	nodeptr Z = Buynode(Y, Red);    //create new node that we insert. Y is considered its parent node
+		throw std::length_error("map/set<Tree_traits> too long");
+	Nodeptr Z = Buynode(Y, Red);
 	Left(Z) = Head, Right(Z) = Head;
 	try {
-		Consval(&Value(Z), v); //initialize its value
+		Consval(&Value(Z), v);
 	} catch (...) {
 		Freenode(Z);
 		throw;
@@ -79,7 +81,7 @@ typename tree<T>::tree_iterator tree<T>::Insert(bool Addleft, nodeptr Y, const v
 	if (Y == Head) {
 		Root() = Z;
 		Lmost() = Z, Rmost() = Z;
-	} else if (Addleft) //check whether to add it to the left of node Y or not
+	} else if (Addleft)
 		{
 		Left(Y) = Z;
 		if (Y == Lmost())
@@ -89,7 +91,7 @@ typename tree<T>::tree_iterator tree<T>::Insert(bool Addleft, nodeptr Y, const v
 		if (Y == Rmost())
 			Rmost() = Z;
 	}
-	for (nodeptr X = Z; Color(Parent(X)) == Red;) //check that we didn't disbalance our tree
+	for (Nodeptr X = Z; Color(Parent(X)) == Red; )
 		{
 		if (Parent(X) == Left(Parent(Parent(X)))) {
 			Y = Right(Parent(Parent(X)));
@@ -108,7 +110,7 @@ typename tree<T>::tree_iterator tree<T>::Insert(bool Addleft, nodeptr Y, const v
 				Rrotate(Parent(Parent(X)));
 			}
 		} else {
-			Y = Left(Parent(Parent(X))); // 1
+			Y = Left(Parent(Parent(X)));
 			if (Color(Y) == Red) {
 				Color(Parent(X)) = Black;
 				Color(Y) = Black;
@@ -119,23 +121,23 @@ typename tree<T>::tree_iterator tree<T>::Insert(bool Addleft, nodeptr Y, const v
 					X = Parent(X);
 					Rrotate(X);
 				}
-				Color(Parent(X)) = Black; // 2
-				Color(Parent(Parent(X))) = Red; // 3
-				Lrotate(Parent(Parent(X))); // 4
+				Color(Parent(X)) = Black;
+				Color(Parent(Parent(X))) = Red;
+				Lrotate(Parent(Parent(X)));
 			}
 		}
 		}
 	Color(Root()) = Black;
-	return tree_iterator(Z);
+	return iterator(Z);
 }
 
-template<class T>
-typename tree<T>::nodeptr tree<T>::Lbound(const key_type& Kv) const {
-	nodeptr X = Root();
-	nodeptr Y = Head;
+template<class Tree_traits>
+typename tree<Tree_traits>::Nodeptr tree<Tree_traits>::Lbound(const key_type& Kv) const {
+	Nodeptr X = Root();
+	Nodeptr Y = Head;
 	while (!(Isnil(X)))
 	{
-		if (T::comp(Key(X), Kv))
+		if (Tree_traits::comp(Key(X), Kv))
 			X = Right(X);
 		else
 			Y = X, X = Left(X);
@@ -143,19 +145,19 @@ typename tree<T>::nodeptr tree<T>::Lbound(const key_type& Kv) const {
 	return (Y);
 }
 
-template<class T>
-typename tree<T>::nodeptr& tree<T>::Lmost() {
+template<class Tree_traits>
+typename tree<Tree_traits>::Nodeptr& tree<Tree_traits>::Lmost() {
 	return Left(Head);
 }
 
-template<class T>
-typename tree<T>::nodeptr& tree<T>::Lmost() const {
+template<class Tree_traits>
+typename tree<Tree_traits>::Nodeptr& tree<Tree_traits>::Lmost() const {
 	return (Left(Head));
 }
 
-template<class T>
-void tree<T>::Lrotate(nodeptr X) {
-	nodeptr Y = Right(X);
+template<class Tree_traits>
+void tree<Tree_traits>::Lrotate(Nodeptr X) {
+	Nodeptr Y = Right(X);
 	Right(X) = Left(Y);
 	if (!Isnil(Left(Y)))
 		Parent(Left(Y)) = X;
@@ -170,43 +172,43 @@ void tree<T>::Lrotate(nodeptr X) {
 	Parent(X) = Y;
 }
 
-template<class T>
-typename tree<T>::nodeptr tree<T>::Max(nodeptr P) {
+template<class Tree_traits>
+typename tree<Tree_traits>::Nodeptr tree<Tree_traits>::Max(Nodeptr P) {
 	while (!Isnil(Right(P)))
 		P = Right(P);
 	return P;
 }
 
-template<class T>
-typename tree<T>::nodeptr tree<T>::Min(nodeptr P) {
+template<class Tree_traits>
+typename tree<Tree_traits>::Nodeptr tree<Tree_traits>::Min(Nodeptr P) {
 	while (!Isnil(Left(P)))
 		P = Left(P);
 	return P;
 }
 
-template<class T>
-typename tree<T>::nodeptr& tree<T>::Rmost() {
+template<class Tree_traits>
+typename tree<Tree_traits>::Nodeptr& tree<Tree_traits>::Rmost() {
 	return Right(Head);
 }
 
-template<class T>
-typename tree<T>::nodeptr& tree<T>::Rmost() const {
+template<class Tree_traits>
+typename tree<Tree_traits>::Nodeptr& tree<Tree_traits>::Rmost() const {
 	return Right(Head);
 }
 
-template<class T>
-typename tree<T>::nodeptr& tree<T>::Root() {
+template<class Tree_traits>
+typename tree<Tree_traits>::Nodeptr& tree<Tree_traits>::Root() {
 	return Parent(Head);
 }
 
-template<class T>
-typename tree<T>::nodeptr& tree<T>::Root() const {
+template<class Tree_traits>
+typename tree<Tree_traits>::Nodeptr& tree<Tree_traits>::Root() const {
 	return Parent(Head);
 }
 
-template<class T>
-void tree<T>::Rrotate(nodeptr X) {
-	nodeptr Y = Left(X);
+template<class Tree_traits>
+void tree<Tree_traits>::Rrotate(Nodeptr X) {
+	Nodeptr Y = Left(X);
 	Left(X) = Right(Y);
 	if (!Isnil(Right(Y)))
 		Parent(Right(Y)) = X;
@@ -221,13 +223,13 @@ void tree<T>::Rrotate(nodeptr X) {
 	Parent(X) = Y;
 }
 
-template<class T>
-typename tree<T>::nodeptr tree<T>::Ubound(const key_type& Kv) const {
-	nodeptr X = Root();
-	nodeptr Y = Head;
+template<class Tree_traits>
+typename tree<Tree_traits>::Nodeptr tree<Tree_traits>::Ubound(const key_type& Kv) const {
+	Nodeptr X = Root();
+	Nodeptr Y = Head;
 	while (!Isnil(X))
 	{
-		if (T::comp(Kv, Key(X)))
+		if (Tree_traits::comp(Kv, Key(X)))
 			Y = X, X = Left(X);
 		else
 			X = Right(X);
@@ -235,29 +237,29 @@ typename tree<T>::nodeptr tree<T>::Ubound(const key_type& Kv) const {
 	return Y;
 }
 
-template<class T>
-typename tree<T>::nodeptr tree<T>::Buynode(nodeptr parg, char Carg) {
-	nodeptr S = this->Alnod.allocate(1);
-	this->Alptr.construct(&Left(S), (void *)0);
-	this->Alptr.construct(&Right(S), (void *)0);
+template<class Tree_traits>
+typename tree<Tree_traits>::Nodeptr tree<Tree_traits>::Buynode(Nodeptr parg, char Carg) {
+	Nodeptr S = this->Alnod.allocate(1);
+	this->Alptr.construct(&Left(S));
+	this->Alptr.construct(&Right(S));
 	this->Alptr.construct(&Parent(S), parg);
 	Color(S) = Carg;
 	Isnil(S) = false;
 	return S;
 }
 
-template<class T>
-void tree<T>::Consval(tptr P, const value_type& V) {
+template<class Tree_traits>
+void tree<Tree_traits>::Consval(pointer P, const value_type& V) {
 	this->Alval.construct(P, V);
 }
 
-template<class T>
-void tree<T>::Destval(tptr P) {
+template<class Tree_traits>
+void tree<Tree_traits>::Destval(pointer P) {
 	this->Alval.destroy(P);
 }
 
-template<class T>
-void tree<T>::Freenode(nodeptr S) {
+template<class Tree_traits>
+void tree<Tree_traits>::Freenode(Nodeptr S) {
 	this->Alptr.destroy(&Parent(S));
 	this->Alptr.destroy(&Right(S));
 	this->Alptr.destroy(&Left(S));
@@ -267,4 +269,4 @@ void tree<T>::Freenode(nodeptr S) {
 }
 
 
-#endif //FT_CONTAINERS_TREE_PROTECTED_HPP
+#endif //TREE_PROTECTED_HPP

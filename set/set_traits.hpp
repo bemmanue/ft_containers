@@ -1,32 +1,36 @@
-#ifndef FT_CONTAINERS_SET_TRAITS_HPP
-#define FT_CONTAINERS_SET_TRAITS_HPP
+#ifndef SET_TRAITS_HPP
+#define SET_TRAITS_HPP
 
 namespace ft {
 
-template<class K, class Pr, class Ax>
+template <class Key, class Pred, class Allocator>
 class set_traits {
-
 	public:
-		typedef K							key_type;
-		typedef K							value_type;
-		typedef Pr							key_compare;
-		typedef typename Ax::template
-		        rebind<value_type>::other	allocator_type;
+		typedef Key								key_type;
+		typedef Key								value_type;
+		typedef Pred							key_compare;
+		typedef typename Allocator::template
+			rebind<value_type>::other			allocator_type;
 
 		set_traits() : comp() {}
-		set_traits(Pr parg) : comp(parg) {}
+		explicit set_traits(Pred Parg) : comp(Parg) {}
 
-		typedef key_compare	value_compare;
+		typedef key_compare						value_compare;
+
+		const static Key &GetKey(const value_type& v) {
+			Kfn	ret;
+			return ret(v);
+		}
 
 		struct Kfn {
-			const K& operator() (const value_type& X) const {
-				return X;
+			const Key& operator()(const value_type& x) const {
+				return x;
 			}
 		};
 
-		Pr	comp;
+		Pred	comp;
 };
 
 }
 
-#endif //FT_CONTAINERS_SET_TRAITS_HPP
+#endif //SET_TRAITS_HPP
