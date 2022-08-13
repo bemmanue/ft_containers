@@ -5,20 +5,16 @@
 
 namespace ft {
 
-//Checks if the container has no elements
 template<typename T, class Alloc>
 bool vector<T, Alloc>::empty() const {
 	return (size() == 0);
 }
 
-//Returns the number of elements in the container
 template<typename T, class Alloc>
 typename vector<T, Alloc>::size_type vector<T, Alloc>::size() const {
 	return (_first == (void *)0 ? 0 : _last - _first);
 }
 
-//Returns the maximum number of elements the container is able to hold
-//due to system or library implementation limitations
 template<typename T, class Alloc>
 typename vector<T, Alloc>::size_type vector<T, Alloc>::max_size() const {
 	return base::allocator.max_size();
@@ -46,7 +42,6 @@ void vector<T, Alloc>::reserve(size_type n) {
 	}
 }
 
-//Returns the number of elements that the container has currently allocated space for
 template<typename T, class Alloc>
 typename vector<T, Alloc>::size_type vector<T, Alloc>::capacity() const {
 	return (_first == 0 ? 0 : _end - _first);

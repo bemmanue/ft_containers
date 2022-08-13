@@ -2,7 +2,6 @@
 #define MAP_TRAITS_HPP
 
 #include "../utility/utility.hpp"
-//#include <functional>
 
 namespace ft {
 

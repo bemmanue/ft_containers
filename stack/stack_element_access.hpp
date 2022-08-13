@@ -17,4 +17,4 @@ typename stack<T, Container>::const_reference stack<T, Container>::top() const {
 
 }
 
-#endif // STACK_ELEMENT_ACCESS_HPP
+#endif //STACK_ELEMENT_ACCESS_HPP

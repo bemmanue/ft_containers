@@ -17,4 +17,4 @@ typename stack<T, Container>::size_type stack<T, Container>::size() const {
 
 }
 
-#endif // STACK_CAPACITY_HPP
+#endif //STACK_CAPACITY_HPP

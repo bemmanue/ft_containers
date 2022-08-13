@@ -240,8 +240,8 @@ typename tree<Tree_traits>::Nodeptr tree<Tree_traits>::Ubound(const key_type& Kv
 template<class Tree_traits>
 typename tree<Tree_traits>::Nodeptr tree<Tree_traits>::Buynode(Nodeptr parg, char Carg) {
 	Nodeptr S = this->Alnod.allocate(1);
-	this->Alptr.construct(&Left(S));
-	this->Alptr.construct(&Right(S));
+	this->Alptr.construct(&Left(S), nullptr);
+	this->Alptr.construct(&Right(S), nullptr);
 	this->Alptr.construct(&Parent(S), parg);
 	Color(S) = Carg;
 	Isnil(S) = false;
@@ -267,6 +267,5 @@ void tree<Tree_traits>::Freenode(Nodeptr S) {
 }
 
 }
-
 
 #endif //TREE_PROTECTED_HPP

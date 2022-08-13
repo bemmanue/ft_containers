@@ -3,7 +3,7 @@ project(ft_containers)
 
 set(CMAKE_CXX_STANDARD 98)
 
-add_executable(ft_containers
+add_executable(
         main.cpp
         iterator2/Dist_type.hpp
         iterator2/iter_advance.hpp

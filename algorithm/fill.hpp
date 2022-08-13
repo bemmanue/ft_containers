@@ -11,7 +11,7 @@ void	fill(FwdIt first, FwdIt last, const T& x) {
 }
 
 template <class OutIt, class Size, class T> inline
-void fill_n(OutIt first, Size n,  const T& x) {
+void	fill_n(OutIt first, Size n,  const T& x) {
 	for (; 0 < n ; --n, ++first) {
 		*first = x;
 	}

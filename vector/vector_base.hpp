@@ -8,20 +8,20 @@
 namespace ft {
 
 template<class T, class Alloc>
-class allocator_type {
+class Allocator{
 	protected:
 		typedef Alloc	type;
 
-		allocator_type(Alloc A = Alloc()) : allocator(A) {}
+		Allocator(Alloc A = Alloc()) : allocator(A) {}
 
 		type	allocator;
 	};
 
 	template<class T, class Alloc = std::allocator<T> >
-	class vector : public allocator_type<T, Alloc> {
+	class vector : public Allocator<T, Alloc> {
 	public:
 		typedef vector<T, Alloc>											vector_type;
-		typedef allocator_type<T, Alloc>									base;
+		typedef Allocator<T, Alloc>											base;
 		typedef typename base::type											allocator_type;
 		typedef T															value_type;
 		typedef typename allocator_type::size_type							size_type;

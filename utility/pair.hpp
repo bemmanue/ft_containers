@@ -5,8 +5,8 @@ namespace ft {
 
 template <class T1, class T2>
 struct pair {
-	typedef T1 first_type;
-	typedef T2 second_type;
+	typedef T1	first_type;
+	typedef T2	second_type;
 
 	pair (): first(T1()), second(T2()) {}
 	pair (const T1& value1, const T2& value2): first(value1), second(value2) {}

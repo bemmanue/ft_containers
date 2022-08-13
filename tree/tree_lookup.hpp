@@ -70,5 +70,4 @@ void tree<Tree_traits>::swap(Myt& x) {
 
 }
 
-
 #endif //TREE_LOOKUP_HPP

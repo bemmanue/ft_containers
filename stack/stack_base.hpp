@@ -2,7 +2,6 @@
 #define STACK_BASE_HPP
 
 #include <iostream>
-#include <deque>
 #include "../vector/vector.hpp"
 
 namespace ft {
@@ -39,7 +38,6 @@ class stack {
 		Container		container;
 
 };
-
 
 }
 

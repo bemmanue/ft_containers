@@ -17,4 +17,4 @@ void stack<T, Container>::pop() {
 
 }
 
-#endif // STACK_MODIFIERS_HPP
+#endif //STACK_MODIFIERS_HPP

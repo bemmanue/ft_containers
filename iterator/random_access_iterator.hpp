@@ -122,7 +122,7 @@ class random_access_iterator: public ft::iterator<random_access_iterator_tag, T,
 };
 
 template<class T, class D, class P, class R, class P2, class R2> inline
-random_access_iterator<T, D, P, R, P2, R2> operator+ (D n, const random_access_iterator<T, D, P, R, P2, R2>& y) {
+random_access_iterator<T, D, P, R, P2, R2> operator+(D n, const random_access_iterator<T, D, P, R, P2, R2>& y) {
 	return (y + n);
 }
 

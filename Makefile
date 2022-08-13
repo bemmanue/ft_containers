@@ -1,6 +1,6 @@
 NAME			=	ft_containers
 
-SRCS			=	test_set.cpp
+SRCS			=	main.cpp
 
 VPATH			=	.
 
@@ -14,15 +14,15 @@ INC				=	-Iinclude/algorithm		\
 					-Iinclude/set			\
 					-Iinclude/utils			\
 					-Iinclude/vector		\
-					-Iinclude/xtree
+					-Iinclude/tree
 
-CC				=	g++
+CC				=	clang++
 CPP_FLAGS		=	-Wall -Wextra -Werror -std=c++98
 
 all:				$(NAME)
 
 $(NAME):			$(OBJS)
-					$(CC) $(OBJS) $(INC) -o $(NAME)
+					$(CC) $(CPP_FLAGS) $(OBJS) $(INC) -o $(NAME)
 
 $(OBJ_DIR)/%.o:		%.cpp
 					@$(CC) -I$. $(CPP_FLAGS) -c $< -o $@

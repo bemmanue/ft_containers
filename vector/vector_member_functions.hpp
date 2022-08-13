@@ -11,7 +11,7 @@ vector<T, Alloc>::vector() : base() {
 }
 
 template<typename T, class Alloc>
-vector<T, Alloc>::vector(const allocator_type& alloc) : base() {
+vector<T, Alloc>::vector(const allocator_type& alloc) : base(alloc) {
 	Allocate(0);
 }
 
@@ -23,7 +23,7 @@ vector<T, Alloc>::vector(size_type count, const T& value, const allocator_type&)
 
 template<typename T, class Alloc>
 template<class It>
-vector<T, Alloc>::vector(It first, It last, const allocator_type& alloc) : base() {
+vector<T, Alloc>::vector(It first, It last, const allocator_type& alloc) : base(alloc) {
 	Construct(first, last, Iter_cat(first));
 }
 

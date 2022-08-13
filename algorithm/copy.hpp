@@ -21,4 +21,4 @@ BidIt2	copy_backward(BidIt1 first, BidIt1 last, BidIt2 x) {
 
 }
 
-#endif // ALGORITHM_COPY_HPP
+#endif //ALGORITHM_COPY_HPP

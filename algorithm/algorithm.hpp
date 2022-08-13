@@ -7,4 +7,4 @@
 #include "lexicographical_compare.hpp"
 #include "mismatch.hpp"
 
-#endif // ALGORITHM_HPP
+#endif //ALGORITHM_HPP

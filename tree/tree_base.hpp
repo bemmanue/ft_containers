@@ -65,192 +65,193 @@ class tree : public ft::tree_value<Tree_traits> {
 		//Iterator
 		class	        iterator;
 		friend class	tree<Tree_traits>::iterator;
-		class iterator : public ft::iterator<bidirectional_iterator_tag,
-				value_type, Dift, Tptr, Reft>
-		{
-		private:
-			void Dec() {
-				if (Isnil(current_))
-					current_ = Right(current_);
-				else if (!Isnil(Left(current_)))
-					current_ = Max(Left(current_));
-				else {
-					Nodeptr P;
-					while (!Isnil(P = Parent(current_)) && current_ == Left(P))
-						current_ = P;
-					if (!Isnil(P))
-						current_ = P;
+		class iterator : public ft::iterator<bidirectional_iterator_tag, value_type, Dift, Tptr, Reft> {
+			private:
+				void Dec() {
+					if (Isnil(current_)) {
+						current_ = Right(current_);
+					} else if (!Isnil(Left(current_))) {
+						current_ = Max(Left(current_));
+					} else {
+						Nodeptr P;
+						while (!Isnil(P = Parent(current_)) && current_ == Left(P))
+							current_ = P;
+						if (!Isnil(P))
+							current_ = P;
+					}
 				}
-			}
 
-			void Inc() {
-				if (Isnil(current_));
-				else if (!Isnil(Right(current_)))
-					current_ = Min(Right(current_));
-				else {
-					Nodeptr P;
-					while (!Isnil(P = Parent(current_)) && current_ == Right(P))
+				void Inc() {
+					if (Isnil(current_)) {
+						;
+					} else if (!Isnil(Right(current_))) {
+						current_ = Min(Right(current_));
+					} else {
+						Nodeptr P;
+						while (!Isnil(P = Parent(current_)) && current_ == Right(P))
+							current_ = P;
 						current_ = P;
-					current_ = P;
+					}
 				}
-			}
 
-		protected:
-			Nodeptr current_;
-		public:
-			typedef ft::iterator<ft::bidirectional_iterator_tag, value_type,
-					Dift, Tptr, Reft> Mybase;
-			typedef typename Mybase::iterator_category iterator_category;
-	//			typedef typename Mybase::value_type				value_type;
-			typedef typename Mybase::difference_type difference_type;
-			typedef typename Mybase::pointer pointer;
-			typedef typename Mybase::reference reference;
+			protected:
+				Nodeptr current_;
 
-			iterator() : current_(0) {}
+			public:
+				typedef ft::iterator<ft::bidirectional_iterator_tag,
+					value_type, Dift, Tptr, Reft>						Mybase;
+				typedef typename Mybase::iterator_category				iterator_category;
+//				typedef typename Mybase::value_type						value_type;
+				typedef typename Mybase::difference_type				difference_type;
+				typedef typename Mybase::pointer						pointer;
+				typedef typename Mybase::reference						reference;
 
-			iterator(Nodeptr P) : current_(P) {}
+				iterator() : current_(0) {}
+
+				iterator(Nodeptr P) : current_(P) {}
 
 
-			reference operator*() const {
-				return Value(current_);
-			}
+				reference operator*() const {
+					return Value(current_);
+				}
 
-			Tptr operator->() const {
-				return &**this;
-			}
+				Tptr operator->() const {
+					return &**this;
+				}
 
-			iterator operator++() {
-				Inc();
-				return *this;
-			}
+				iterator operator++() {
+					Inc();
+					return *this;
+				}
 
-			iterator operator++(int) {
-				iterator tmp = *this;
-				++*this;
-				return tmp;
-			}
+				iterator operator++(int) {
+					iterator tmp = *this;
+					++*this;
+					return tmp;
+				}
 
-			iterator operator--() {
-				Dec();
-				return *this;
-			}
+				iterator operator--() {
+					Dec();
+					return *this;
+				}
 
-			iterator operator--(int) {
-				iterator tmp = *this;
-				--*this;
-				return tmp;
-			}
+				iterator operator--(int) {
+					iterator tmp = *this;
+					--*this;
+					return tmp;
+				}
 
-			bool operator==(const iterator &X) const {
-				return current_ == X.current_;
-			}
+				bool operator==(const iterator &X) const {
+					return current_ == X.current_;
+				}
 
-			bool operator!=(const iterator &X) const {
-				return !(*this == X);
-			}
+				bool operator!=(const iterator &X) const {
+					return !(*this == X);
+				}
 
-			Nodeptr Mynode() const {
-				return current_;
-			}
+				Nodeptr Mynode() const {
+					return current_;
+				}
 		};
 
+		//Const_iterator
 		class	        const_iterator;
 		friend class	tree<Tree_traits>::const_iterator;
-		class const_iterator : public ft::iterator<bidirectional_iterator_tag, value_type,
-				Dift, Ctptr, const_reference>
-		{
-		private:
-			void Dec()
-			{
-				if (Isnil(current_))
-					current_ = Right(current_);
-				else if (!Isnil(Left(current_)))
-					current_ = Max(Left(current_));
-				else
-				{
-					Nodeptr P;
-					while (!Isnil(P = Parent(current_)) && current_ == Left(P))
-						current_ = P;
-					if (!Isnil(P))
-						current_ = P;
+		class const_iterator : public ft::iterator<bidirectional_iterator_tag, value_type, Dift, Ctptr, const_reference> {
+			private:
+				void Dec() {
+					if (Isnil(current_)) {
+						current_ = Right(current_);
+					} else if (!Isnil(Left(current_))) {
+						current_ = Max(Left(current_));
+					} else {
+						Nodeptr P;
+						while (!Isnil(P = Parent(current_)) && current_ == Left(P))
+							current_ = P;
+						if (!Isnil(P))
+							current_ = P;
+					}
 				}
-			}
-			void Inc()
-			{
-				if (Isnil(current_))
-					;
-				else if (!Isnil(Right(current_)))
-					current_ = Min(Right(current_));
-				else
-				{
-					Nodeptr P;
-					while (!Isnil(P = Parent(current_)) && current_ == Right(P))
+
+				void Inc() {
+					if (Isnil(current_)) {
+						;
+					} else if (!Isnil(Right(current_))) {
+						current_ = Min(Right(current_));
+					} else {
+						Nodeptr P;
+						while (!Isnil(P = Parent(current_)) && current_ == Right(P))
+							current_ = P;
 						current_ = P;
-					current_ = P;
+					}
 				}
-			}
-		protected:
-			Nodeptr	current_;
-		public:
-			typedef	ft::iterator<ft::bidirectional_iterator_tag, value_type,
-					Dift, Ctptr, const_reference>			Mybase;
-			typedef typename Mybase::iterator_category		iterator_category;
-	//			typedef typename Mybase::value_type				value_type;
-			typedef typename Mybase::difference_type			difference_type;
-			typedef typename Mybase::pointer				pointer;
-			typedef typename Mybase::reference				reference;
 
-			const_iterator() : current_(0) {}
-			const_iterator(Nodeptr P) : current_(P) {}
-			const_iterator(const typename tree<Tree_traits>::iterator& X): current_(X.Mynode()) {}
-			template <class TreeTraits1>
-			const_iterator(const typename tree<TreeTraits1>::const_iterator& X) {
-				current_ = reinterpret_cast<Nodeptr>(X.current_);
-			}
+			protected:
+				Nodeptr	current_;
 
-			const_reference   operator*() const
-			{
-				return Value(current_);
-			}
-			Ctptr    operator->() const
-			{
-				return &**this;
-			}
-			const_iterator&	operator++()
-			{
-				Inc();
-				return *this;
-			}
-			const_iterator	operator++(int)
-			{
-				const_iterator tmp = *this;
-				++*this;
-				return tmp;
-			}
-			const_iterator&	operator--()
-			{
-				Dec();
-				return *this;
-			}
-			const_iterator	operator--(int)
-			{
-				const_iterator	tmp = *this;
-				--*this;
-				return tmp;
-			}
-			bool	operator==(const const_iterator& X) const
-			{
-				return current_ == X.current_;
-			}
-			bool	operator!=(const const_iterator& X) const
-			{
-				return !(*this == X);
-			}
-			Nodeptr	Mynode() const
-			{
-				return current_;
-			}
+			public:
+				typedef	ft::iterator<ft::bidirectional_iterator_tag,
+					value_type, Dift, Ctptr, const_reference>			Mybase;
+				typedef typename Mybase::iterator_category				iterator_category;
+//				typedef typename Mybase::value_type						value_type;
+				typedef typename Mybase::difference_type				difference_type;
+				typedef typename Mybase::pointer						pointer;
+				typedef typename Mybase::reference						reference;
+
+				const_iterator() : current_(0) {}
+
+				const_iterator(Nodeptr P) : current_(P) {}
+
+				const_iterator(const typename tree<Tree_traits>::iterator& X): current_(X.Mynode()) {}
+
+				template <class TreeTraits1>
+				const_iterator(const typename tree<TreeTraits1>::const_iterator& X) {
+					current_ = reinterpret_cast<Nodeptr>(X.current_);
+				}
+
+				const_reference   operator*() const {
+					return Value(current_);
+				}
+
+				Ctptr    operator->() const {
+					return &**this;
+				}
+
+				const_iterator&	operator++() {
+					Inc();
+					return *this;
+				}
+
+				const_iterator	operator++(int) {
+					const_iterator tmp = *this;
+					++*this;
+					return tmp;
+				}
+
+				const_iterator&	operator--() {
+					Dec();
+					return *this;
+				}
+
+				const_iterator	operator--(int) {
+					const_iterator	tmp = *this;
+					--*this;
+					return tmp;
+				}
+
+				bool operator==(const const_iterator& X) const {
+					return current_ == X.current_;
+				}
+
+				bool operator!=(const const_iterator& X) const {
+					return !(*this == X);
+				}
+
+				Nodeptr	Mynode() const {
+					return current_;
+				}
 		};
+
 
 		typedef ft::reverse_iterator<iterator> 					reverse_iterator;
 		typedef ft::reverse_iterator<const_iterator>			const_reverse_iterator;

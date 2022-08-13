@@ -1,31 +1,38 @@
-//#include "test/test_map.cpp"
-//#include "test/test_set.cpp"
-//#include "test/test_stack.cpp"
-//#include "test/test_vector.cpp"
-
-#include "vector/vector.hpp"
+#include <cassert>
 #include <functional>
 
-#include "utility/utility.hpp"
-#include "map/map.hpp"
-
-
-#include "set/set.hpp"
-#include "stack/stack.hpp"
+#include <vector>
+#include <stack>
+#include <map>
+#include <set>
 #include <list>
+#include <deque>
 
-void	test_vector()
-{
+#include "utility/utility.hpp"
+#include "vector/vector.hpp"
+#include "map/map.hpp"
+#include "stack/stack.hpp"
+#include "set/set.hpp"
+
+#define GREEN		"\033[32m"
+
+#define NAMESPACE	ft
+#define TEST		"Testing ft::containers: "
+//#define NAMESPACE	std
+//#define TEST		"Testing std::containers: "
+
+void	test_vector() {
+
 	char ch, carr[] = "abc";
 
-	ft::vector<char>::allocator_type	*p_alloc	= (std::allocator<char> *)0;
-	ft::vector<char>::pointer			p_ptr		= (char *)0;
-	ft::vector<char>::const_pointer		p_cptr		= (const char *)0;
-	ft::vector<char>::reference			p_ref		= ch;
-	ft::vector<char>::const_reference	p_cref		= (const char&)ch;
-	ft::vector<char>::value_type		*p_val		= (char *)0;
-	ft::vector<char>::size_type			*p_size		= (size_t *)0;
-	ft::vector<char>::difference_type	*p_diff		= (ptrdiff_t *)0;
+	NAMESPACE::vector<char>::allocator_type	*p_alloc		= (std::allocator<char> *)0;
+	NAMESPACE::vector<char>::pointer			p_ptr		= (char *)0;
+	NAMESPACE::vector<char>::const_pointer		p_cptr		= (const char *)0;
+	NAMESPACE::vector<char>::reference			p_ref		= ch;
+	NAMESPACE::vector<char>::const_reference	p_cref		= (const char&)ch;
+	NAMESPACE::vector<char>::value_type			*p_val		= (char *)0;
+	NAMESPACE::vector<char>::size_type			*p_size		= (size_t *)0;
+	NAMESPACE::vector<char>::difference_type	*p_diff		= (ptrdiff_t *)0;
 
 	(void) p_cref;
 	(void) p_val;
@@ -36,19 +43,19 @@ void	test_vector()
 	(void) p_alloc;
 	(void) p_ref;
 
-	ft::vector<char> v0;
+	NAMESPACE::vector<char> v0;
 	std::allocator<char> al = v0.get_allocator();
 
-	ft::vector<char> v0a(al);
+	NAMESPACE::vector<char> v0a(al);
 
 	assert(v0.empty() && v0.size() == 0);
 	assert(v0a.size() == 0 && v0a.get_allocator() == al);
 
-	ft::vector<char> v1(5);
+	NAMESPACE::vector<char> v1(5);
 
-	ft::vector<char> v1a(6, 'x');
+	NAMESPACE::vector<char> v1a(6, 'x');
 
-	ft::vector<char> v1b(7, 'y', al);
+	NAMESPACE::vector<char> v1b(7, 'y', al);
 
 	assert(v1.size() == 5);
 
@@ -57,13 +64,13 @@ void	test_vector()
 	assert(v1a.size() == 6 && v1a.back() == 'x');
 	assert(v1b.size() == 7 && v1b.back() == 'y');
 
-	ft::vector<char> v2(v1a);
+	NAMESPACE::vector<char> v2(v1a);
 	assert (v2.size() == 6 && v2.front() == 'x');
 
-	ft::vector<char> v3(v1a.begin(), v1a.end());
+	NAMESPACE::vector<char> v3(v1a.begin(), v1a.end());
 	assert(v3.size() == 6 && v3.front() =='x');
 
-	const ft::vector<char> v4 (v1a.begin(), v1a.end(), al);
+	const NAMESPACE::vector<char> v4 (v1a.begin(), v1a.end(), al);
 	assert(v4.size() == 6 && v4.back() == 'x');
 
 	v0 = v4;
@@ -81,10 +88,10 @@ void	test_vector()
 	assert(v0.size() == 10 && v0.back() == 'z');
 	assert(v0.size() <= v0.max_size());
 
-	ft::vector<char>::iterator		 			p_it(v0.begin());
-	ft::vector<char>::const_iterator			p_cit(v4.begin());
-	ft::vector<char>::reverse_iterator 			p_rit(v0.rbegin());
-	ft::vector<char>::const_reverse_iterator 	p_crit(v4.rbegin());
+	NAMESPACE::vector<char>::iterator		 			p_it(v0.begin());
+	NAMESPACE::vector<char>::const_iterator			p_cit(v4.begin());
+	NAMESPACE::vector<char>::reverse_iterator 			p_rit(v0.rbegin());
+	NAMESPACE::vector<char>::const_reverse_iterator 	p_crit(v4.rbegin());
 
 	assert(*p_it == 'x' && *--(p_it = v0.end()) == 'z');
 	assert(*p_cit == 'x' && *--(p_cit = v4.end()) == 'x');
@@ -135,26 +142,26 @@ void	test_vector()
 	assert(v0 != v1 && v1 < v0);
 	assert(v0 >= v1 && v1 <= v0 && v1 >= v1 && v0 <= v0);
 
-	ft::vector<ft::pair<int, char> > pair;
+	NAMESPACE::vector<NAMESPACE::pair<int, char> > pair;
 
-	pair.insert(pair.begin(), ft::make_pair(4, 'a'));
+	pair.insert(pair.begin(), NAMESPACE::make_pair(4, 'a'));
 
-	ft::vector<ft::pair<int, char>, std::allocator<ft::pair<int, char> > >::iterator itp(pair.begin());
+	NAMESPACE::vector<NAMESPACE::pair<int, char>, std::allocator<NAMESPACE::pair<int, char> > >::iterator itp(pair.begin());
 	assert(itp->first == 4 && itp->second == 'a');
 }
 
 void test_stack() {
 
-	ft::stack<int> stack;
-	ft::stack<int> stack1;
+	NAMESPACE::stack<int> stack;
+	NAMESPACE::stack<int> stack1;
 
 	typedef std::allocator<char>		Myal;
 	typedef std::deque<char, Myal>		Myimpl;
-	typedef ft::stack<char, Myimpl>		Mycont;
+	typedef NAMESPACE::stack<char, Myimpl>		Mycont;
 	typedef std::list<char, Myal>		Myimpl2;
-	typedef ft::stack<char, Myimpl2>	Mycont2;
-	typedef ft::vector<char, Myal>		Myimpl3;
-	typedef ft::stack<char, Myimpl3>	Mycont3;
+	typedef NAMESPACE::stack<char, Myimpl2>	Mycont2;
+	typedef NAMESPACE::vector<char, Myal>		Myimpl3;
+	typedef NAMESPACE::stack<char, Myimpl3>	Mycont3;
 
 	Mycont::container_type	*p_cont	= (Myimpl *)0;
 	Mycont::value_type		*p_val	= (char *)0;
@@ -193,9 +200,9 @@ void test_stack() {
 void	test_map() {
 
 	typedef std::less<char>						Mypred;
-	typedef ft::pair<const char, int>			Myval;
+	typedef NAMESPACE::pair<const char, int>			Myval;
 	typedef std::allocator<Myval>				Myal;
-	typedef ft::map<char, int, Mypred, Myal>	Mycont;
+	typedef NAMESPACE::map<char, int, Mypred, Myal>	Mycont;
 
 
 	Myval x, xarr[3], xarr2[3];
@@ -262,7 +269,7 @@ void	test_map() {
 		   && (*--(p_crit = v4.rend())).first == 'a');
 
 	v0.clear();
-	ft::pair<Mycont::iterator, bool> pib = v0.insert(Myval('d', 4));
+	NAMESPACE::pair<Mycont::iterator, bool> pib = v0.insert(Myval('d', 4));
 	assert((*pib.first).first == 'd' && pib.second);
 	assert((*--v0.end()).first == 'd');
 	pib = v0.insert(Myval('d', 5));
@@ -287,7 +294,7 @@ void	test_map() {
 	assert(v0.empty());
 	v0.swap(v1);
 	assert(!v0.empty() && v1.empty());
-	ft::swap(v0, v1);
+	NAMESPACE::swap(v0, v1);
 	assert(v0.empty() && !v1.empty());
 	assert(v1 == v1 && v0 < v1);
 	assert(v0 != v1 && v1 > v0);
@@ -300,7 +307,7 @@ void	test_map() {
 	assert(v4.count('x') == 0 && v4.count('b') == 1);
 	assert((*v4.lower_bound('a')).first == 'a');
 	assert((*v4.upper_bound('a')).first == 'b');
-	ft::pair<Mycont::const_iterator, Mycont::const_iterator> pcc
+	NAMESPACE::pair<Mycont::const_iterator, Mycont::const_iterator> pcc
 			= v4.equal_range('a');
 	assert((*pcc.first).first == 'a' && (*pcc.second).first == 'b');
 }
@@ -309,7 +316,7 @@ void	test_set() {
 
 	typedef std::allocator<char> Myal;
 	typedef std::less<char> Mypred;
-	typedef ft::set<char, Mypred, Myal> Mycont;
+	typedef NAMESPACE::set<char, Mypred, Myal> Mycont;
 	char ch, str1[] = "abc", str2[] = "def";
 
 	Mycont::key_type        *p_key = (char *)0;
@@ -354,7 +361,7 @@ void	test_set() {
 	assert(*p_crit == 'c' && *--(p_crit = v1.rend()) == 'a');
 
 	v0.clear();
-	ft::pair<Mycont::iterator, bool> pib = v0.insert('d');
+	NAMESPACE::pair<Mycont::iterator, bool> pib = v0.insert('d');
 	assert(*pib.first == 'd' && pib.second);
 	assert(*--v0.end() == 'd');
 	pib = v0.insert('d');
@@ -375,7 +382,7 @@ void	test_set() {
 	assert(v0.empty());
 	v0.swap(v1);
 	assert(!v0.empty() && v1.empty());
-	ft::swap(v0, v1);
+	NAMESPACE::swap(v0, v1);
 	assert(v0.empty() && !v1.empty());
 
 
@@ -390,20 +397,40 @@ void	test_set() {
 	assert(v4.count('x') == 0 && v4.count('b') == 1);
 	assert(*v4.lower_bound('a') == 'a');
 	assert(*v4.upper_bound('a') == 'b');
-	ft::pair<Mycont::const_iterator, Mycont::const_iterator> pcc = v4.equal_range('a');
+	NAMESPACE::pair<Mycont::const_iterator, Mycont::const_iterator> pcc = v4.equal_range('a');
 	assert(*pcc.first == 'a' && *pcc.second == 'b');
 }
 
+#include <cstdio>
+
 int main() {
+
+	std::chrono::steady_clock::time_point	start;
+	std::chrono::steady_clock::time_point	end;
+
+	// Start measuring time
+	start = std::chrono::high_resolution_clock::now();
+
+
+	//Test
 	test_vector();
-	std::cout << "SUCCESS testing ft::vector" << std::endl;
+	std::cout << "SUCCESS testing vector" << std::endl;
 
 	test_stack();
-	std::cout << "SUCCESS testing ft::stack" << std::endl;
+	std::cout << "SUCCESS testing stack" << std::endl;
 
 	test_map();
-	std::cout << "SUCCESS testing ft::map" << std::endl;
+	std::cout << "SUCCESS testing map" << std::endl;
 
 	test_set();
-    std::cout << "SUCCESS testing ft::set" << std::endl;
+    std::cout << "SUCCESS testing set" << std::endl;
+
+
+	// Stop measuring time and calculate the elapsed time
+	end = std::chrono::high_resolution_clock::now();
+
+	std::chrono::duration<float> time = end - start;
+	std::cout.precision(5);
+
+	std::cout << GREEN << TEST << time.count() << "s" << std::endl;
 }

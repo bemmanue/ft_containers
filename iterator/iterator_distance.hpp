@@ -13,8 +13,8 @@ typename ft::iterator_traits<InIt>::difference_type distance(InIt first, InIt la
 	return n;
 }
 
-template <class InIt, class Distance> inline
-void Distance(InIt first, InIt last, Distance& n) {
+template <class InIt, class Dist> inline
+void Distance(InIt first, InIt last, Dist& n) {
 	Distance2(first, last, n, ft::Iter_cat(first));
 }
 

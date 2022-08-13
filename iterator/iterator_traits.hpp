@@ -1,7 +1,7 @@
 #ifndef ITERATOR_TRAITS_HPP
 #define ITERATOR_TRAITS_HPP
 
-#include "iostream"
+#include <cstddef>
 
 #include "iterator_tags.hpp"
 

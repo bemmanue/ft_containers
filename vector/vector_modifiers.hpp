@@ -73,7 +73,6 @@ void vector<T, Alloc>::insert(iterator pos, InputIt first, InputIt last) {
 	Insert(pos, first, last, Iter_cat(first));
 }
 
-// Removes the element at pos
 template <typename T, class Alloc>
 typename vector<T, Alloc>::iterator vector<T, Alloc>::erase(iterator pos) {
 	copy_forward(pos + 1, end(), pos);
@@ -82,7 +81,6 @@ typename vector<T, Alloc>::iterator vector<T, Alloc>::erase(iterator pos) {
 	return (pos);
 }
 
-// Removes the elements in the range
 template <typename T, class Alloc>
 typename vector<T, Alloc>::iterator vector<T, Alloc>::erase(iterator first, iterator last) {
 	if (first != last) {

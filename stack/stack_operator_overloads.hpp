@@ -1,5 +1,5 @@
-#ifndef STACK_NON_MEMBER_FUNCTIONS_HPP
-#define STACK_NON_MEMBER_FUNCTIONS_HPP
+#ifndef STACK_OPERATOR_OVERLOADS_HPP
+#define STACK_OPERATOR_OVERLOADS_HPP
 
 #include "stack_base.hpp"
 
@@ -37,4 +37,4 @@ bool operator>=(const stack<T, Container>& lhs, const stack<T, Container>& rhs) 
 
 }
 
-#endif // STACK_NON_MEMBER_FUNCTIONS_HPP
+#endif //STACK_OPERATOR_OVERLOADS_HPP

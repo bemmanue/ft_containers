@@ -1,9 +1,6 @@
 #ifndef ITERATOR_HPP
 #define ITERATOR_HPP
 
-//#include <iostream>
-//#include <memory>
-
 #include "iterator_tags.hpp"
 #include "iterator_traits.hpp"
 #include "iterator_base.hpp"
@@ -17,4 +14,4 @@
 #include "random_access_iterator.hpp"
 #include "reverse_iterator.hpp"
 
-#endif // ITERATOR_HPP
+#endif //ITERATOR_HPP

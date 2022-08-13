@@ -26,4 +26,4 @@ stack<T, Container>& stack<T, Container>::operator=(const stack& other) {
 
 }
 
-#endif // STACK_MEMBER_FUNCTIONS_HPP
+#endif //STACK_MEMBER_FUNCTIONS_HPP

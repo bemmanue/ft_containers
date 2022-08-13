@@ -17,7 +17,7 @@ typename vector<T, Alloc>::const_reference vector<T, Alloc>::operator[] (size_ty
 
 template <typename T, class Alloc>
 typename vector<T, Alloc>::reference vector<T, Alloc>::at(size_type n) {
-	if (n >= _last - _first)
+	if (n >= (size_type)(_last - _first))
 		throw std::out_of_range("vector");
 	return (*(begin() + n));
 }

@@ -75,4 +75,4 @@ inline int_iterator_tag Iter_cat(unsigned long) {
 
 }
 
-#endif // ITERATOR_CATEGORY_HPP
+#endif //ITERATOR_CATEGORY_HPP

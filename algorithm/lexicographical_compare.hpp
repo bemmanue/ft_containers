@@ -28,7 +28,6 @@ inline bool lexicographical_compare(InIt1 first, InIt1 last, InIt2 _first, InIt2
 	return first == last && _first != _last;
 }
 
-
 }
 
 #endif //ALGORITHM_LEXICOGRAPHICAL_COMPARE_HPP
